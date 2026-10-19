@@ -1,4 +1,5 @@
 title: mobiCut
+permalink: pretty
 description: A small video editor for Android. Split, delete, speed up, subtitle and export clips on your phone.
 remote_theme: just-the-docs/just-the-docs@v0.10.1
 plugins:
