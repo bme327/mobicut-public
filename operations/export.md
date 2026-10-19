@@ -9,6 +9,10 @@ nav_order: 9
 
 Export builds a new video from your edits. The original is not touched.
 
+{: .important }
+> **Exports are very fast.** The video is rendered on the phone with its built-in video hardware.
+> Nothing is uploaded, and deleted parts are skipped.
+
 1. TOC
 {:toc}
 

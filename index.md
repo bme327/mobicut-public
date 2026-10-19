@@ -26,8 +26,29 @@ raw clip into a short video before you even get home:
 - **join the parts with fades** so the cuts look intentional,
 - **export** a new video to your gallery, ready to share.
 
-The original video is never changed. mobiCut only remembers your edits and builds a new file when
-you export.
+## Your video stays where it is
+
+{: .important }
+> **mobiCut never copies, downloads or uploads your source video. It only links to it.**
+> A project is just your list of edits (a few kilobytes) pointing at the original file in your
+> gallery, on the SD card or on the camera. The original is never changed, and starting a project
+> from a 4 GB clip takes no extra space and no waiting.
+
+- **Nothing leaves your phone.** mobiCut has no internet access at all: no account, no cloud, no
+  upload. Everything happens on the device.
+- **No duplicates eating your storage.** The only new file is the finished video you export.
+- If you move or delete the original, the project asks you to
+  [point it at the video again]({{ "/operations/missing-video/" | relative_url }}).
+
+## Very fast exports
+
+{: .important }
+> **Exports are very fast.** mobiCut renders the finished video right on the phone, using its
+> built-in video hardware, so there's nothing to upload and no server queue to wait for.
+
+- The parts you deleted are skipped, so a short edit of a long flight exports quickly.
+- Choosing a smaller resolution (720p) or 30 fps makes it faster still, and the file smaller.
+- The result lands straight in your gallery, ready to share.
 
 {% include screen.html name="editor" alt="The mobiCut editor: video preview at the top, a timeline with three segments, subtitle chips and the Split, Delete, Speed and Subtitle tools at the bottom." caption="The editor, where all the work happens." %}
 
