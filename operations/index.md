@@ -18,7 +18,9 @@ then **The editor** for a tour of the screen.
 2. **Export**: build the finished video. See [Export]({{ "/operations/export/" | relative_url }}).
 3. **Preview.** Shows the video as it will look: deleted parts are skipped, speed and subtitles
    are applied. A badge in the corner shows the speed of the selected segment.
-4. **Play / pause.** The time next to it is the time in the *finished* video, not in the original.
+4. **Play / pause**, with **to the beginning**, **back 5 s**, **forward 5 s** and **to the end** around it.
+   The small times next to them are the position (top) and the length (bottom) of the *finished*
+   video, not of the original.
 5. **Undo** the last change.
 6. **Timeline.** Each block is a segment; orange markers are splits; the white line is the
    playhead. See [The editor]({{ "/operations/editor/" | relative_url }}).

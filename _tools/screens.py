@@ -69,6 +69,10 @@ def icon(name, x, y, size=22, color=TEXT):
         "volume": '<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/>',
         "volume_off": '<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9l5 6M22 9l-5 6"/>',
         "image": '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m4 18 5-6 4 4 3-3 4 5"/>',
+        "skip_prev": '<path d="M6 5v14"/><path d="M18 5 9 12l9 7z"/>',
+        "skip_next": '<path d="M18 5v14"/><path d="M6 5l9 7-9 7z"/>',
+        "replay5": '<path d="M12 4a8 8 0 1 1-7.6 5.5"/><path d="M4 4v5.5h5.5"/><path d="M10.5 10h3M10.5 10v2.5h1.7a1.6 1.6 0 1 1 0 3.2h-1.7"/>',
+        "forward5": '<path d="M12 4a8 8 0 1 0 7.6 5.5"/><path d="M20 4v5.5h-5.5"/><path d="M10.5 10h3M10.5 10v2.5h1.7a1.6 1.6 0 1 1 0 3.2h-1.7"/>',
         "music": '<path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>',
     }[name]
     return g + p + "</g>"
@@ -235,9 +239,12 @@ def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from L
             s += t(W / 2, vy + vh - 22, subtitle_on_preview, 15, "#fff", 400, "middle")
     # controls
     cy = pv_top + pv_h
-    s += f'<circle cx="38" cy="{cy+30}" r="22" fill="{SURF_HI}"/>' + icon("pause" if playing else "play", 38, cy + 30, 24, TEXT)
-    s += t(72, cy + 35, time, 14, TEXT, 400, mono=True) + t(132, cy + 35, "/ " + total, 14, MUTED, 400, mono=True)
-    s += icon("undo", 330, cy + 30, 24, TEXT)
+    # Transport: to start, −5 s, play/pause, +5 s, to end; then the times, small, on two lines.
+    s += icon("skip_prev", 28, cy + 30, 22, TEXT) + icon("replay5", 68, cy + 30, 22, TEXT)
+    s += f'<circle cx="110" cy="{cy+30}" r="22" fill="{SURF_HI}"/>' + icon("pause" if playing else "play", 110, cy + 30, 24, TEXT)
+    s += icon("forward5", 152, cy + 30, 22, TEXT) + icon("skip_next", 192, cy + 30, 22, TEXT)
+    s += t(216, cy + 27, time, 11, TEXT, 400, mono=True) + t(216, cy + 41, total, 11, MUTED, 400, mono=True)
+    s += icon("undo", 334, cy + 30, 24, TEXT)
     # timeline
     tl_x, tl_w = 16, 340
     ly = cy + 60 + 12
@@ -509,7 +516,7 @@ def settings_sheet():
         s += rect(104, y + 40, 58, 32, ACCENT, 8) + t(133, y + 61, "Pro", 14, ON_ACCENT, 600, "middle")
         s += t(34, y + 92, "Only in test builds. A Play Store release takes", 12, MUTED)
         s += t(34, y + 108, "the edition from the license.", 12, MUTED)
-        s += t(20, y + 152, "mobiCut 2026-10-19.1", 12, MUTED)
+        s += t(20, y + 152, "mobiCut 2026-10-19.2", 12, MUTED)
         return s
     return home() + sheet(320, c)
 
@@ -602,7 +609,7 @@ SCREENS = {
     "delete-project": delete_project_dialog,
     "editor": lambda: editor()
               + callout(1, 150, 92, ring=(48, 32, 200, 40)) + callout(2, 306, 92, ring=(262, 30, 88, 44))
-              + callout(3, 300, 136) + callout(4, 38, 470, ring=(12, 430, 52, 52)) + callout(5, 330, 470, ring=(306, 432, 48, 48))
+              + callout(3, 300, 136) + callout(4, 12, 434, ring=(8, 432, 266, 52)) + callout(5, 312, 434, ring=(310, 432, 48, 48))
               + callout(6, 14, TL_TRACK_TOP + 40, ring=(12, TL_TRACK_TOP - 16, 348, 102))
               + callout(7, 14, TL_TRACK_TOP + 104, ring=(12, TL_TRACK_TOP + 89, 348, 30))
               + callout(8, 14, TL_TRACK_TOP + 144, ring=(12, TL_TRACK_TOP + 125, 348, 38))
