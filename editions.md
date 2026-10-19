@@ -29,7 +29,7 @@ Back to the [home page]({{ "/" | relative_url }}).
 | Ads | **none, never** | **none, never** |
 | Split, delete, restore, undo | ✓ | ✓ |
 | Speed 0.25×–16× per segment | ✓ | ✓ |
-| Subtitles (burned in or .srt) | ✓ | ✓ |
+| Subtitles (burned in or .srt; position, fonts, colours, animation) | ✓ | ✓ |
 | Mute a segment | ✓ | ✓ |
 | Pictures, with zoom and slide effects | ✓ | ✓ |
 | Soundtracks (mix or replace, fades) | ✓ | ✓ |

@@ -17,7 +17,8 @@ nav_order: 2
 ## Play and pause
 
 Tap **▶** under the preview. Playback already follows your edits: deleted segments are skipped,
-sped-up segments play fast, subtitles appear, and fades dim the picture.
+sped-up segments play fast, subtitles appear on the video with their animation, fades dim the
+picture and interleaves crossfade.
 
 The two small times next to the buttons are the position in the **finished video** (top) and
 its total length (bottom), for example `0:21.4` over `0:48.0`. They change as you delete and speed

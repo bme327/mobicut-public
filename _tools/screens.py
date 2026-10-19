@@ -440,21 +440,6 @@ def export_running():
     return editor() + dialog(180, "Exporting…", body, [("Cancel", ACCENT)])
 
 
-def subtitle_dialog(edit=False):
-    def body(x, y, w):
-        s = rect(x, y, w, 56, "none", 4, MUTED, 1) + t(x + 16, y + 33, "Take-off from Lysá hora", 16)
-        s += t(x, y + 90, "Duration", 14) + t(x, y + 107, "On screen in", 12, MUTED) + t(x, y + 122, "the export", 12, MUTED)
-        s += stepper(x + w - 136, y + 76, "5.0 s")
-        s += t(x, y + 150, "Starts at 0:12.0", 13, MUTED, 400, mono=True)
-        if edit:
-            s += rect(x, y + 166, w, 40, "none", 20, OUTLINE, 1) + t(x + w / 2, y + 191, "Start at playhead (0:21.4)", 13, ACCENT, 600, "middle")
-            s += t(x + 12, y + 238, "Delete subtitle", 14, DEL_LINE, 600)
-        return s
-    ed = editor(subtitle_on_preview="Take-off from Lysá hora", speed_badge="")
-    return ed + dialog(400 if edit else 310, "Edit subtitle" if edit else "Add subtitle", body,
-                       [("Cancel", ACCENT), ("Save", ACCENT)])
-
-
 def transition_dialog():
     def body(x, y, w):
         s = t(x, y + 6, "Type", 13, MUTED)
@@ -463,7 +448,7 @@ def transition_dialog():
         s += t(x, y + 148, "Duration", 14) + t(x, y + 165, "Total, in", 12, MUTED) + t(x, y + 180, "the export", 12, MUTED)
         s += stepper(x + w - 136, y + 134, "1.0 s")
         return s
-    return editor(transition_set=(1,)) + dialog(350, "Add transition", body, [("Cancel", ACCENT), ("Save", ACCENT)])
+    return editor(transition_set=(1,)) + dialog(350, "Add transition", body, [("Cancel", ACCENT), ("Save & play", ACCENT), ("Save", ACCENT)])
 
 
 def segment_info():
@@ -597,6 +582,118 @@ def segment_info_picture():
 SPLIT_SEGS = [(0.47, "1×", False, False, False), (0.53, "1×", False, False, True)]
 DEL_SEGS = [(0.36, "1×", False, False, False), (0.30, "4×", True, True, True), (0.34, "1×", False, False, False)]
 TL_TRACK_TOP = 80 + 346 + 60 + 12 + 16
+
+# ---------------------------------------------------------------- subtitle editor (ui/OverlayEditor.kt)
+PANEL_TOP = H - 24 - 404   # the panel replaces controls, timeline and toolbar; the preview shrinks
+SUB_VY = 80 + (PANEL_TOP - 80 - W * 9 / 16) / 2
+SUB_BOX = (0.08, 0.78, 0.84, 0.13)  # x, y, w, h as fractions of the video frame
+
+
+def chip(x, y, label, sel=False, font=SANS):
+    w = len(label) * 7.4 + 26
+    s = rect(x, y, w, 32, ACCENT_DIM if sel else "none", 8, None if sel else OUTLINE, 1)
+    s += f'<text x="{x + w / 2}" y="{y + 21}" font-family="{font}" font-size="13" fill="{ACCENT if sel else TEXT}" text-anchor="middle">{escape(label)}</text>'
+    return s, w
+
+
+def chips(x, y, labels, selected=(), fonts=None):
+    s = ""
+    for i, lab in enumerate(labels):
+        c, w = chip(x, y, lab, lab in selected, (fonts or {}).get(lab, SANS))
+        s += c
+        x += w + 8
+    return s
+
+
+def slider(y, label, value, frac):
+    s = t(16, y, label, 13, MUTED) + t(W - 16, y, value, 13, TEXT, 400, "end", True)
+    s += rect(16, y + 16, W - 32, 4, SURF_HI, 2) + rect(16, y + 16, (W - 32) * frac, 4, ACCENT, 2)
+    s += f'<circle cx="{16 + (W - 32) * frac}" cy="{y + 18}" r="9" fill="{ACCENT}"/>'
+    return s
+
+
+def subtitle_editor(tab="Text", text="Take-off from Lysá hora", look="classic"):
+    s = status_bar()
+    s += icon("back", 28, 52, 24, TEXT) + t(56, 49, "Lysá hora flight", 16, TEXT, 600)
+    s += t(56, 66, "1920×1080 · 50 fps · 2:31", 12, MUTED, 400, mono=True) + button(264, 32, 84, 40, "Export")
+    # preview with the subtitle drawn on the video, box and corner handles
+    vh = W * 9 / 16
+    s += rect(0, 80, W, PANEL_TOP - 80, "#000") + landscape(0, SUB_VY, W, vh, 0, "se")
+    bx, by, bw, bh = SUB_BOX
+    x0, y0, w0, h0 = bx * W, SUB_VY + by * vh, bw * W, bh * vh
+    if look == "classic":
+        s += rect(x0, y0, w0, h0, "#000", 4, op=0.72) + t(W / 2, y0 + h0 / 2 + 4.5, text, 13, "#fff", 400, "middle")
+    else:  # bold serif, yellow, no background: a soft shadow keeps it readable
+        s += t(W / 2 + 1, y0 + h0 / 2 + 7, text, 19, "#000", 700, "middle", extra='fill-opacity="0.6" font-family="DejaVu Serif, serif"').replace(f'font-family="{SANS}" ', "")
+        s += t(W / 2, y0 + h0 / 2 + 6, text, 19, "#FFEB3B", 700, "middle", extra='font-family="DejaVu Serif, serif"').replace(f'font-family="{SANS}" ', "")
+    s += f'<rect x="{x0}" y="{y0}" width="{w0}" height="{h0}" fill="none" stroke="{ACCENT}" stroke-width="1.5" stroke-dasharray="5 4"/>'
+    for cx, cy in ((x0, y0), (x0 + w0, y0), (x0, y0 + h0), (x0 + w0, y0 + h0)):
+        s += f'<circle cx="{cx}" cy="{cy}" r="8.5" fill="#fff"/><circle cx="{cx}" cy="{cy}" r="7" fill="{ACCENT}"/>'
+    # panel
+    top = PANEL_TOP
+    s += rect(0, top, W, H - top, SURF)
+    s += t(16, top + 30, "Subtitle", 16, TEXT, 600)
+    s += icon("play", 238, top + 24, 24, TEXT) + icon("trash", 280, top + 24, 22, DEL_LINE)
+    s += button(300, top + 6, 52, 36, "Done")
+    tw = (W - 16) / 3
+    for i, lab in enumerate(["Text", "Look", "Motion"]):
+        sel = lab == tab
+        cx = 8 + tw * i + tw / 2
+        s += t(cx, top + 68, lab, 14, ACCENT if sel else MUTED, 600 if sel else 400, "middle")
+        s += rect(8 + tw * i, top + 80, tw, 2, ACCENT if sel else OUTLINE)
+    y = top + 98
+    if tab == "Text":
+        s += rect(16, y, W - 32, 56, "none", 4, MUTED, 1) + t(32, y + 33, text, 16)
+        s += t(16, y + 86, "Duration", 14) + t(16, y + 103, "On screen in the export", 12, MUTED)
+        s += stepper(W - 16 - 136, y + 72, "5.0 s")
+        s += t(16, y + 144, "Starts at", 14)
+        bxs = 16
+        for lab in ["−1 s", "−0.1"]:
+            w = len(lab) * 7.5 + 18
+            s += rect(bxs, y + 154, w, 38, "none", 19, OUTLINE, 1) + t(bxs + w / 2, y + 178, lab, 13, ACCENT, 600, "middle")
+            bxs += w + 6
+        s += t(W / 2, y + 178, "0:12.0", 16, TEXT, 400, "middle", True)
+        bxe = W - 16
+        for lab in ["+1 s", "+0.1"]:
+            w = len(lab) * 7.5 + 18
+            bxe -= w
+            s += rect(bxe, y + 154, w, 38, "none", 19, OUTLINE, 1) + t(bxe + w / 2, y + 178, lab, 13, ACCENT, 600, "middle")
+            bxe -= 6
+        s += t(16, y + 212, "Or drag the subtitle along the timeline", 12, MUTED)
+    elif tab == "Look":
+        s += t(16, y, "Font", 13, MUTED)
+        s += chips(16, y + 10, ["Sans", "Serif", "Mono", "Condensed", "Casual"], ("Serif",),
+                   {"Serif": "DejaVu Serif, serif", "Mono": MONO})
+        s += chips(16, y + 52, ["Bold", "Italic"], ("Bold",))
+        for i, (ax, sel) in enumerate(((0, False), (1, True), (2, False))):
+            cx = 190 + i * 44
+            col = ACCENT if sel else MUTED
+            lines = [(-7, 7), (-5, 5) if ax == 1 else ((-7, 3) if ax == 0 else (-3, 7)), (-7, 7), (-5, 5) if ax == 1 else ((-7, 3) if ax == 0 else (-3, 7))]
+            for j, (a, b) in enumerate(lines):
+                s += f'<line x1="{cx + a}" y1="{y + 60 + j * 5}" x2="{cx + b}" y2="{y + 60 + j * 5}" stroke="{col}" stroke-width="2" stroke-linecap="round"/>'
+        s += slider(y + 112, "Size", "7.0 %", (7 - 2) / 14)
+        s += t(16, y + 160, "Text colour", 13, MUTED)
+        sw = ["#FFFFFF", "#000000", "#FFEB3B", "#F2A33A", "#E53935", "#43A047", "#00BCD4", "#1E88E5", "#D81B60"]
+        for i, c in enumerate(sw):
+            cx = 32 + i * 42
+            sel = c == "#FFEB3B"
+            s += f'<circle cx="{cx}" cy="{y + 188}" r="16" fill="none" stroke="{ACCENT if sel else OUTLINE}" stroke-width="{3 if sel else 1}"/>'
+            s += f'<circle cx="{cx}" cy="{y + 188}" r="{11 if sel else 13}" fill="{c}"/>'
+        s += slider(y + 228, "Text opacity", "100 %", 1.0)
+        s += t(16, y + 274, "Background colour", 13, MUTED)  # …and its opacity below, when scrolled
+    else:
+        s += t(16, y, "Ease in", 13, MUTED) + chips(16, y + 10, ["None", "Fade", "Slide", "Zoom", "Type"], ("Zoom",))
+        s += slider(y + 66, "Duration", "0.4 s", (0.4 - 0.1) / 1.9)
+        s += t(16, y + 116, "Ease out", 13, MUTED) + chips(16, y + 126, ["None", "Fade", "Slide", "Zoom", "Type"], ("Fade",))
+        s += slider(y + 182, "Duration", "0.3 s", (0.3 - 0.1) / 1.9)
+        s += t(16, y + 232, "Effect while shown", 13, MUTED) + chips(16, y + 242, ["None", "Wobble", "Pulse", "Shake", "Float"], ("Wobble",))
+        s += t(16, y + 298, "Tap ▶ above to see it move.", 12, MUTED).replace(SANS, "DejaVu Sans, sans-serif")
+    s += nav_bar()
+    return s
+
+
+SUB_BOX_PX = (SUB_BOX[0] * W, SUB_VY + SUB_BOX[1] * W * 9 / 16, SUB_BOX[2] * W, SUB_BOX[3] * W * 9 / 16)
+
 MEDIA_TOP = TL_TRACK_TOP - 26  # timeline moves up when the soundtrack lane is shown
 
 SCREENS = {
@@ -622,8 +719,15 @@ SCREENS = {
               + callout(2, TOOL_X[1] + 26, TOOL_Y + 4, ring=tool_ring(1))
               + callout(3, 60, TL_TRACK_TOP + 150, ring=(20, TL_TRACK_TOP + 128, 40, 40)),
     "speed": speed_sheet,
-    "subtitle-add": lambda: subtitle_dialog(False),
-    "subtitle-edit": lambda: subtitle_dialog(True),
+    "subtitle-editor": lambda: subtitle_editor("Text")
+                       + callout(1, SUB_BOX_PX[0] + SUB_BOX_PX[2] / 2, SUB_BOX_PX[1] - 18)
+                       + callout(2, SUB_BOX_PX[0] + SUB_BOX_PX[2] + 2, SUB_BOX_PX[1] + SUB_BOX_PX[3] + 18)
+                       + callout(3, 16 + 4, PANEL_TOP + 52, ring=(8, PANEL_TOP + 50, W - 16, 36))
+                       + callout(4, W - 12, PANEL_TOP + 98 + 176, ring=(10, PANEL_TOP + 98 + 128, W - 20, 70))
+                       + callout(5, 226, PANEL_TOP + 8, ring=(222, PANEL_TOP + 6, 34, 36))
+                       + callout(6, 342, PANEL_TOP + 52, ring=(298, PANEL_TOP + 4, 56, 40)),
+    "subtitle-look": lambda: subtitle_editor("Look", look="styled"),
+    "subtitle-motion": lambda: subtitle_editor("Motion", look="styled"),
     "subtitles-timeline": lambda: editor(subtitle_on_preview="Take-off from Lysá hora", speed_badge="", playhead=0.2)
                           + callout(1, 16 + 340 * 0.19, TL_TRACK_TOP + 106, ring=(16 + 340 * 0.08 - 4, TL_TRACK_TOP + 86, 340 * 0.22 + 8, 36))
                           + callout(2, TOOL_X[4] + 26, TOOL_Y + 4, ring=tool_ring(4)),
