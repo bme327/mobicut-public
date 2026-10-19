@@ -5,16 +5,35 @@ name: Issue status
 #   status: accepted  planned; the issue stays open
 #   status: rejected  closed as "not planned"; the reason goes in a comment before labelling
 #   status: closed    fixed / done and released; closed as "completed"
+# Closing an issue with GitHub's own Close button also sets the matching label.
 on:
   issues:
-    types: [labeled]
+    types: [labeled, closed]
 
 permissions:
   issues: write
 
 jobs:
+  closed-by-button:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          ISSUE: ${{ github.event.issue.number }}
+          REASON: ${{ github.event.issue.state_reason }}
+          LABELS: ${{ toJSON(github.event.issue.labels.*.name) }}
+        run: |
+          want="status: closed"; [ "$REASON" = "not_planned" ] && want="status: rejected"
+          echo "$LABELS" | jq -e --arg w "$want" 'index($w)' >/dev/null && exit 0
+          gh issue edit "$ISSUE" -R "$REPO" --add-label "$want"
+          echo "$LABELS" | jq -r '.[] | select(startswith("status: "))' | while read -r l; do
+            gh issue edit "$ISSUE" -R "$REPO" --remove-label "$l"
+          done
+
   status:
-    if: startsWith(github.event.label.name, 'status:')
+    if: github.event.action == 'labeled' && startsWith(github.event.label.name, 'status:')
     runs-on: ubuntu-latest
     steps:
       - env:
