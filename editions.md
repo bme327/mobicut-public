@@ -30,6 +30,10 @@ Back to the [home page]({{ "/" | relative_url }}).
 | Split, delete, restore, undo | ✓ | ✓ |
 | Speed 0.25×–16× per segment | ✓ | ✓ |
 | Subtitles (burned in or .srt) | ✓ | ✓ |
+| Mute a segment | ✓ | ✓ |
+| Pictures, with zoom and slide effects | ✓ | ✓ |
+| Soundtracks (mix or replace, fades) | ✓ | ✓ |
+| Videos per project | **one** | **several**, edited as one |
 | Export to the gallery | ✓ | ✓ |
 | Length of the source video | **up to 1 hour** | no limit |
 | Transitions | **Fade out-in**, fade in/out at start and end | all, including **Interleave** (crossfade) |
@@ -43,6 +47,8 @@ These are the only differences. Everything else works the same in Free.
   long. A shorter cut of a longer flight needs Pro.
 - **A small (mc) mobiCut logo** in the top right corner of every exported video. It also shows in
   the preview, so what you see is what you get.
+- **One video per project.** Pictures and soundtracks are free; adding more videos to a project
+  is Pro.
 - **Fade out-in is the only transition.** Fades between segments and fade in/out at the start and
   end are included; the **Interleave** crossfade is Pro.
 

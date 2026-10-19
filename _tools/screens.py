@@ -19,6 +19,7 @@ import cairosvg
 BG = "#0E0F11"; SURF = "#17191C"; SURF_HI = "#22252A"; SEG = "#2B3036"; OUTLINE = "#2E3238"
 TEXT = "#F2F2F0"; MUTED = "#A3A7AE"; ACCENT = "#F2A33A"; ON_ACCENT = "#1A1206"; ACCENT_DIM = "#2A2418"
 DEL = "#2A1515"; DEL_LINE = "#C9595A"; DEL_TEXT = "#F3B4B4"; SUB = "#1F3557"; SUB_TEXT = "#BBD3FF"
+SND = "#1E4034"; SND_TEXT = "#A8E6C8"
 CALLOUT = "#3FA9F5"
 
 W, H = 360, 780
@@ -65,6 +66,10 @@ def icon(name, x, y, size=22, color=TEXT):
         "info": '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',
         "video_lib": '<rect x="6" y="3" width="15" height="15" rx="2"/><path d="M3 7v12a2 2 0 0 0 2 2h12"/><path d="m11 7.5 5 3-5 3z"/>',
         "fade": '<path d="M4 12h3l2-5 3 10 3-10 2 5h3"/>',
+        "volume": '<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/>',
+        "volume_off": '<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9l5 6M22 9l-5 6"/>',
+        "image": '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m4 18 5-6 4 4 3-3 4 5"/>',
+        "music": '<path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>',
     }[name]
     return g + p + "</g>"
 
@@ -203,21 +208,25 @@ DEFAULT_SEGS = [  # (fraction of width, label, speed!=1, deleted, selected)
 def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from Lysá hora"), (0.70, 0.93, "Landing")),
            selected_deleted=False, show_deleted=False, transitions=True, transition_set=(), playing=False,
            subtitle_on_preview="", speed_badge="4×", title="Lysá hora flight", time="0:21.4", total="0:48.0",
-           video=True):
+           video=True, soundtracks=(), preview_shade=0, selected_muted=False, selected_picture=False):
+    """segs: (fraction, label, fast, deleted, selected[, kind[, join_before]]); kind "picture" draws
+    a picture segment, join_before draws the white join between two clips instead of a split marker.
+    soundtracks: (start fraction, end fraction, name, replace) shown in the lane under subtitles."""
     s = status_bar()
     # header
     s += icon("back", 28, 52, 24, TEXT)
     s += t(56, 49, title, 16, TEXT, 600)
-    s += icon("edit", 56 + len(title) * 8.6 + 10, 44, 14, MUTED)
+    s += icon("edit", 56 + len(title) * 9.2 + 10, 44, 14, MUTED)
     s += t(56, 66, "1920×1080 · 50 fps · 2:31", 12, MUTED, 400, mono=True)
     s += button(264, 32, 84, 40, "Export")
     # preview
-    pv_top, pv_h = 80, 346
+    # The preview gives up room when the soundtrack lane is shown, like the app's weighted layout.
+    pv_top, pv_h = 80, 346 - (26 if soundtracks else 0)
     s += rect(0, pv_top, W, pv_h, "#000")
     if video:
         vh = W * 9 / 16
         vy = pv_top + (pv_h - vh) / 2
-        s += landscape(0, vy, W, vh, 0, "pv")
+        s += landscape(0, vy, W, vh, preview_shade, "pv")
         if speed_badge:
             s += rect(10, vy + 10, 36, 20, "#000", 4, op=0.6) + t(28, vy + 24, speed_badge, 12, ACCENT, 600, "middle", True)
         if subtitle_on_preview:
@@ -239,13 +248,20 @@ def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from L
     track_h = 84
     x = tl_x
     bounds = []
-    for i, (frac, lab, fast, deleted, sel) in enumerate(segs):
+    joins_at = []
+    for i, seg in enumerate(segs):
+        frac, lab, fast, deleted, sel = seg[:5]
+        kind = seg[5] if len(seg) > 5 else None
+        join_before = seg[6] if len(seg) > 6 else False
         w = tl_w * frac
         left = x + (1 if i > 0 else 0)
         right = x + w - (1 if i < len(segs) - 1 else 0)
         s += f'<clipPath id="sg{i}"><rect x="{left}" y="{track_top}" width="{right-left}" height="{track_h}" rx="6"/></clipPath><g clip-path="url(#sg{i})">'
         s += rect(left, track_top, right - left, track_h, SEG)
-        if video:
+        if video and kind == "picture":
+            s += (f'<svg x="{left}" y="{track_top}" width="{right-left}" height="{track_h}" viewBox="0 0 {track_h*1.5} {track_h}" '
+                  f'preserveAspectRatio="xMinYMid slice" opacity="0.8">' + landscape(0, 0, track_h * 1.5, track_h, 1, f"pic{i}") + "</svg>")
+        elif video:
             s += tile_band(left, track_top, right - left, track_h, deleted, f"tb{i}")
         if deleted:
             s += rect(left, track_top, right - left, track_h, DEL, op=0.7)
@@ -265,13 +281,15 @@ def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from L
         if sel:
             s += f'<circle cx="{right-20}" cy="{track_top+20}" r="12" fill="#000" fill-opacity="0.6"/>' + icon("info", right - 20, track_top + 20, 18, TEXT)
         if i > 0:
-            bounds.append(x)
+            (joins_at if join_before else bounds).append(x)
         x += w
     for bx in bounds:
         s += f'<line x1="{bx}" y1="{track_top-2}" x2="{bx}" y2="{track_top+track_h}" stroke="{ACCENT}" stroke-width="2"/>'
         s += f'<path d="M{bx-6} {track_top-12} H{bx+6} L{bx} {track_top-1}Z" fill="{ACCENT}"/>'
+    for jx in joins_at:
+        s += f'<line x1="{jx}" y1="{track_top}" x2="{jx}" y2="{track_top+track_h}" stroke="#fff" stroke-opacity="0.85" stroke-width="3"/>'
     if transitions and not show_deleted:
-        joins = [tl_x] + bounds + [tl_x + tl_w]
+        joins = [tl_x] + sorted(bounds + joins_at) + [tl_x + tl_w]
         for j, jx in enumerate(joins):
             cxp = min(max(jx, tl_x + 18), tl_x + tl_w - 18)
             on = j in transition_set
@@ -287,6 +305,15 @@ def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from L
         s += f'<clipPath id="st{a}"><rect x="{tl_x+tl_w*a}" y="{sy}" width="{tl_w*(b-a)}" height="28" rx="5"/></clipPath>'
         s += rect(tl_x + tl_w * a, sy, tl_w * (b - a), 28, SUB, 5)
         s += f'<g clip-path="url(#st{a})">' + t(tl_x + tl_w * a + 6, sy + 18, txt, 11, SUB_TEXT) + "</g>"
+    # soundtrack lane
+    if soundtracks:
+        ly2 = sy + 32
+        for a, b, name, replace in soundtracks:
+            x0, x1 = tl_x + tl_w * a, tl_x + tl_w * b
+            s += f'<clipPath id="snd{a}"><rect x="{x0}" y="{ly2}" width="{x1-x0}" height="22" rx="4"/></clipPath>'
+            s += rect(x0, ly2, x1 - x0, 22, SND, 4)
+            s += f'<g clip-path="url(#snd{a})">' + t(x0 + 6, ly2 + 15, ("♪ only · " if replace else "♪ ") + name, 10, SND_TEXT).replace(SANS, "DejaVu Sans, sans-serif") + "</g>"
+        sy += 26
     # zoom row
     zy = sy + 28 + 26
     s += icon("eye" if show_deleted else "eye_off", 40, zy, 22, DEL_TEXT if show_deleted else MUTED)
@@ -295,21 +322,26 @@ def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from L
     s += icon("zoom_in", 332, zy, 22, TEXT)
     # toolbar
     ty = H - 24 - 76
-    tools = [("cut", "Split"), ("restore" if selected_deleted else "trash", "Restore" if selected_deleted else "Delete"),
-             ("speed", "Speed"), ("subs", "Subtitle")]
-    for i, (ic, lab) in enumerate(tools):
-        bx = 8 + i * 86 + 41
-        s += icon(ic, bx, ty + 28, 22, TEXT) + t(bx, ty + 56, lab, 12, TEXT, 400, "middle")
+    dim = MUTED + "66"
+    tools = [("cut", "Split", TEXT), ("restore" if selected_deleted else "trash", "Restore" if selected_deleted else "Delete", TEXT),
+             ("speed", "Speed", dim if selected_picture else TEXT),
+             ("volume_off" if selected_muted else "volume", "Unmute" if selected_muted else "Mute",
+              dim if selected_picture else (ACCENT if selected_muted else TEXT)),
+             ("subs", "Subtitle", TEXT), ("plus", "Add", TEXT)]
+    for i, (ic, lab, col) in enumerate(tools):
+        bx = TOOL_X[i]
+        s += icon(ic, bx, ty + 28, 22, col) + t(bx, ty + 56, lab, 12, col, 400, "middle")
     s += nav_bar()
     return s
 
 
-TOOL_X = [49, 135, 221, 307]
+TOOL_W = (W - 8) / 6
+TOOL_X = [4 + TOOL_W * i + TOOL_W / 2 for i in range(6)]
 TOOL_Y = H - 24 - 76
 
 
 def tool_ring(i):
-    return (TOOL_X[i] - 38, TOOL_Y + 6, 76, 62)
+    return (TOOL_X[i] - 28, TOOL_Y + 6, 56, 62)
 
 
 # ---------------------------------------------------------------- overlays
@@ -477,15 +509,88 @@ def settings_sheet():
         s += rect(104, y + 40, 58, 32, ACCENT, 8) + t(133, y + 61, "Pro", 14, ON_ACCENT, 600, "middle")
         s += t(34, y + 92, "Only in test builds. A Play Store release takes", 12, MUTED)
         s += t(34, y + 108, "the edition from the license.", 12, MUTED)
-        s += t(20, y + 152, "mobiCut 0.2.16", 12, MUTED)
+        s += t(20, y + 152, "mobiCut 2026-10-19.1", 12, MUTED)
         return s
     return home() + sheet(320, c)
+
+
+def add_sheet():
+    def c(top):
+        s = t(16, top + 52, "Add", 18, TEXT, 600)
+        rows = [("image", "Picture at the pointer", "A still or moving picture, split into the video", False),
+                ("music", "Soundtrack at the pointer", "Music or any audio file, under the video", False),
+                ("video_lib", "Video from Gallery", "Added at the end of the timeline", True),
+                ("video_lib", "Video from files", "SD card, USB, Downloads, Drive…", True)]
+        for i, (ic, title, det, pro) in enumerate(rows):
+            y = top + 74 + i * 60
+            s += icon(ic, 32, y + 24, 24, ACCENT)
+            s += t(60, y + 20, title, 15) + t(60, y + 40, det, 12, MUTED)
+        # Videos are Pro: the badge sits on their group.
+        s += rect(W - 62, top + 74 + 2 * 60 + 2, 46, 18, ACCENT, 9) + t(W - 39, top + 74 + 2 * 60 + 15, "PRO", 10, ON_ACCENT, 900, "middle")
+        return s
+    return editor() + sheet(340, c)
+
+
+MEDIA_SEGS = [  # first video, a picture, the first video again, a second video
+    (0.26, "1×", False, False, False),
+    (0.18, "Zoom in", False, False, True, "picture", True),
+    (0.28, "1× · muted", False, False, False, None, True),
+    (0.28, "1×", False, False, False, None, True),
+]
+
+
+def picture_dialog():
+    def body(x, y, w):
+        s = button(x, y, 96, 40, "Gallery") + button(x + 106, y, 124, 40, "Browse files", filled=False)
+        s += t(x, y + 64, "Ramzová summit.jpg", 13, TEXT)
+        s += t(x, y + 100, "Duration", 14) + t(x, y + 117, "How long it shows,", 12, MUTED) + t(x, y + 132, "before transitions", 12, MUTED)
+        s += stepper(x + w - 136, y + 88, "3.0 s")
+        s += t(x, y + 170, "Effect", 13, MUTED)
+        opts = [("Still", "No movement"), ("Slow zoom in", "Moves closer over the whole duration"),
+                ("Slow zoom out", "Starts close, moves back"), ("Slide in", "Comes in from the right, then stays")]
+        for i, (a, b) in enumerate(opts):
+            oy = y + 196 + i * 44
+            s += radio(x + 10, oy + 6, i == 1) + t(x + 30, oy + 4, a, 15) + t(x + 30, oy + 20, b, 12, MUTED)
+        s += t(x, y + 392, "Transitions work as for any segment: use", 12, MUTED) + t(x, y + 408, "the buttons on the timeline.", 12, MUTED)
+        return s
+    return editor(segs=MEDIA_SEGS, speed_badge="", preview_shade=1) + dialog(560, "Add picture", body, [("Cancel", ACCENT), ("Insert", ACCENT)])
+
+
+def soundtrack_dialog():
+    def body(x, y, w):
+        s = t(x, y, "Starts at 0:04.0 in the export · plays 0:44.0", 12, MUTED) + t(x, y + 16, "(cut at the end of the video)", 12, MUTED)
+        s += t(x, y + 46, "Start at the pointer (0:21.4)", 14, ACCENT, 600)
+        s += t(x, y + 80, "Sound", 13, MUTED)
+        s += radio(x + 10, y + 104, False) + t(x + 30, y + 102, "Mix", 15) + t(x + 30, y + 118, "Together with the video's own sound", 12, MUTED)
+        s += radio(x + 10, y + 148, True) + t(x + 30, y + 146, "Replace", 15) + t(x + 30, y + 162, "Mutes the video's sound while this plays", 12, MUTED)
+        s += t(x, y + 200, "Volume", 14) + t(x + w, y + 200, "80 %", 14, TEXT, 400, "end", True)
+        s += rect(x, y + 214, w, 4, SURF, 2) + rect(x, y + 214, w * 0.8, 4, ACCENT, 2) + f'<circle cx="{x + w * 0.8}" cy="{y + 216}" r="9" fill="{ACCENT}"/>'
+        s += t(x, y + 262, "Fade in", 14) + stepper(x + w - 136, y + 240, "2.0 s")
+        s += t(x, y + 312, "Fade out", 14) + stepper(x + w - 136, y + 290, "3.0 s")
+        s += t(x, y + 362, "Remove soundtrack", 14, DEL_LINE, 600)
+        return s
+    ed = editor(segs=MEDIA_SEGS, speed_badge="", soundtracks=((0.08, 1.0, "Sunrise over the ridge", True),))
+    return ed + dialog(560, "Sunrise over the ridge", body, [("Cancel", ACCENT), ("Save", ACCENT)])
+
+
+def segment_info_picture():
+    def body(x, y, w):
+        rows = [("Picture", "Ramzová summit"), ("Shown", "0:00.0 – 0:03.0"), ("Length", "3.0 s"), ("Effect", "Zoom in"),
+                ("In the export", "0:14.2 – 0:17.2"), ("Export length", "3.0 s")]
+        s = ""
+        for i, (a, b) in enumerate(rows):
+            s += t(x, y + 6 + i * 30, a, 14, MUTED) + t(x + w, y + 6 + i * 30, b, 14, TEXT, 400, "end", True)
+        s += t(x, y + 196, "Duration & effect…", 14, ACCENT, 600)
+        s += t(x, y + 232, "Remove this picture", 14, DEL_LINE, 600)
+        return s
+    return editor(segs=MEDIA_SEGS, speed_badge="", preview_shade=1, selected_picture=True) + dialog(380, "Segment 2 of 4", body, [("Close", ACCENT)])
 
 
 # ---------------------------------------------------------------- screens with callouts
 SPLIT_SEGS = [(0.47, "1×", False, False, False), (0.53, "1×", False, False, True)]
 DEL_SEGS = [(0.36, "1×", False, False, False), (0.30, "4×", True, True, True), (0.34, "1×", False, False, False)]
 TL_TRACK_TOP = 80 + 346 + 60 + 12 + 16
+MEDIA_TOP = TL_TRACK_TOP - 26  # timeline moves up when the soundtrack lane is shown
 
 SCREENS = {
     "home-empty": lambda: home(projects=False),
@@ -504,17 +609,17 @@ SCREENS = {
               + callout(9, 14, TOOL_Y + 37, ring=(10, TOOL_Y + 6, 344, 62)),
     "split": lambda: editor(segs=SPLIT_SEGS, playhead=0.47, subs=(), speed_badge="", time="1:11.0", total="2:31.0", transitions=False)
              + callout(1, 16 + 340 * 0.47 + 18, TL_TRACK_TOP - 14, ring=(16 + 340 * 0.47 - 12, TL_TRACK_TOP - 14, 24, 100))
-             + callout(2, TOOL_X[0] + 34, TOOL_Y + 4, ring=tool_ring(0)),
+             + callout(2, TOOL_X[0] + 26, TOOL_Y + 4, ring=tool_ring(0)),
     "delete": lambda: editor(segs=DEL_SEGS, selected_deleted=True, show_deleted=True, speed_badge="", total="0:38.7", transitions=False)
               + callout(1, 16 + 340 * 0.51, TL_TRACK_TOP - 16, ring=(16 + 340 * 0.36, TL_TRACK_TOP, 340 * 0.30, 84))
-              + callout(2, TOOL_X[1] + 34, TOOL_Y + 4, ring=tool_ring(1))
+              + callout(2, TOOL_X[1] + 26, TOOL_Y + 4, ring=tool_ring(1))
               + callout(3, 60, TL_TRACK_TOP + 150, ring=(20, TL_TRACK_TOP + 128, 40, 40)),
     "speed": speed_sheet,
     "subtitle-add": lambda: subtitle_dialog(False),
     "subtitle-edit": lambda: subtitle_dialog(True),
     "subtitles-timeline": lambda: editor(subtitle_on_preview="Take-off from Lysá hora", speed_badge="", playhead=0.2)
                           + callout(1, 16 + 340 * 0.19, TL_TRACK_TOP + 106, ring=(16 + 340 * 0.08 - 4, TL_TRACK_TOP + 86, 340 * 0.22 + 8, 36))
-                          + callout(2, TOOL_X[3] + 34, TOOL_Y + 4, ring=tool_ring(3)),
+                          + callout(2, TOOL_X[4] + 26, TOOL_Y + 4, ring=tool_ring(4)),
     "transition-buttons": lambda: editor(transition_set=(1,))
                           + callout(1, 16 + 340 * 0.36, TL_TRACK_TOP + 14, ring=(16 + 340 * 0.36 - 18, TL_TRACK_TOP + 24, 36, 36))
                           + callout(2, 34, TL_TRACK_TOP + 14, ring=(16, TL_TRACK_TOP + 24, 36, 36)),
@@ -524,6 +629,22 @@ SCREENS = {
     "export-progress": export_running,
     "export-done": export_done,
     "missing-video": missing_video,
+    "add": add_sheet,
+    "media-timeline": lambda: editor(segs=MEDIA_SEGS, speed_badge="", preview_shade=1, selected_picture=True, playhead=0.33,
+                                     soundtracks=((0.08, 0.62, "Sunrise over the ridge", False), (0.62, 1.0, "Wind", True)),
+                                     title="Ramzová day", time="0:15.1", total="0:52.0")
+                      + callout(1, 16 + 340 * 0.40, MEDIA_TOP - 14, ring=(16 + 340 * 0.26, MEDIA_TOP, 340 * 0.18, 84))
+                      + callout(2, 16 + 340 * 0.72, MEDIA_TOP - 14, ring=(16 + 340 * 0.72 - 8, MEDIA_TOP, 16, 84))
+                      + callout(3, 16 + 340 * 0.44 + 92, MEDIA_TOP + 69, ring=(16 + 340 * 0.44 + 2, MEDIA_TOP + 58, 82, 22))
+                      + callout(4, 30, MEDIA_TOP + 132, ring=(18, MEDIA_TOP + 120, 344, 26))
+                      + callout(5, TOOL_X[5] - 22, TOOL_Y + 4, ring=tool_ring(5)),
+    "mute": lambda: editor(segs=[(0.36, "1×", False, False, False), (0.30, "1× · muted", False, False, True), (0.34, "1×", False, False, False)],
+                           speed_badge="", selected_muted=True, transitions=False)
+                    + callout(1, 16 + 340 * 0.51, TL_TRACK_TOP - 16, ring=(16 + 340 * 0.36, TL_TRACK_TOP, 340 * 0.30, 84))
+                    + callout(2, TOOL_X[3] + 26, TOOL_Y + 4, ring=tool_ring(3)),
+    "picture-add": picture_dialog,
+    "soundtrack": soundtrack_dialog,
+    "segment-info-picture": segment_info_picture,
     "settings-edition": lambda: settings_sheet() + callout(1, 182, 607, ring=(26, 604, 144, 48)),
 }
 
