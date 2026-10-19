@@ -7,6 +7,8 @@ body:
     attributes:
       value: |
         Thanks for reporting! Please check the [open bugs](https://github.com/bme327/mobicut-public/issues?q=is%3Aissue+label%3Abug) first; if yours is there, add a 👍 and any extra details as a comment.
+
+        Every bug starts as **New**, becomes **Accepted** once it's confirmed, and **Closed** when a build with the fix is out (or **Rejected**, with the reason in a comment).
   - type: textarea
     id: version
     attributes:

@@ -4,6 +4,7 @@ name: Issue status
 #   status: new       set by the issue templates
 #   status: accepted  planned; the issue stays open
 #   status: rejected  closed as "not planned"; the reason goes in a comment before labelling
+#   status: closed    fixed / done and released; closed as "completed"
 on:
   issues:
     types: [labeled]
@@ -31,6 +32,8 @@ jobs:
           case "$NEW_LABEL" in
             "status: rejected")
               gh issue close "$ISSUE" -R "$REPO" --reason "not planned" ;;
+            "status: closed")
+              gh issue close "$ISSUE" -R "$REPO" --reason "completed" ;;
             "status: accepted"|"status: new")
               if [ "$(gh issue view "$ISSUE" -R "$REPO" --json state --jq .state)" = "CLOSED" ]; then
                 gh issue reopen "$ISSUE" -R "$REPO"

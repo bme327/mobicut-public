@@ -36,12 +36,16 @@ Describe what you'd like mobiCut to do and what it would help you with.
 is sorted by 👍, and that order helps decide what comes next. Please vote instead of opening a
 duplicate, and don't add "+1" comments.
 
-### What happens to a request
+## What happens to a report or request
 
-Each request carries one status label:
+Every bug report and feature request carries one status label:
 
 | Status | Meaning |
 |---|---|
 | <span class="label label-grey">status: new</span> | Not looked at yet |
 | <span class="label label-green">status: accepted</span> | Planned for mobiCut; the issue stays open until it's released |
 | <span class="label label-red">status: rejected</span> | Won't be done. The reason is in a comment, and the issue is closed as *not planned* |
+| <span class="label label-purple">status: closed</span> | Fixed or done, and released. The comment says in which build; the issue is closed as *completed* |
+
+A bug goes **new → accepted → closed** once a build with the fix is out (or **rejected**, for
+example when it can't be reproduced). A feature request goes **new → accepted → closed** when it ships.
