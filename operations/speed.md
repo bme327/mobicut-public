@@ -1,7 +1,7 @@
 ---
 title: Speed
 parent: Operations
-nav_order: 5
+nav_order: 6
 ---
 
 # Change a segment's speed

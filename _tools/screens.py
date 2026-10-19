@@ -501,7 +501,7 @@ def settings_sheet():
         s += rect(104, y + 40, 58, 32, ACCENT, 8) + t(133, y + 61, "Pro", 14, ON_ACCENT, 600, "middle")
         s += t(34, y + 92, "Only in test builds. A Play Store release takes", 12, MUTED)
         s += t(34, y + 108, "the edition from the license.", 12, MUTED)
-        s += t(20, y + 152, "mobiCut 2026-10-19.2", 12, MUTED)
+        s += t(20, y + 152, "mobiCut 2026-10-19.4", 12, MUTED)
         return s
     return home() + sheet(320, c)
 
@@ -696,6 +696,42 @@ SUB_BOX_PX = (SUB_BOX[0] * W, SUB_VY + SUB_BOX[1] * W * 9 / 16, SUB_BOX[2] * W, 
 
 MEDIA_TOP = TL_TRACK_TOP - 26  # timeline moves up when the soundtrack lane is shown
 
+# ---------------------------------------------------------------- welcome (ui/StartupScreen.kt)
+def logo(cx, cy, width):
+    """The (mc) disc + "mobiCut" wordmark, sized like Logo(): disc 1.25 em, gap 0.3 em."""
+    font = width / (1.25 + 0.3 + 3.6)
+    disc = font * 1.25
+    x0 = cx - width / 2
+    s = f'<circle cx="{x0 + disc / 2}" cy="{cy}" r="{disc / 2}" fill="{ACCENT}"/>'
+    s += t(x0 + disc / 2, cy + font * 0.22, "mc", font * 0.62, ON_ACCENT, 700, "middle", extra='letter-spacing="-1"')
+    s += (f'<text x="{x0 + disc + font * 0.3}" y="{cy + font * 0.36}" font-family="{SANS}" font-size="{font}" fill="{TEXT}">'
+          f'mobi<tspan font-weight="700">Cut</tspan></text>')
+    return s
+
+
+def welcome(held=False, fill=0.4):
+    s = status_bar()
+    s += logo(W / 2, 150, W * 0.7)
+    s += t(W / 2, 352, "Quick cuts, speed-ups and subtitles for your", 15, TEXT, 400, "middle")
+    s += t(W / 2, 374, "action clips, right on the phone.", 15, TEXT, 400, "middle")
+    s += t(W / 2, 404, "by Ondřej Spilka · version 2026-10-19.4", 12.5, MUTED, 400, "middle")
+    s += t(W / 2 - 58, 442, "Docs", 14, ACCENT, 500, "middle") + t(W / 2 + 34, 442, "What's new", 14, ACCENT, 500, "middle")
+    s += t(W / 2, 486, "Free edition", 13, MUTED, 400, "middle")
+    s += button(W / 2 - 56, 500, 112, 40, "Upgrade")
+    y = 690
+    s += rect(20, y, 98, 48, "none", 24, OUTLINE, 1) + t(69, y + 29, "Held" if held else "Hold…", 15, TEXT if held else MUTED, 400, "middle")
+    bx, bw = 128, W - 148
+    s += rect(bx, y, bw, 48, ACCENT_DIM, 24)
+    label = "Straight to app" if held else "Straight to app · 3"
+    if not held and fill > 0:
+        s += f'<clipPath id="cd"><rect x="{bx}" y="{y}" width="{bw * fill}" height="48"/></clipPath>'
+        s += f'<g clip-path="url(#cd)">' + rect(bx, y, bw, 48, ACCENT, 24) + "</g>"
+    s += t(bx + bw / 2, y + 29, label, 15, ACCENT, 600, "middle")
+    if not held and fill > 0:
+        s += f'<g clip-path="url(#cd)">' + t(bx + bw / 2, y + 29, label, 15, ON_ACCENT, 600, "middle") + "</g>"
+    return s + nav_bar()
+
+
 SCREENS = {
     "home-empty": lambda: home(projects=False),
     "home": lambda: home() + callout(1, 196, 98, ring=(178, 38, 38, 40)) + callout(2, 284, 94, ring=(220, 34, 128, 48))
@@ -756,6 +792,8 @@ SCREENS = {
     "picture-add": picture_dialog,
     "soundtrack": soundtrack_dialog,
     "segment-info-picture": segment_info_picture,
+    "welcome": lambda: welcome() + callout(1, W / 2 - 104, 438, ring=(W / 2 - 92, 424, 184, 28)) + callout(2, W / 2 + 72, 520, ring=(W / 2 - 60, 496, 120, 48))
+               + callout(3, 30, 676, ring=(16, 686, 106, 56)) + callout(4, W - 30, 676, ring=(124, 686, W - 140, 56)),
     "settings-edition": lambda: settings_sheet() + callout(1, 182, 607, ring=(26, 604, 144, 48)),
 }
 

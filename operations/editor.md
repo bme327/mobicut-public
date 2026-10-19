@@ -1,7 +1,7 @@
 ---
 title: The editor
 parent: Operations
-nav_order: 2
+nav_order: 3
 ---
 
 # The editor: playback and the timeline
