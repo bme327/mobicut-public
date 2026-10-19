@@ -27,4 +27,15 @@ then **The editor** for a tour of the screen.
 9. **Tools:** [Split]({{ "/operations/split/" | relative_url }}),
    [Delete / Restore]({{ "/operations/delete/" | relative_url }}),
    [Speed]({{ "/operations/speed/" | relative_url }}),
-   [Subtitle]({{ "/operations/subtitles/" | relative_url }}).
+   [Mute]({{ "/operations/mute/" | relative_url }}),
+   [Subtitle]({{ "/operations/subtitles/" | relative_url }}) and **Add**.
+
+## Add: pictures, soundtracks, more videos
+
+**Add** (the last tool) puts more into the project:
+
+{% include screen.html name="add" alt="The Add sheet: Picture at the pointer, Soundtrack at the pointer, Video from Gallery and Video from files (PRO)." %}
+
+- [Picture at the pointer]({{ "/operations/pictures/" | relative_url }}): a still or moving picture, split into the video.
+- [Soundtrack at the pointer]({{ "/operations/soundtracks/" | relative_url }}): music under the video, in its own lane.
+- [Video from Gallery / from files]({{ "/operations/videos/" | relative_url }}): another video at the end of the timeline (Pro).
