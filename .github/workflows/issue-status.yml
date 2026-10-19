@@ -1,0 +1,38 @@
+name: Issue status
+
+# Keeps exactly one "status: …" label on an issue:
+#   status: new       set by the issue templates
+#   status: accepted  planned; the issue stays open
+#   status: rejected  closed as "not planned"; the reason goes in a comment before labelling
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  issues: write
+
+jobs:
+  status:
+    if: startsWith(github.event.label.name, 'status:')
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          ISSUE: ${{ github.event.issue.number }}
+          NEW_LABEL: ${{ github.event.label.name }}
+          LABELS: ${{ toJSON(github.event.issue.labels.*.name) }}
+        run: |
+          echo "$LABELS" | jq -r '.[]' | while read -r l; do
+            case "$l" in
+              "status: "*) [ "$l" = "$NEW_LABEL" ] || gh issue edit "$ISSUE" -R "$REPO" --remove-label "$l" ;;
+            esac
+          done
+          case "$NEW_LABEL" in
+            "status: rejected")
+              gh issue close "$ISSUE" -R "$REPO" --reason "not planned" ;;
+            "status: accepted"|"status: new")
+              if [ "$(gh issue view "$ISSUE" -R "$REPO" --json state --jq .state)" = "CLOSED" ]; then
+                gh issue reopen "$ISSUE" -R "$REPO"
+              fi ;;
+          esac

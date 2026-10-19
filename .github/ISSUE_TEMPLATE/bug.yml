@@ -1,0 +1,46 @@
+name: 🐞 Bug report
+description: Something in mobiCut doesn't work as it should.
+title: "[Bug] "
+labels: ["bug", "status: new"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please check the [open bugs](https://github.com/bme327/mobicut-public/issues?q=is%3Aissue+label%3Abug) first; if yours is there, add a 👍 and any extra details as a comment.
+  - type: textarea
+    id: version
+    attributes:
+      label: Screenshot of your mobiCut version
+      description: |
+        On the start screen tap **⚙ Settings** and take a screenshot; the version (e.g. *mobiCut 0.2.20*) is at the bottom of the sheet. Drag the image into this box or paste it.
+      placeholder: Drop the screenshot here
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Exactly what you did, step by step, so it can be repeated.
+      placeholder: |
+        1. Open a project with a 4K 60 fps video
+        2. Split at 0:30 and set the second segment to 8×
+        3. Tap Export → Original → Export to gallery
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected and what happened instead
+      placeholder: Expected the export to finish; it stopped at 42 % with "Export failed".
+    validations:
+      required: true
+  - type: input
+    id: phone
+    attributes:
+      label: Phone and Android version
+      placeholder: Pixel 8, Android 15
+  - type: textarea
+    id: more
+    attributes:
+      label: Anything else
+      description: More screenshots, a screen recording, details about the video (length, resolution, camera).

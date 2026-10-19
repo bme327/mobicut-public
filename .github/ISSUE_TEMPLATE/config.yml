@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 mobiCut documentation
+    url: https://bme327.github.io/mobicut-public/
+    about: How to install and use mobiCut.
+  - name: 👍 Vote for feature requests
+    url: https://github.com/bme327/mobicut-public/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement+sort%3Areactions-%2B1-desc
+    about: Open requests, most wanted first. Add a 👍 to the ones you want.
