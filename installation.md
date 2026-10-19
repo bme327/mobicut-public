@@ -71,3 +71,5 @@ projects. Videos you exported stay in `Movies/MobiCut`, subtitle files in `Downl
 | *App not installed* / *package conflicts with an existing package* | A build signed differently is already installed (rare). Uninstall it first. This loses its projects. |
 | *There was a problem parsing the package* | The download didn't finish. Delete `mobicut.apk` from Downloads and download it again. |
 | The **Install** button does nothing | Close other apps that draw over the screen (bubbles, screen dimmers) and try again. |
+
+Something else? [Report a bug]({{ "/feedback/" | relative_url }}) with a screenshot of your version and the steps that lead to it.

@@ -80,6 +80,12 @@ Pro will be paid: a subscription, a short monthly pass, or a one-time purchase.
 
 [Compare Free and Pro →]({{ "/editions/" | relative_url }}){: .btn .btn-outline }
 
+## Feedback
+
+Found a bug or missing something? [Report a bug or suggest a feature]({{ "/feedback/" | relative_url }})
+on GitHub, and **vote 👍** for the features you want most. Every report shows its state:
+**new**, **accepted**, **closed** once released, or **rejected** with the reason.
+
 ## Requirements
 
 - Android 10 or newer

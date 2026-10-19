@@ -38,7 +38,18 @@ duplicate, and don't add "+1" comments.
 
 ## What happens to a report or request
 
-Every bug report and feature request carries one status label:
+Every bug report and feature request carries exactly one status label, and moves through it like
+this:
+
+<div class="lifecycle">
+  <span class="label label-grey">new</span> →
+  <span class="label label-green">accepted</span> →
+  <span class="label label-purple">closed</span>
+  <span class="lc-or">or</span>
+  <span class="label label-grey">new</span> →
+  <span class="label label-red">rejected</span>
+</div>
+
 
 | Status | Meaning |
 |---|---|
@@ -49,3 +60,11 @@ Every bug report and feature request carries one status label:
 
 A bug goes **new → accepted → closed** once a build with the fix is out (or **rejected**, for
 example when it can't be reproduced). A feature request goes **new → accepted → closed** when it ships.
+
+Closed and rejected issues stay readable. Search them before reporting, because the answer may
+already be there: [closed bugs](https://github.com/bme327/mobicut-public/issues?q=is%3Aissue+label%3Abug+is%3Aclosed),
+[rejected requests with reasons](https://github.com/bme327/mobicut-public/issues?q=is%3Aissue+label%3A%22status%3A+rejected%22).
+
+{: .tip }
+> When a bug you reported is **closed**, the closing comment names the build with the fix.
+> [Update the app]({{ "/installation/#updating" | relative_url }}) to get it.
