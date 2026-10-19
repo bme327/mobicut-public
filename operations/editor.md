@@ -19,8 +19,23 @@ nav_order: 2
 Tap **▶** under the preview. Playback already follows your edits: deleted segments are skipped,
 sped-up segments play fast, subtitles appear, and fades dim the picture.
 
-The time shown is the position in the **finished video** and its total length
-(for example `0:21.4 / 0:48.0`). It changes as you delete and speed up segments.
+The two small times next to the buttons are the position in the **finished video** (top) and
+its total length (bottom), for example `0:21.4` over `0:48.0`. They change as you delete and speed
+up segments.
+
+## Jump
+
+The buttons around **▶** jump the playhead, also while playing:
+
+| Button | Jumps |
+|---|---|
+| **⏮** | To the beginning of the finished video (its first kept frame) |
+| **↺ 5** | 5 seconds back |
+| **↻ 5** | 5 seconds forward |
+| **⏭** | To the end (playback stops there) |
+
+The 5 seconds are 5 seconds of the **finished** video: deleted parts are skipped, and over a
+4× segment a jump moves 20 seconds through the original.
 
 ## Move around the video
 
