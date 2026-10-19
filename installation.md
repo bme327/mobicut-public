@@ -23,11 +23,11 @@ newest one.
 
 ## Install the latest build
 
+{% include downloads.html %}
+
 1. **On the phone**, open this link in your browser (Chrome, Firefox, …):
 
    [**Download the latest mobiCut APK**]({{ site.apk_url }}){: .btn .btn-primary }
-
-   {% include downloads.html %}
 
    The file is called `mobicut.apk` (about 65 MB). All builds are also listed on the
    [releases page](https://github.com/bme327/mobicut-public/releases).

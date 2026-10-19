@@ -20,10 +20,10 @@ The form asks for two things that make a bug fixable:
    the bottom (for example *mobiCut {{ site.app_version }}*). Screenshot it and drop it into the
    form.
 
-   {% include screen.html name="settings-edition" alt="The Settings sheet; the app version is at the bottom." %}
-
 2. **Steps to reproduce**: exactly what you did, step by step, plus what you expected and what
    happened instead.
+
+{% include screen.html name="settings-edition" alt="The Settings sheet; the app version is at the bottom." caption="Where to find the version: ⚙ Settings, at the bottom." %}
 
 ## Feature requests
 
