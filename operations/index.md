@@ -16,15 +16,15 @@ then **The editor** for a tour of the screen.
 
 1. **Project name and video details.** Tap to [rename]({{ "/operations/projects/#rename-a-project" | relative_url }}).
 2. **Export**: build the finished video. See [Export]({{ "/operations/export/" | relative_url }}).
-3. **Preview.** Shows the video as it will look: deleted parts are skipped, speed and subtitles
-   are applied. A badge in the corner shows the speed of the selected segment.
+3. **Preview.** Shows the video as it will look: deleted parts are skipped, speed, transitions
+   and subtitles are applied. Tap a subtitle on the video to place and style it. A badge in the corner shows the speed of the selected segment.
 4. **Play / pause**, with **to the beginning**, **back 5 s**, **forward 5 s** and **to the end** around it.
    The small times next to them are the position (top) and the length (bottom) of the *finished*
    video, not of the original.
 5. **Undo** the last change.
 6. **Timeline.** Each block is a segment; orange markers are splits; the white line is the
    playhead. See [The editor]({{ "/operations/editor/" | relative_url }}).
-7. **Subtitle track.** Blue chips are subtitles. See [Subtitles]({{ "/operations/subtitles/" | relative_url }}).
+7. **Subtitle track.** Blue chips are subtitles: tap one to edit it, drag it to move it in time. See [Subtitles]({{ "/operations/subtitles/" | relative_url }}).
 8. **Show deleted, zoom out, scroll, zoom in.**
 9. **Tools:** [Split]({{ "/operations/split/" | relative_url }}),
    [Delete / Restore]({{ "/operations/delete/" | relative_url }}),

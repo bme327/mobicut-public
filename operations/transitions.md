@@ -34,12 +34,20 @@ A button turns **orange** when it has a transition.
    - **Interleave** <span class="label label-yellow">PRO</span>: a crossfade, the end of one
      segment blends into the start of the next. The video gets shorter by the transition's duration.
 3. Set the **Duration** (0.5–10 s; total, in the finished video).
-4. Tap **Save**.
+4. Tap **Save**, or **Save & play** to watch it right away: the preview plays the transition with
+   1.5 s before and after it.
 
 At the start and end there's no type to choose: the video fades in from black or out to black,
 picture and sound together.
 
 {% include screen.html name="transition" alt="The Add transition dialog with Fade out-in selected and a 1.0 s duration." %}
+
+## In the preview
+
+The preview plays transitions as the export will have them: fades dim the picture to black and
+back, and an **Interleave** is a real crossfade, the next segment fading in over the end of the
+previous one, with the sound mixed the same way. Pause in the middle of a transition and you see
+that very frame, also while scrubbing through it.
 
 ## Change or remove
 
