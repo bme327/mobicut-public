@@ -13,6 +13,8 @@ nav_order: 1
 [See what it can do]({{ "/operations/" | relative_url }}){: .btn .mr-2 }
 [Free & Pro]({{ "/editions/" | relative_url }}){: .btn }
 
+{% include downloads.html %}
+
 ---
 
 ## What mobiCut is for
