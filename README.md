@@ -3,7 +3,7 @@
 User documentation for **mobiCut**, a small video editor for Android, published with GitHub Pages.
 
 - Site: https://bme327.github.io/mobicut-public/
-- Install the app: https://github.com/bme327/mobicut/releases/latest/download/mobicut.apk
+- Install the app: https://github.com/bme327/mobicut-public/releases/latest/download/mobicut.apk
 
 ## Layout
 

@@ -18,7 +18,7 @@ newest one.
 ## Before you start
 
 - A phone with **Android 10 or newer**.
-- About 30 MB free for the app, plus room for the videos you export.
+- About 70 MB free for the download and the app, plus room for the videos you export.
 - Permission to install apps from your browser (Android asks for this the first time, see below).
 
 ## Install the latest build
@@ -27,7 +27,8 @@ newest one.
 
    [**Download the latest mobiCut APK**]({{ site.apk_url }}){: .btn .btn-primary }
 
-   The file is called `mobicut.apk`.
+   The file is called `mobicut.apk` (about 65 MB). All builds are also listed on the
+   [releases page](https://github.com/bme327/mobicut-public/releases).
 
 2. When the download finishes, tap **Open** in the notification or the browser's download bar.
    You can also find it later in the **Files** app under **Downloads**.
@@ -67,5 +68,4 @@ projects. Videos you exported stay in `Movies/MobiCut`, subtitle files in `Downl
 |---|---|
 | *App not installed* / *package conflicts with an existing package* | A build signed differently is already installed (rare). Uninstall it first. This loses its projects. |
 | *There was a problem parsing the package* | The download didn't finish. Delete `mobicut.apk` from Downloads and download it again. |
-| The link opens a GitHub page asking you to sign in | The build is not publicly reachable from your account. Ask for access or wait for the Play Store release. |
 | The **Install** button does nothing | Close other apps that draw over the screen (bubbles, screen dimmers) and try again. |
