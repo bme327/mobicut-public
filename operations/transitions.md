@@ -57,4 +57,4 @@ Tap the orange button again, change the settings, or tap **Remove transition**.
 | **Fade out-in** between segments | ✓ | ✓ |
 | **Interleave** (crossfade) between segments | | ✓ |
 
-In Free, **Interleave** is shown with a **PRO** badge; tapping it explains the feature.
+In Free, **Interleave** is shown with a **PRO** badge; tapping it explains the feature. See [Free and Pro]({{ "/editions/" | relative_url }}).

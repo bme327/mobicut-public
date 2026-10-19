@@ -466,6 +466,22 @@ def delete_project_dialog():
     return home() + dialog(220, "Delete project?", body, [("Cancel", ACCENT), ("Delete", DEL_LINE)])
 
 
+def settings_sheet():
+    def c(top):
+        s = t(20, top + 52, "Settings", 18, TEXT, 600)
+        s += t(20, top + 90, "Edition", 15) + rect(W - 66, top + 76, 46, 18, ACCENT, 9) + t(W - 43, top + 89, "PRO", 10, ON_ACCENT, 900, "middle")
+        y = top + 112
+        s += rect(20, y, W - 40, 124, "none", 12, OUTLINE, 1)
+        s += t(34, y + 26, "Test build: edition", 13, TEXT, 600)
+        s += rect(34, y + 40, 62, 32, "none", 8, OUTLINE, 1) + t(65, y + 61, "Free", 14, TEXT, 500, "middle")
+        s += rect(104, y + 40, 58, 32, ACCENT, 8) + t(133, y + 61, "Pro", 14, ON_ACCENT, 600, "middle")
+        s += t(34, y + 92, "Only in test builds. A Play Store release takes", 12, MUTED)
+        s += t(34, y + 108, "the edition from the license.", 12, MUTED)
+        s += t(20, y + 152, "mobiCut 0.2.16", 12, MUTED)
+        return s
+    return home() + sheet(320, c)
+
+
 # ---------------------------------------------------------------- screens with callouts
 SPLIT_SEGS = [(0.47, "1×", False, False, False), (0.53, "1×", False, False, True)]
 DEL_SEGS = [(0.36, "1×", False, False, False), (0.30, "4×", True, True, True), (0.34, "1×", False, False, False)]
@@ -508,6 +524,7 @@ SCREENS = {
     "export-progress": export_running,
     "export-done": export_done,
     "missing-video": missing_video,
+    "settings-edition": lambda: settings_sheet() + callout(1, 182, 607, ring=(26, 604, 144, 48)),
 }
 
 

@@ -58,4 +58,4 @@ The Free edition adds a small **(mc) mobiCut** logo in the top right corner of t
 video (you see it in the preview too, so there are no surprises). Pro exports without it. In
 Free, the export sheet shows **Remove watermark** with a **PRO** badge.
 
-No ads appear before, during or after the export, in either edition.
+No ads appear before, during or after the export, in either edition. See [Free and Pro]({{ "/editions/" | relative_url }}).

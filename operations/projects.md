@@ -33,7 +33,8 @@ start screen lists them, newest first.
 3. Pick the video. The editor opens with the whole video as one segment.
 
 {: .note }
-> In the **Free** edition the source video can be **up to 1 hour** long. Longer videos need Pro.
+> In the **Free** edition the source video can be **up to 1 hour** long. Longer videos need
+> [Pro]({{ "/editions/" | relative_url }}).
 
 {% include screen.html name="new-project" alt="The 'New project from…' sheet with Gallery and Browse files." %}
 

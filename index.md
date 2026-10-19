@@ -10,7 +10,8 @@ nav_order: 1
 {: .fs-6 .fw-300 }
 
 [Install the app]({{ "/installation/" | relative_url }}){: .btn .btn-primary .mr-2 }
-[See what it can do]({{ "/operations/" | relative_url }}){: .btn }
+[See what it can do]({{ "/operations/" | relative_url }}){: .btn .mr-2 }
+[Free & Pro]({{ "/editions/" | relative_url }}){: .btn }
 
 ---
 
@@ -63,31 +64,19 @@ Your edits save automatically, so you can close the app and come back to a proje
 
 ## Editions
 
-mobiCut will be published on Google Play in two editions: **Free** and **Pro**.
+mobiCut comes in two editions: **Free** and **Pro**.
 
 {: .important }
-> **No ads. Ever.** Neither edition shows advertising, and mobiCut will never get ads.
+> **Free will always be free, and always free of ads.** No ads in either edition, ever.
 > Free is a complete editor with a few limits, not a trial.
 
-| | Free | Pro |
-|---|---|---|
-| Split, delete, speed, subtitles, export | ✓ | ✓ |
-| Ads | **none, never** | **none, never** |
-| Length of the source video | **up to 1 hour** | no limit |
-| Transitions | **Fade out-in** (and fade in/out at start and end) | all, including **Interleave** (crossfade) |
-| Logo in the exported video | **small (mc) mobiCut logo, top right** | none |
+Free's only limits: source videos **up to 1 hour**, a small **(mc) mobiCut logo** in the top right
+corner of exports, and **Fade out-in** as the only transition. Pro removes them.
 
-### Free edition limits
+During testing, **Pro can be switched on for free** in Settings. After the Play Store launch,
+Pro will be paid: a subscription, a short monthly pass, or a one-time purchase.
 
-- **Source videos up to 1 hour.** The video you start a project from can be at most 60 minutes
-  long. Longer videos need Pro.
-- **A small (mc) mobiCut logo** sits in the top right corner of every exported video. You see it
-  in the preview too, so there are no surprises.
-- **Fade out-in is the only transition.** Fades between segments and fade in/out at the start and
-  end are included; the Interleave crossfade is Pro.
-
-Features marked with a **PRO** badge in the app belong to Pro. In Free they are visible but
-locked; tapping one tells you what it does.
+[Compare Free and Pro →]({{ "/editions/" | relative_url }}){: .btn .btn-outline }
 
 ## Requirements
 
