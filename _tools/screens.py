@@ -23,7 +23,7 @@ SND = "#1E4034"; SND_TEXT = "#A8E6C8"
 CALLOUT = "#3FA9F5"
 
 W, H = 360, 780
-VERSION = "2026-10-20.1"  # app release the screens show
+VERSION = "2026-10-20.3"  # app release the screens show
 SANS = "Inter, sans-serif"; MONO = "DejaVu Sans Mono, monospace"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "screens")
 
@@ -737,6 +737,154 @@ def welcome(held=False, fill=0.4):
     return s + nav_bar()
 
 
+# ---------------------------------------------------------------- tablet, landscape (EditorScreen wide layout)
+TW, TH = 960, 600            # a 7–8" tablet held sideways, in dp
+T_BOTTOM = TH - 24 - 76      # top of the bottom row: transport on the left, tools on the right
+T_TL_TOP = T_BOTTOM - 196    # timeline block (labels, strip, subtitles, zoom row)
+T_TOOLS_W = 480              # WIDE_TOOLBAR_WIDTH
+T_PANEL_W = 400              # OVERLAY_PANEL_WIDTH
+
+
+def t_frame(body):
+    bar = (rect(0, 0, TW, 24, BG) + t(16, 17, "10:18", 12, TEXT, 500)
+           + rect(TW - 44, 9, 22, 10, "none", 2, TEXT, 1.2) + rect(TW - 42, 11, 14, 6, TEXT, 1))
+    nav = rect(0, TH - 24, TW, 24, BG) + rect(TW / 2 - 54, TH - 14, 108, 4, MUTED, 2)
+    return bar + body + nav
+
+
+def t_header():
+    title = "Lysá hora flight"
+    return (icon("back", 28, 52, 24, TEXT) + t(56, 49, title, 16, TEXT, 600)
+            + icon("edit", 56 + len(title) * 9.2 + 10, 44, 14, MUTED)
+            + t(56, 66, "1920×1080 · 50 fps · 2:31", 12, MUTED, 400, mono=True)
+            + button(TW - 96, 32, 84, 40, "Export"))
+
+
+def t_preview(x, y, w, h, subtitle="", box=False):
+    s = rect(x, y, w, h, "#000")
+    vw = min(w, h * 16 / 9)
+    vh = vw * 9 / 16
+    vx, vy = x + (w - vw) / 2, y + (h - vh) / 2
+    s += landscape(vx, vy, vw, vh, 0, f"tp{int(w)}")
+    if subtitle:
+        bx, by, bw, bh = SUB_BOX
+        x0, y0, w0, h0 = vx + bx * vw, vy + by * vh, bw * vw, bh * vh
+        s += rect(x0, y0, w0, h0, "#000", 4, op=0.72) + t(vx + vw / 2, y0 + h0 / 2 + 5, subtitle, 15, "#fff", 400, "middle")
+        if box:
+            s += f'<rect x="{x0}" y="{y0}" width="{w0}" height="{h0}" fill="none" stroke="{ACCENT}" stroke-width="1.5" stroke-dasharray="5 4"/>'
+            for cx, cy in ((x0, y0), (x0 + w0, y0), (x0, y0 + h0), (x0 + w0, y0 + h0)):
+                s += f'<circle cx="{cx}" cy="{cy}" r="8.5" fill="#fff"/><circle cx="{cx}" cy="{cy}" r="7" fill="{ACCENT}"/>'
+    else:
+        s += rect(vx + 10, vy + 10, 36, 20, "#000", 4, op=0.6) + t(vx + 28, vy + 24, "4×", 12, ACCENT, 600, "middle", True)
+    return s
+
+
+def t_timeline(top):
+    tl_x, tl_w = 16, TW - 20
+    s = ""
+    for i, lab in enumerate(["0:00", "0:37", "1:15", "1:53", "2:31"]):
+        anchor = "start" if i == 0 else ("end" if i == 4 else "middle")
+        s += t(tl_x + tl_w * i / 4, top + 18, lab, 11, MUTED, 400, anchor, True)
+    tt, th = top + 36, 84
+    x = tl_x
+    bounds = []
+    for i, (frac, lab, fast, _d, sel) in enumerate(DEFAULT_SEGS):
+        w = tl_w * frac
+        left, right = x + (1 if i else 0), x + w - (1 if i < 2 else 0)
+        s += f'<clipPath id="tsg{i}"><rect x="{left}" y="{tt}" width="{right-left}" height="{th}" rx="6"/></clipPath><g clip-path="url(#tsg{i})">'
+        s += rect(left, tt, right - left, th, SEG) + tile_band(left, tt, right - left, th, False, f"ttb{i}") + "</g>"
+        if sel:
+            s += rect(left, tt, right - left, th, "none", 6, ACCENT, 2.5)
+            s += f'<circle cx="{right-20}" cy="{tt+20}" r="12" fill="#000" fill-opacity="0.6"/>' + icon("info", right - 20, tt + 20, 18, TEXT)
+        lw = len(lab) * 7.2 + 6
+        s += rect(left + 3, tt + th - 24, lw, 18, "#000", 3, op=0.55)
+        s += t(left + 6, tt + th - 11, lab, 12, ACCENT if (sel or fast) else TEXT, 500, mono=True)
+        if i:
+            bounds.append(x)
+        x += w
+    for bx in bounds:
+        s += f'<line x1="{bx}" y1="{tt-2}" x2="{bx}" y2="{tt+th}" stroke="{ACCENT}" stroke-width="2"/>'
+        s += f'<path d="M{bx-6} {tt-12} H{bx+6} L{bx} {tt-1}Z" fill="{ACCENT}"/>'
+    for jx in [tl_x] + bounds + [tl_x + tl_w]:
+        cxp = min(max(jx, tl_x + 18), tl_x + tl_w - 18)
+        s += f'<circle cx="{cxp}" cy="{tt+th/2}" r="13" fill="#000" fill-opacity="0.65"/>' + icon("fade", cxp, tt + th / 2, 16, TEXT)
+    px = tl_x + tl_w * 0.47
+    s += f'<line x1="{px}" y1="{tt-4}" x2="{px}" y2="{tt+th}" stroke="#fff" stroke-width="2"/><circle cx="{px}" cy="{tt-4}" r="5" fill="#fff"/>'
+    sy = tt + th + 6
+    for a, b, txt in ((0.08, 0.30, "Take-off from Lysá hora"), (0.70, 0.93, "Landing")):
+        s += rect(tl_x + tl_w * a, sy, tl_w * (b - a), 28, SUB, 5)
+        s += icon("title", tl_x + tl_w * a + 9, sy + 14, 12, SUB_TEXT + "BF") + t(tl_x + tl_w * a + 18, sy + 18, txt, 11, SUB_TEXT)
+    zy = sy + 28 + 22
+    s += icon("eye_off", 40, zy, 22, MUTED) + icon("zoom_out", 86, zy, 22, MUTED + "66")
+    s += rect(112, zy - 2, TW - 112 - 60, 4, SURF, 2) + f'<circle cx="120" cy="{zy}" r="8" fill="{MUTED}" fill-opacity="0.4"/>'
+    s += icon("zoom_in", TW - 28, zy, 22, TEXT)
+    return s
+
+
+def t_bottom_row():
+    cy = T_BOTTOM + 38
+    s = icon("skip_prev", 28, cy, 22, TEXT) + icon("replay5", 68, cy, 22, TEXT)
+    s += f'<circle cx="110" cy="{cy}" r="22" fill="{SURF_HI}"/>' + icon("play", 110, cy, 24, TEXT)
+    s += icon("forward5", 152, cy, 22, TEXT) + icon("skip_next", 192, cy, 22, TEXT)
+    s += t(216, cy - 3, "0:21.4", 11, TEXT, 400, mono=True) + t(216, cy + 11, "0:48.0", 11, MUTED, 400, mono=True)
+    s += icon("undo", TW - T_TOOLS_W - 28, cy, 24, TEXT)
+    bw = (T_TOOLS_W - 8) / 6
+    for i, (ic, lab) in enumerate([("cut", "Split"), ("trash", "Delete"), ("speed", "Speed"),
+                                   ("volume", "Mute"), ("subs", "Subtitle"), ("plus", "Add")]):
+        bx = TW - T_TOOLS_W + 4 + bw * i + bw / 2
+        s += icon(ic, bx, cy - 10, 22, TEXT) + t(bx, cy + 18, lab, 12, TEXT, 400, "middle")
+    return s
+
+
+def tablet_editor():
+    return t_frame(t_header() + t_preview(0, 80, TW, T_TL_TOP - 80) + t_timeline(T_TL_TOP) + t_bottom_row())
+
+
+def tablet_subtitle():
+    top, px = 80, TW - T_PANEL_W
+    s = t_header() + t_preview(0, top, px, TH - 24 - top, "Take-off from Lysá hora", box=True)
+    s += rect(px, top, T_PANEL_W, TH - 24 - top, SURF)
+    s += t(px + 16, top + 30, "Subtitle", 16, TEXT, 600)
+    s += icon("play", TW - 122, top + 24, 24, TEXT) + icon("trash", TW - 80, top + 24, 22, DEL_LINE)
+    s += button(TW - 60, top + 6, 52, 36, "Done")
+    tw = (T_PANEL_W - 16) / 3
+    for i, lab in enumerate(["Text", "Look", "Motion"]):
+        sel = i == 0
+        s += t(px + 8 + tw * i + tw / 2, top + 68, lab, 14, ACCENT if sel else MUTED, 600 if sel else 400, "middle")
+        s += rect(px + 8 + tw * i, top + 80, tw, 2, ACCENT if sel else OUTLINE)
+    y = top + 98
+    s += rect(px + 16, y, T_PANEL_W - 32, 56, "none", 4, MUTED, 1) + t(px + 32, y + 33, "Take-off from Lysá hora", 16)
+    s += t(px + 16, y + 86, "Duration", 14) + t(px + 16, y + 103, "On screen in the export", 12, MUTED)
+    s += stepper(TW - 16 - 136, y + 72, "5.0 s")
+    s += t(px + 16, y + 144, "Starts at", 14)
+    bxs = px + 16
+    for lab in ["−1 s", "−0.1"]:
+        w = len(lab) * 7.5 + 18
+        s += rect(bxs, y + 154, w, 38, "none", 19, OUTLINE, 1) + t(bxs + w / 2, y + 178, lab, 13, ACCENT, 600, "middle")
+        bxs += w + 6
+    s += t(px + T_PANEL_W / 2, y + 178, "0:12.0", 16, TEXT, 400, "middle", True)
+    bxe = TW - 16
+    for lab in ["+1 s", "+0.1"]:
+        w = len(lab) * 7.5 + 18
+        bxe -= w
+        s += rect(bxe, y + 154, w, 38, "none", 19, OUTLINE, 1) + t(bxe + w / 2, y + 178, lab, 13, ACCENT, 600, "middle")
+        bxe -= 6
+    s += t(px + 16, y + 212, "Or drag the subtitle along the timeline", 12, MUTED)
+    return t_frame(s)
+
+
+TABLET_SCREENS = {
+    "tablet-editor": lambda: tablet_editor()
+        + callout(1, 30, 100, ring=(8, 84, TW - 16, T_TL_TOP - 88))
+        + callout(2, 140, T_TL_TOP + 6, ring=(8, T_TL_TOP + 4, TW - 16, 192))
+        + callout(3, 30, T_BOTTOM + 8, ring=(8, T_BOTTOM + 12, TW - T_TOOLS_W - 4, 52))
+        + callout(4, TW - T_TOOLS_W + 10, T_BOTTOM + 8, ring=(TW - T_TOOLS_W + 2, T_BOTTOM + 6, T_TOOLS_W - 8, 64)),
+    "tablet-subtitle": lambda: tablet_subtitle()
+        + callout(1, 30, 100, ring=(8, 84, TW - T_PANEL_W - 16, TH - 24 - 92))
+        + callout(2, TW - T_PANEL_W + 20, TH - 44, ring=(TW - T_PANEL_W + 4, 84, T_PANEL_W - 8, TH - 24 - 92)),
+}
+
+
 SCREENS = {
     "home-empty": lambda: home(projects=False),
     "home": lambda: home() + callout(1, 196, 98, ring=(178, 38, 38, 40)) + callout(2, 284, 94, ring=(220, 34, 128, 48))
@@ -810,6 +958,13 @@ def main(names=None):
             continue
         svg = phone(fn())
         cairosvg.svg2png(bytestring=svg.encode(), write_to=os.path.join(OUT, f"{name}.png"), output_width=W * 2, output_height=H * 2)
+        print("wrote", name)
+    for name, fn in TABLET_SCREENS.items():
+        if names and name not in names:
+            continue
+        svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{TW}" height="{TH}" viewBox="0 0 {TW} {TH}">'
+               + rect(0, 0, TW, TH, BG) + fn() + "</svg>")
+        cairosvg.svg2png(bytestring=svg.encode(), write_to=os.path.join(OUT, f"{name}.png"), output_width=TW * 2, output_height=TH * 2)
         print("wrote", name)
 
 

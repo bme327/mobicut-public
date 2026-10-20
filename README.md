@@ -21,6 +21,7 @@ Regenerate illustrations: `pip install cairosvg && python3 _tools/screens.py`
 
 ## Real screenshots
 
-Take a screenshot on the phone, crop to the app (portrait), and save it as
+Take a screenshot on the phone, crop to the app (portrait; the `tablet-*` screens are a tablet in
+landscape), and save it as
 `assets/screens/real/<name>.png` using the same name as the illustration (e.g. `editor.png`).
 The page switches to it automatically.

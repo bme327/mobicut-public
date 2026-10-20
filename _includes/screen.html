@@ -1,5 +1,6 @@
 {%- comment -%}
   Usage: {% include screen.html name="editor" alt="..." caption="..." %}
+  Add wide=true for a landscape (tablet) screen.
   Shows assets/screens/real/<name>.png (a real phone screenshot) when it exists,
   otherwise the drawn illustration assets/screens/<name>.png.
   Outputs a single line, so it also works inside Markdown lists.
@@ -7,4 +8,4 @@
 {%- assign real_path = "/assets/screens/real/" | append: include.name | append: ".png" -%}
 {%- assign real = site.static_files | where: "path", real_path | first -%}
 {%- if real -%}{%- assign src = real_path -%}{%- else -%}{%- assign src = "/assets/screens/" | append: include.name | append: ".png" -%}{%- endif -%}
-<figure class="screen"><img src="{{ src | relative_url }}" alt="{{ include.alt }}" width="360" loading="lazy">{% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}</figure>
+<figure class="screen{% if include.wide %} wide{% endif %}"><img src="{{ src | relative_url }}" alt="{{ include.alt }}" width="{% if include.wide %}720{% else %}360{% endif %}" loading="lazy">{% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}</figure>

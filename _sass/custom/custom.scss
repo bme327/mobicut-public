@@ -1,5 +1,7 @@
 figure.screen { display: inline-block; margin: 0.5rem 1.5rem 1rem 0; vertical-align: top; max-width: 320px; }
 figure.screen img { width: 100%; height: auto; border-radius: 22px; border: 1px solid #2e3238; box-shadow: 0 6px 24px rgba(0,0,0,.35); }
+figure.screen.wide { display: block; max-width: 720px; margin-right: 0; }
+figure.screen.wide img { border-radius: 16px; }
 figure.screen figcaption { font-size: 0.85rem; color: #a3a7ae; margin-top: 0.4rem; }
 .callouts { counter-reset: none; }
 .dl-count { color: #a3a7ae; font-size: 0.9rem; margin-top: 0.25rem; }

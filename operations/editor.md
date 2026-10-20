@@ -74,3 +74,9 @@ On a long video a split needs precision. Use any of:
 
 **↶** (top right of the controls) takes back the last change: a split, a delete, a speed change,
 a subtitle, a transition, a mute, a picture, a soundtrack or an added video. Tap it repeatedly to go further back.
+
+## Turn the screen
+
+On a **phone** the editor stays upright (portrait), even when you turn the phone sideways.
+On a **tablet** you can hold it either way; sideways, the preview gets much bigger. See
+[Tablets and landscape]({{ "/operations/tablet/" | relative_url }}).
