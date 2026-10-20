@@ -18,7 +18,7 @@ start screen lists them, newest first. (Before it, mobiCut briefly shows the
 
 {% include screen.html name="home" alt="Start screen with three recent projects, the Settings and New project buttons, and a project's ⋮ menu button." %}
 
-1. **Settings**: edition and app version.
+1. **Settings**: edition, privacy policy and app version.
 2. **New project**.
 3. **A project**: thumbnail, length of the finished video, number of segments and subtitles,
    when it was last edited. Tap to open.

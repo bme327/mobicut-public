@@ -68,8 +68,9 @@ These are not part of mobiCut's own data handling, but you may meet them while u
   by Google. Payments go through Google Play; mobiCut never sees your payment details and only
   learns from Google Play whether Pro is unlocked on your account. See
   [Google's privacy policy](https://policies.google.com/privacy).
-- **Links and feedback.** The *Docs* and *What's new* buttons open this website on GitHub in your
-  browser. Downloading the app from this site, and sending feedback through
+- **Links and feedback.** The *Docs*, *What's new* and *Privacy* buttons on the welcome screen,
+  and *Privacy policy* in Settings, open this website on GitHub in your browser.
+  Downloading the app from this site, and sending feedback through
   [GitHub issues](https://github.com/bme327/mobicut-public/issues), happens on GitHub under
   [GitHub's privacy statement](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement).
   Whatever you write in an issue is public; please don't include personal details.

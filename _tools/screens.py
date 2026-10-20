@@ -23,6 +23,7 @@ SND = "#1E4034"; SND_TEXT = "#A8E6C8"
 CALLOUT = "#3FA9F5"
 
 W, H = 360, 780
+VERSION = "2026-10-20.1"  # app release the screens show
 SANS = "Inter, sans-serif"; MONO = "DejaVu Sans Mono, monospace"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "screens")
 
@@ -73,6 +74,7 @@ def icon(name, x, y, size=22, color=TEXT):
         "skip_next": '<path d="M18 5v14"/><path d="M6 5l9 7-9 7z"/>',
         "replay5": '<path d="M12 4a8 8 0 1 1-7.6 5.5"/><path d="M4 4v5.5h5.5"/><path d="M10.5 10h3M10.5 10v2.5h1.7a1.6 1.6 0 1 1 0 3.2h-1.7"/>',
         "forward5": '<path d="M12 4a8 8 0 1 0 7.6 5.5"/><path d="M20 4v5.5h-5.5"/><path d="M10.5 10h3M10.5 10v2.5h1.7a1.6 1.6 0 1 1 0 3.2h-1.7"/>',
+        "title": '<path d="M5 5h14M12 5v14"/>',
         "music": '<path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>',
     }[name]
     return g + p + "</g>"
@@ -311,7 +313,8 @@ def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from L
     for a, b, txt in subs:
         s += f'<clipPath id="st{a}"><rect x="{tl_x+tl_w*a}" y="{sy}" width="{tl_w*(b-a)}" height="28" rx="5"/></clipPath>'
         s += rect(tl_x + tl_w * a, sy, tl_w * (b - a), 28, SUB, 5)
-        s += f'<g clip-path="url(#st{a})">' + t(tl_x + tl_w * a + 6, sy + 18, txt, 11, SUB_TEXT) + "</g>"
+        s += f'<g clip-path="url(#st{a})">' + icon("title", tl_x + tl_w * a + 9, sy + 14, 12, SUB_TEXT + "BF")
+        s += t(tl_x + tl_w * a + 18, sy + 18, txt, 11, SUB_TEXT) + "</g>"
     # soundtrack lane
     if soundtracks:
         ly2 = sy + 32
@@ -501,9 +504,10 @@ def settings_sheet():
         s += rect(104, y + 40, 58, 32, ACCENT, 8) + t(133, y + 61, "Pro", 14, ON_ACCENT, 600, "middle")
         s += t(34, y + 92, "Only in test builds. A Play Store release takes", 12, MUTED)
         s += t(34, y + 108, "the edition from the license.", 12, MUTED)
-        s += t(20, y + 152, "mobiCut 2026-10-19.4", 12, MUTED)
+        s += t(20, y + 156, "Privacy policy", 15, ACCENT)
+        s += t(20, y + 184, f"mobiCut {VERSION}", 12, MUTED)
         return s
-    return home() + sheet(320, c)
+    return home() + sheet(352, c)
 
 
 def add_sheet():
@@ -714,8 +718,9 @@ def welcome(held=False, fill=0.4):
     s += logo(W / 2, 150, W * 0.7)
     s += t(W / 2, 352, "Quick cuts, speed-ups and subtitles for your", 15, TEXT, 400, "middle")
     s += t(W / 2, 374, "action clips, right on the phone.", 15, TEXT, 400, "middle")
-    s += t(W / 2, 404, "by Ondřej Spilka · version 2026-10-19.4", 12.5, MUTED, 400, "middle")
-    s += t(W / 2 - 58, 442, "Docs", 14, ACCENT, 500, "middle") + t(W / 2 + 34, 442, "What's new", 14, ACCENT, 500, "middle")
+    s += t(W / 2, 404, f"by Ondřej Spilka · version {VERSION}", 12.5, MUTED, 400, "middle")
+    s += t(W / 2 - 92, 442, "Docs", 14, ACCENT, 500, "middle") + t(W / 2, 442, "What's new", 14, ACCENT, 500, "middle")
+    s += t(W / 2 + 92, 442, "Privacy", 14, ACCENT, 500, "middle")
     s += t(W / 2, 486, "Free edition", 13, MUTED, 400, "middle")
     s += button(W / 2 - 56, 500, 112, 40, "Upgrade")
     y = 690
@@ -792,9 +797,9 @@ SCREENS = {
     "picture-add": picture_dialog,
     "soundtrack": soundtrack_dialog,
     "segment-info-picture": segment_info_picture,
-    "welcome": lambda: welcome() + callout(1, W / 2 - 104, 438, ring=(W / 2 - 92, 424, 184, 28)) + callout(2, W / 2 + 72, 520, ring=(W / 2 - 60, 496, 120, 48))
+    "welcome": lambda: welcome() + callout(1, W / 2 - 134, 438, ring=(W / 2 - 122, 424, 244, 28)) + callout(2, W / 2 + 72, 520, ring=(W / 2 - 60, 496, 120, 48))
                + callout(3, 30, 676, ring=(16, 686, 106, 56)) + callout(4, W - 30, 676, ring=(124, 686, W - 140, 56)),
-    "settings-edition": lambda: settings_sheet() + callout(1, 182, 607, ring=(26, 604, 144, 48)),
+    "settings-edition": lambda: settings_sheet() + callout(1, 182, 575, ring=(26, 572, 144, 48)),
 }
 
 

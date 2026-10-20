@@ -26,7 +26,8 @@ exported as a separate `.srt` file.
 4. Tap **Done**.
 
 A new subtitle starts at the playhead, stays on screen for **5 s**, and looks like the last subtitle
-you edited (same position, look and motion). A blue chip appears on the subtitle track (marker 1).
+you edited (same position, look and motion). A blue chip appears on the subtitle track (marker 1). It starts with a small **T**, so you can
+tell it's a subtitle even when the chip is too short to show the text.
 
 If you tap **Done** without typing anything, the empty subtitle is dropped.
 
