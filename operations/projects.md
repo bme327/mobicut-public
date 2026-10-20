@@ -1,14 +1,15 @@
 ---
 title: Projects
 parent: Operations
-nav_order: 1
+nav_order: 2
 ---
 
 # Projects
 {: .no_toc }
 
 A project is one video plus everything you did to it. mobiCut saves projects automatically; the
-start screen lists them, newest first.
+start screen lists them, newest first. (Before it, mobiCut briefly shows the
+[welcome screen]({{ "/operations/welcome/" | relative_url }}).)
 
 1. TOC
 {:toc}
@@ -43,8 +44,11 @@ You can also start from another app: in the gallery, **Share** a video and choos
 
 ## Open a project
 
-Tap it on the start screen. You land where you left off. Press **←** (or the phone's back
-gesture) to return to the list; nothing needs saving.
+Tap it on the start screen. All your edits are as you left them. The playhead starts at the
+beginning of the video, or just after the fade-in if the video
+[fades in at the start]({{ "/operations/transitions/" | relative_url }}), so the preview doesn't
+open on a black frame. Press **←** (or the phone's back gesture) to return to the list; nothing
+needs saving.
 
 ## Rename a project
 

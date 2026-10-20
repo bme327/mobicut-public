@@ -1,7 +1,7 @@
 ---
 title: Mute
 parent: Operations
-nav_order: 6
+nav_order: 7
 ---
 
 # Mute a segment's sound

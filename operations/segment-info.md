@@ -1,7 +1,7 @@
 ---
 title: Segment details
 parent: Operations
-nav_order: 12
+nav_order: 13
 ---
 
 # Segment details

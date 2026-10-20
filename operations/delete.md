@@ -1,7 +1,7 @@
 ---
 title: Delete and restore
 parent: Operations
-nav_order: 4
+nav_order: 5
 ---
 
 # Delete and restore segments
