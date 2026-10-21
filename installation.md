@@ -52,23 +52,31 @@ newest one.
 Open the same link again and install. **A new build installs over the old one and keeps all your
 projects**, because every build is signed with the same key.
 
-{: .warning }
-> Don't uninstall mobiCut to update it. Uninstalling deletes your projects (your edits). Your
-> original videos and exported videos stay in the gallery either way.
+{: .note }
+> There's no need to uninstall mobiCut to update it. If you do uninstall, see
+> [Uninstalling](#uninstalling) for how to keep your projects.
 
 To see which build you have, open **⚙ Settings** on the start screen; the version is shown at
 the bottom (for example *mobiCut {{ site.app_version }}*).
 
 ## Uninstalling
 
-Long-press the mobiCut icon → **App info** → **Uninstall**. This removes the app and its
-projects. Videos you exported stay in `Movies/MobiCut`, subtitle files in `Download/MobiCut`.
+Long-press the mobiCut icon → **App info** → **Uninstall**.
+
+- **To keep your projects**, tick **Keep app data** in the uninstall dialog. When you install
+  mobiCut again, the projects are back.
+- Projects are also saved to your **Google backup**, so they come along to a new phone.
+- After a reinstall or on a new phone, a project may say it
+  [can't find its video]({{ "/operations/missing-video/" | relative_url }}). Pick the same video
+  again and all edits are kept.
+
+Videos you exported stay in `Movies/MobiCut`, subtitle files in `Download/MobiCut`, either way.
 
 ## Troubleshooting
 
 | What you see | What to do |
 |---|---|
-| *App not installed* / *package conflicts with an existing package* | A build signed differently is already installed (rare). Uninstall it first. This loses its projects. |
+| *App not installed* / *package conflicts with an existing package* | A build signed differently is already installed (rare). Uninstall it first. |
 | *There was a problem parsing the package* | The download didn't finish. Delete `mobicut.apk` from Downloads and download it again. |
 | The **Install** button does nothing | Close other apps that draw over the screen (bubbles, screen dimmers) and try again. |
 
