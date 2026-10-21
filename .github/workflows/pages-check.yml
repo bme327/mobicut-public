@@ -21,7 +21,16 @@ jobs:
       - name: Build
         env:
           JEKYLL_GITHUB_TOKEN: ${{ github.token }}
-        run: bundle exec jekyll build --baseurl /mobicut-public --strict_front_matter
+        # Errors are re-emitted as annotations, so they can be read without the raw log.
+        run: |
+          set +e
+          bundle exec jekyll build --baseurl /mobicut-public --strict_front_matter 2>&1 | tee build.log
+          st=${PIPESTATUS[0]}
+          if [ "$st" -ne 0 ]; then
+            grep -iE "error|exception|liquid|warning" build.log | tail -15 | while IFS= read -r l; do echo "::error::$l"; done
+            tail -8 build.log | while IFS= read -r l; do echo "::error::$l"; done
+          fi
+          exit $st
       - name: Every page has its Czech twin
         run: |
           cd _site
