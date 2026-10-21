@@ -25,6 +25,8 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - vendor   # gems installed by the PR build check
+  - build.log
 
 # Languages: English pages at /x/, Czech twins at /cs/x/ (same path under cs/).
 # page.lang picks the sidebar (_includes/components/site_nav.html) and the language switch.
