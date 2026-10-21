@@ -14,7 +14,7 @@
       }, 0);
     });
   Promise.all([archived, live]).then(function (v) {
-    var n = (v[0] + v[1]).toLocaleString("en");
+    var n = (v[0] + v[1]).toLocaleString(document.documentElement.lang || "en");
     document.querySelectorAll(".dl-count").forEach(function (el) {
       el.querySelector(".dl-n").textContent = n;
       el.hidden = false;

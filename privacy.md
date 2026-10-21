@@ -7,7 +7,7 @@ permalink: /privacy/
 # Privacy policy
 {: .no_toc }
 
-**mobiCut** (Android app, package `app.mobicut`) · Last updated: 19 October 2026
+**mobiCut** (Android app, package `app.mobicut`) · Last updated: 21 October 2026
 
 1. TOC
 {:toc}
@@ -36,7 +36,8 @@ Nothing is uploaded.
 
 **Your projects.** Your edits (cuts, speeds, subtitles and other settings), the project name, a
 link to the source files and a small thumbnail are saved in the app's private storage on your
-phone, so you can continue later. Deleting a project, or uninstalling the app, removes them.
+phone, so you can continue later. Deleting a project removes it. Uninstalling the app removes
+them too, unless you choose to keep the app's data in Android's uninstall dialog.
 
 **Exported files.** Exported videos are saved to *Movies/MobiCut* and subtitle files (.srt) to
 *Download/MobiCut* on your phone. They're your files: mobiCut doesn't send them anywhere, and
@@ -60,8 +61,7 @@ connect to the internet, no data leaves your phone through mobiCut.
 These are not part of mobiCut's own data handling, but you may meet them while using it:
 
 - **Android backup.** If you have turned on backup to your Google Account, Android may include
-  mobiCut's projects and settings (not your videos) in that backup so they come back on a new
-  phone. This is done by Android under
+  mobiCut's projects (not your videos) in that backup so they come back on a new phone. This is done by Android under
   [Google's privacy policy](https://policies.google.com/privacy); you can turn it off in your
   phone's settings.
 - **Google Play.** Installing from Google Play, and buying Pro once it's offered there, is handled

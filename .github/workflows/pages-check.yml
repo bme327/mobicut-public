@@ -1,0 +1,34 @@
+name: Pages build check
+
+# Builds the site on every pull request with the same gems as GitHub Pages (Gemfile:
+# github-pages), so Liquid/front matter mistakes show up before merging. Publishes nothing;
+# GitHub Pages still builds and deploys main by itself.
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+      - name: Build
+        env:
+          JEKYLL_GITHUB_TOKEN: ${{ github.token }}
+        run: bundle exec jekyll build --baseurl /mobicut-public --strict_front_matter
+      - name: Every page has its Czech twin
+        run: |
+          cd _site
+          missing=0
+          for f in $(find . -name index.html -not -path './cs/*' -not -path './assets/*'); do
+            grep -q 'http-equiv="refresh"' "$f" && continue   # redirect_from stubs
+            d=${f#./}; d=${d%index.html}
+            if [ ! -f "cs/${d}index.html" ]; then echo "::error::No Czech page for /$d"; missing=1; fi
+          done
+          exit $missing

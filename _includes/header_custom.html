@@ -1,0 +1,10 @@
+{%- comment -%}
+  Language switch: every page has a twin, English at /x/ and Czech at /cs/x/.
+{%- endcomment -%}
+{%- if page.lang == "cs" -%}
+  {%- assign other_url = page.url | remove_first: "/cs" -%}
+  <a class="lang-switch" href="{{ other_url | relative_url }}" hreflang="en" lang="en">English</a>
+{%- else -%}
+  {%- assign other_url = page.url | prepend: "/cs" -%}
+  <a class="lang-switch" href="{{ other_url | relative_url }}" hreflang="cs" lang="cs">Česky</a>
+{%- endif -%}

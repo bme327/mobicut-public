@@ -7,8 +7,6 @@ permalink: /closed-alpha/
 # Closed alpha testing on Google Play
 {: .no_toc }
 
-[🇨🇿 Česky]({{ "/closed-alpha/cs/" | relative_url }})
-
 Before mobiCut can be published on Google Play, it has to pass a closed test with real testers.
 This page says what you'll need and what to do, step by step.
 
