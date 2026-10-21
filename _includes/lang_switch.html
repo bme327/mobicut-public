@@ -1,0 +1,10 @@
+{%- comment -%}
+  Language switch, in the sidebar under the site title (components/sidebar.html). Every page has a twin, English at /x/ and Czech at /cs/x/.
+{%- endcomment -%}
+{%- if page.lang == "cs" -%}
+  {%- assign other_url = page.url | remove_first: "/cs" -%}
+  <div class="lang-switch"><a href="{{ other_url | relative_url }}" hreflang="en" lang="en">English</a></div>
+{%- else -%}
+  {%- assign other_url = page.url | prepend: "/cs" -%}
+  <div class="lang-switch"><a href="{{ other_url | relative_url }}" hreflang="cs" lang="cs">Česky</a></div>
+{%- endif -%}
