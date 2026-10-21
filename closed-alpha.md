@@ -45,7 +45,11 @@ This page says what you'll need and what to do, step by step.
 ## Join and install
 
 1. **Uninstall the APK version of mobiCut**, if you have it. The Play version is signed
-   differently and won't install over it.
+   differently and won't install over it. Don't tick **Keep app data**.
+
+   {: .note }
+   > If you installed mobiCut from the APK, your projects won't carry over to the Google Play
+   > version. Your original and exported videos stay in the gallery.
 
 2. **On the phone**, open the opt-in link from my e-mail, signed in with the same Google account.
 3. Tap **Become a tester**.
