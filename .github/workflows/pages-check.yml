@@ -41,3 +41,14 @@ jobs:
             if [ ! -f "cs/${d}index.html" ]; then echo "::error::No Czech page for /$d"; missing=1; fi
           done
           exit $missing
+      - name: Sidebar shows one language
+        run: |
+          cd _site
+          nav() { sed -n '/id="site-nav"/,/<\/nav>/p' "$1"; }
+          fail=0
+          nav cs/operations/split/index.html | grep -q 'Funkce' || { echo "::error::Czech sidebar lacks Funkce"; fail=1; }
+          nav cs/operations/split/index.html | grep -q '>Installation<\|>Operations<' && { echo "::error::English pages in the Czech sidebar"; fail=1; }
+          nav operations/split/index.html | grep -q 'Funkce\|Instalace' && { echo "::error::Czech pages in the English sidebar"; fail=1; }
+          grep -q 'href="/mobicut-public/cs/operations/split/"' operations/split/index.html || { echo "::error::No Česky link on an English page"; fail=1; }
+          grep -q '/mobicut-public/cs/closed-alpha/' closed-alpha/cs/index.html || { echo "::error::/closed-alpha/cs/ doesn't redirect"; fail=1; }
+          exit $fail
