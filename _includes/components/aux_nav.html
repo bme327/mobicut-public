@@ -1,0 +1,17 @@
+{%- comment -%} mobiCut: aux links come from site.aux_links (English) or site.aux_links_cs (Czech pages). {%- endcomment -%}
+{%- if page.lang == "cs" and site.aux_links_cs -%}{%- assign aux = site.aux_links_cs -%}{%- else -%}{%- assign aux = site.aux_links -%}{%- endif -%}
+<nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    {% for link in aux %}
+      <li class="aux-nav-list-item">
+        <a href="{{ link.last }}" class="site-button"
+          {% if site.aux_links_new_tab %}
+          target="_blank" rel="noopener noreferrer"
+          {% endif %}
+        >
+          {{ link.first }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

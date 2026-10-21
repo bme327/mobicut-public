@@ -73,7 +73,7 @@ and anything you exported stay in your gallery.**
 
 | What | Where |
 |---|---|
-| Your edits | Inside the app. Removed if you uninstall mobiCut. |
+| Your edits | Inside the app, and in your Google backup. Kept over an uninstall if you tick **Keep app data** (see [Uninstalling]({{ "/installation/#uninstalling" | relative_url }})). |
 | Original video | **Where it was.** mobiCut only links to it: it never copies, downloads or uploads it. |
 | Exported videos | `Movies/MobiCut` (shows up in the gallery) |
 | Subtitle files (.srt) | `Download/MobiCut` |

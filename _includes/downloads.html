@@ -4,4 +4,4 @@
   (GitHub API, read in the visitor's browser by assets/js/downloads.js). Hidden if that fails.
   Outputs a single line, so it also works inside Markdown lists.
 {%- endcomment -%}
-<p class="dl-count" hidden>⬇ Downloaded <strong class="dl-n"></strong> times</p><script src="{{ '/assets/js/downloads.js' | relative_url }}" defer></script>
+{% if page.lang == "cs" %}<p class="dl-count" hidden>⬇ Staženo <strong class="dl-n"></strong>×</p>{% else %}<p class="dl-count" hidden>⬇ Downloaded <strong class="dl-n"></strong> times</p>{% endif %}<script src="{{ '/assets/js/downloads.js' | relative_url }}" defer></script>

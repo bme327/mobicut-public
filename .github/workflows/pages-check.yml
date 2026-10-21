@@ -1,0 +1,54 @@
+name: Pages build check
+
+# Builds the site on every pull request with the same gems as GitHub Pages (Gemfile:
+# github-pages), so Liquid/front matter mistakes show up before merging. Publishes nothing;
+# GitHub Pages still builds and deploys main by itself.
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+      - name: Build
+        env:
+          JEKYLL_GITHUB_TOKEN: ${{ github.token }}
+        # Errors are re-emitted as annotations, so they can be read without the raw log.
+        run: |
+          set +e
+          bundle exec jekyll build --baseurl /mobicut-public --strict_front_matter 2>&1 | tee build.log
+          st=${PIPESTATUS[0]}
+          if [ "$st" -ne 0 ]; then
+            grep -iE "error|exception|liquid|warning" build.log | tail -15 | while IFS= read -r l; do echo "::error::$l"; done
+            tail -8 build.log | while IFS= read -r l; do echo "::error::$l"; done
+          fi
+          exit $st
+      - name: Every page has its Czech twin
+        run: |
+          cd _site
+          missing=0
+          for f in $(find . -name index.html -not -path './cs/*' -not -path './assets/*'); do
+            grep -q 'http-equiv="refresh"' "$f" && continue   # redirect_from stubs
+            d=${f#./}; d=${d%index.html}
+            if [ ! -f "cs/${d}index.html" ]; then echo "::error::No Czech page for /$d"; missing=1; fi
+          done
+          exit $missing
+      - name: Sidebar shows one language
+        run: |
+          cd _site
+          nav() { sed -n '/id="site-nav"/,/<\/nav>/p' "$1"; }
+          fail=0
+          nav cs/operations/split/index.html | grep -q 'Funkce' || { echo "::error::Czech sidebar lacks Funkce"; fail=1; }
+          nav cs/operations/split/index.html | grep -q '>Installation<\|>Operations<' && { echo "::error::English pages in the Czech sidebar"; fail=1; }
+          nav operations/split/index.html | grep -q 'Funkce\|Instalace' && { echo "::error::Czech pages in the English sidebar"; fail=1; }
+          grep -q 'href="/mobicut-public/cs/operations/split/"' operations/split/index.html || { echo "::error::No Česky link on an English page"; fail=1; }
+          grep -q '/mobicut-public/cs/closed-alpha/' closed-alpha/cs/index.html || { echo "::error::/closed-alpha/cs/ doesn't redirect"; fail=1; }
+          exit $fail

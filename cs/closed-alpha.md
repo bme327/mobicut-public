@@ -1,13 +1,12 @@
 ---
-title: Uzavřená alfa (CZ)
-nav_exclude: true
-permalink: /closed-alpha/cs/
+title: Uzavřená alfa
+nav_order: 2.5
+permalink: /cs/closed-alpha/
+redirect_from: /closed-alpha/cs/
 ---
 
 # Uzavřené alfa testování na Google Play
 {: .no_toc }
-
-[🇬🇧 English]({{ "/closed-alpha/" | relative_url }})
 
 Než může mobiCut vyjít na Google Play, musí projít uzavřeným testem se skutečnými testery.
 Tady najdeš, co budeš potřebovat a co udělat, krok za krokem.
@@ -83,6 +82,6 @@ Většina uživatelů bude mít Free, takže i to je potřeba otestovat.
 - **Zůstaň přihlášený** 16–18 dní. V Obchodě Play neklepej na **Opustit program**.
 - Nech mobiCut nainstalovaný a pár dní ho používej.
 - Našel jsi chybu nebo máš nápad? Nahlas ho v [GitHub issues](https://github.com/bme327/mobicut-public/issues)
-  (jak na to: [Feedback]({{ "/feedback/" | relative_url }})).
+  (jak na to: [Zpětná vazba]({{ "/cs/feedback/" | relative_url }})).
 
 Díky, že pomáháš dostat mobiCut na Google Play! 🙏
