@@ -35,7 +35,7 @@ Every page exists twice: English at `x.md` (URL `/x/`) and Czech at `cs/x.md` (U
 - `page.lang` comes from `_config.yml` defaults (`cs/` → `cs`, everything else → `en`). The
   sidebar shows only the current language (`_includes/components/site_nav.html`, `sidebar.html`,
   `breadcrumbs.html`, `children_nav.html` are theme copies that pass `lang`), and
-  `_includes/header_custom.html` links each page to its twin.
+  `_includes/lang_switch.html` (in the sidebar, under the title) links each page to its twin.
 - Czech child pages use `parent: Funkce` (the Czech title of Operations).
 - Keep heading anchors the same in both languages: Czech headings carry the English id,
   e.g. `## Odinstalace {#uninstalling}`, so `#…` links work in both.
