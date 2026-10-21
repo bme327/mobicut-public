@@ -47,9 +47,6 @@ Tady najdeš, co budeš potřebovat a co udělat, krok za krokem.
 1. **Odinstaluj APK verzi mobiCutu**, pokud ji máš. Verze z Google Play je podepsaná jinak
    a přes APK se nenainstaluje.
 
-   {: .note }
-   > Tím se smažou projekty v mobiCutu (střihy). Původní i exportovaná videa v galerii zůstanou.
-
 2. **V telefonu** otevři odkaz pro přihlášení z mého e-mailu, přihlášený stejným Google účtem.
 3. Klepni na **Stát se testerem**.
 4. Klepni na **stáhnout na Google Play** a pak **Instalovat**.
