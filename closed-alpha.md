@@ -83,6 +83,7 @@ way back to Free. Most users will run Free, so it needs testing too.
 
 - **Stay opted in** for 16–18 days. Don't tap **Leave the program** in the Play Store.
 - Keep mobiCut installed and use it a few times.
-- Found a bug or have an idea? [Report it]({{ "/feedback/" | relative_url }}).
+- Found a bug or have an idea? Report it in [GitHub issues](https://github.com/bme327/mobicut-public/issues)
+  (how: [Feedback]({{ "/feedback/" | relative_url }})).
 
 Thanks for helping get mobiCut onto Google Play! 🙏

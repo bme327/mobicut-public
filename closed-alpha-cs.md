@@ -81,6 +81,7 @@ Většina uživatelů bude mít Free, takže i to je potřeba otestovat.
 
 - **Zůstaň přihlášený** 16–18 dní. V Obchodě Play neklepej na **Opustit program**.
 - Nech mobiCut nainstalovaný a pár dní ho používej.
-- Našel jsi chybu nebo máš nápad? [Nahlas ho]({{ "/feedback/" | relative_url }}).
+- Našel jsi chybu nebo máš nápad? Nahlas ho v [GitHub issues](https://github.com/bme327/mobicut-public/issues)
+  (jak na to: [Feedback]({{ "/feedback/" | relative_url }})).
 
 Díky, že pomáháš dostat mobiCut na Google Play! 🙏
