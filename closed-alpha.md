@@ -34,8 +34,8 @@ This page says what you'll need and what to do, step by step.
 
 ## Before the test starts
 
-1. **Send me the e-mail of your Google account**, the one signed in to the Play Store on your
-   phone. Only accounts on the list can join.
+1. **Check your Google account.** Only the account whose e-mail I have can join, so it must be
+   the one signed in to the Play Store on your phone. If it's a different one, let me know.
 2. **Prepare a test video:** record **1–2 minutes** of anything on your phone (a walk, your pet,
    a ride). Keep it in the gallery.
 3. **Optional: a soundtrack.** Download a free track, for example from

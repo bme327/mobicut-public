@@ -34,8 +34,8 @@ Tady najdeš, co budeš potřebovat a co udělat, krok za krokem.
 
 ## Před začátkem testu
 
-1. **Pošli mi e-mail svého Google účtu**, toho, kterým jsi v telefonu přihlášený do Obchodu Play.
-   Připojit se mohou jen účty ze seznamu.
+1. **Zkontroluj svůj Google účet.** Připojit se může jen účet, jehož e-mail mám, takže to musí
+   být ten, kterým jsi v telefonu přihlášený do Obchodu Play. Pokud je to jiný, dej mi vědět.
 2. **Připrav si testovací video:** natoč telefonem **1–2 minuty** čehokoli (procházka, mazlíček,
    jízda). Nech ho v galerii.
 3. **Volitelně hudbu.** Stáhni si zdarma skladbu, třeba z
