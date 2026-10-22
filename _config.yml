@@ -18,7 +18,7 @@ footer_content: "mobiCut documentation. Screens are illustrations of the app; re
 # The latest build of the app. One place to change it if the APK moves.
 apk_url: "https://github.com/bme327/mobicut-public/releases/latest/download/mobicut.apk"
 # Release the pages describe (release/<date>.<n> of the app repo).
-app_version: "2026-10-20.3"
+app_version: "2026-10-22.1"
 
 exclude:
   - _tools

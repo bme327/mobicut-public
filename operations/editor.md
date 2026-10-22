@@ -17,7 +17,7 @@ nav_order: 3
 ## Play and pause
 
 Tap **▶** under the preview. Playback already follows your edits: deleted segments are skipped,
-sped-up segments play fast, subtitles appear on the video with their animation, fades dim the
+sped-up segments play fast, texts and graphics appear on the video with their animation, fades dim the
 picture and interleaves crossfade.
 
 The two small times next to the buttons are the position in the **finished video** (top) and
@@ -54,13 +54,15 @@ The white line with a dot is the **playhead**: the current position. The segment
 | `1×`, `4×`, `0.5×` in the corner | The segment's speed (orange when it isn't 1×) |
 | `1× · muted` | The segment's sound is [muted]({{ "/operations/mute/" | relative_url }}) |
 | `Picture`, `Zoom in`, `Zoom out`, `Slide in` | A [picture]({{ "/operations/pictures/" | relative_url }}) segment and its effect |
+| `Text` | A [text slide]({{ "/operations/text-slides/" | relative_url }}) |
 | White line across the strip | Where one video or picture ends and the next begins ([several videos]({{ "/operations/videos/" | relative_url }})) |
 | Orange line with a ▼ at the top | A split between two segments |
 | Short red line | Deleted footage is hidden here |
 | Round button on a split | Transition (see [Transitions]({{ "/operations/transitions/" | relative_url }})) |
 | ⓘ on the selected segment | [Segment details]({{ "/operations/segment-info/" | relative_url }}) |
 | Times above the strip | Times in the *original* video (videos and pictures laid end to end) |
-| Green chips under the subtitles | [Soundtracks]({{ "/operations/soundtracks/" | relative_url }}); the lane only shows once you add one |
+| Blue and purple chips under the strip | [Texts]({{ "/operations/subtitles/" | relative_url }}) (blue, with a **T**) and [graphics]({{ "/operations/graphics/" | relative_url }}) (purple, with the shape's name) |
+| Green chips under the texts | [Soundtracks]({{ "/operations/soundtracks/" | relative_url }}); the lane only shows once you add one |
 
 ## Zoom in
 
@@ -73,7 +75,7 @@ On a long video a split needs precision. Use any of:
 ## Undo
 
 **↶** (top right of the controls) takes back the last change: a split, a delete, a speed change,
-a subtitle, a transition, a mute, a picture, a soundtrack or an added video. Tap it repeatedly to go further back.
+a text, a graphic, a transition, a mute, a picture, a soundtrack or an added video. Tap it repeatedly to go further back.
 
 ## Turn the screen
 

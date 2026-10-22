@@ -26,10 +26,11 @@ udělá krátké video, ještě než dojedeš domů:
 
 - **rozstřihneš ho na úseky** a nudné části zahodíš,
 - dlouhé pasáže **zrychlíš** (až 16×) nebo nejlepší okamžik zpomalíš (až na 0,25×),
-- **přidáš titulky**, kde to je a co to je,
+- **přidáš texty**, kde to je a co to je, a mezi části **titulní karty**,
 - části **spojíš prolínačkami**, aby střihy vypadaly záměrně,
 - **vložíš fotky** s pomalým přiblížením nebo vjezdem a pod to všechno **hudbu**,
 - **ztlumíš** šum větru a (Pro) **spojíš víc videí** do jednoho,
+- (Pro) dáš do videa **šipky, smajlíky a tvary** a necháš je **sledovat** paraglidistu nebo lyžaře,
 - **exportuješ** nové video do galerie, připravené ke sdílení.
 
 ## Tvoje video zůstává, kde je
@@ -56,13 +57,13 @@ udělá krátké video, ještě než dojedeš domů:
 - Menší rozlišení (720p) nebo 30 fps export ještě zrychlí a soubor zmenší.
 - Výsledek je rovnou v galerii, připravený ke sdílení.
 
-{% include screen.html name="editor" alt="Editor mobiCutu: náhled videa nahoře, časová osa se třemi úseky, štítky titulků a dole nástroje Split, Delete, Speed, Mute, Subtitle a Add." caption="Editor, kde se odehrává všechna práce." %}
+{% include screen.html name="editor" alt="Editor mobiCutu: náhled videa nahoře, časová osa se třemi úseky, štítky textů a dole nástroje Split, Delete, Speed, Mute, Text, Graphic a Add." caption="Editor, kde se odehrává všechna práce." %}
 
 ## Jak to funguje, za minutu
 
 1. Založ **projekt** z videa v galerii, na SD kartě nebo v USB kameře.
 2. Celé video je na časové ose jeden **úsek**. **Rozstřihni** ho tam, kde se něco mění.
-3. Každému úseku dej, co potřebuje: **smaž** ho, změň mu **rychlost**, přidej přes něj **titulek**.
+3. Každému úseku dej, co potřebuje: **smaž** ho, změň mu **rychlost**, přidej přes něj **text**.
 4. **Exportuj.** Nové video najdeš v galerii ve složce `Movies/MobiCut`.
 
 Úpravy se ukládají samy, takže můžeš aplikaci zavřít a k projektu se kdykoli vrátit.
@@ -76,11 +77,11 @@ mobiCut má dvě edice: **Free** a **Pro**.
 > Free je plnohodnotný střihač s několika omezeními, ne zkušební verze.
 
 Jediná omezení Free: zdrojová videa **do 1 hodiny**, **jedno video na projekt**, malé
-**logo (mc) mobiCut** v pravém horním rohu exportu a **Fade out-in** jako jediný přechod.
-Pro je odstraní.
+**logo (mc) mobiCut** v pravém horním rohu exportu, **Fade out-in** jako jediný přechod
+a žádná **grafika** ani **dráhy**. Pro je odstraní.
 
-Během testování **jde Pro zapnout zdarma** v **⚙ Settings**. Po spuštění v Obchodě Play bude Pro
-placené: předplatné, krátká měsíční propustka nebo jednorázový nákup.
+V APK z tohoto webu **jde Pro zapnout zdarma** v **⚙ Settings**. Na Google Play je Pro roční
+předplatné s **prvním týdnem zdarma**, nebo měsíc, který se neobnovuje.
 
 [Porovnat Free a Pro →]({{ "/cs/editions/" | relative_url }}){: .btn .btn-outline }
 

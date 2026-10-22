@@ -14,7 +14,8 @@ edicí. Po 5 sekundách sám přejde na tvoje projekty.
 
 1. **Docs** otevře tento web; **What's new** otevře poznámky k poslednímu vydání;
    **Privacy** otevře [zásady ochrany soukromí]({{ "/cs/privacy/" | relative_url }}).
-2. **Upgrade** ukáže, co přidává [Pro]({{ "/cs/editions/" | relative_url }}). V Pro je na
+2. **Upgrade** ukáže, co přidává [Pro]({{ "/cs/editions/" | relative_url }}). Ve verzi
+   z Google Play, dokud má tvůj účet nárok na týden Pro zdarma, ukazuje tlačítko **Try Pro free**. V Pro je na
    obrazovce místo toho štítek **PRO** a *All features unlocked*.
 3. **Hold…** nechá uvítací obrazovku otevřenou (tlačítko pak ukazuje **Held**), třeba abys
    si opsal verzi do hlášení chyby.

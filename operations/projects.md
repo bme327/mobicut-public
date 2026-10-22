@@ -20,7 +20,7 @@ start screen lists them, newest first. (Before it, mobiCut briefly shows the
 
 1. **Settings**: edition, privacy policy and app version.
 2. **New project**.
-3. **A project**: thumbnail, length of the finished video, number of segments and subtitles,
+3. **A project**: thumbnail, length of the finished video, number of segments and texts,
    when it was last edited. Tap to open.
 4. **⋮ menu**: rename or delete.
 
@@ -76,6 +76,5 @@ and anything you exported stay in your gallery.**
 | Your edits | Inside the app, and in your Google backup. Kept over an uninstall if you tick **Keep app data** (see [Uninstalling]({{ "/installation/#uninstalling" | relative_url }})). |
 | Original video | **Where it was.** mobiCut only links to it: it never copies, downloads or uploads it. |
 | Exported videos | `Movies/MobiCut` (shows up in the gallery) |
-| Subtitle files (.srt) | `Download/MobiCut` |
 
 If the original video is moved or deleted, see [Missing video]({{ "/operations/missing-video/" | relative_url }}).

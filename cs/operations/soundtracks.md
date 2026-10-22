@@ -1,7 +1,7 @@
 ---
 title: Hudba
 parent: Funkce
-nav_order: 11
+nav_order: 14
 ---
 
 # Přidat hudbu
@@ -22,10 +22,10 @@ i přes sebe.
 3. Vyber zvukový soubor.
 
 Skladba začne na místě přehrávací hlavy v hotovém videu (úplně na začátku, je-li přehrávací hlava
-na konci). Pod stopou titulků se objeví **stopa hudby**: jeden zelený štítek na skladbu, s **♪**
+na konci). Pod stopou překryvů se objeví **stopa hudby**: jeden zelený štítek na skladbu, s **♪**
 a jejím názvem. Překrývající se skladby se ve stopě skládají nad sebe a hrají společně.
 
-{% include screen.html name="media-timeline" alt="Editor s úsekem obrázku, ztlumeným úsekem, dvěma videi a stopou hudby se dvěma skladbami pod titulky." caption="Stopa hudby (značka 4) pod titulky. Značka 5 je Add." %}
+{% include screen.html name="media-timeline" alt="Editor s úsekem obrázku, ztlumeným úsekem, dvěma videi a stopou hudby se dvěma skladbami pod texty." caption="Stopa hudby (značka 4) pod texty. Značka 5 je Add." %}
 
 Hudba patří k časové ose **hotového videa**: zůstane na svém místě, když video pod ní stříháš,
 mažeš nebo zrychluješ. Co přesahuje konec videa, se **ořízne**.

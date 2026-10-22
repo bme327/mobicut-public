@@ -29,10 +29,13 @@ Zpět na [úvod]({{ "/cs/" | relative_url }}).
 | Reklamy | **žádné, nikdy** | **žádné, nikdy** |
 | Střih, mazání, obnovení, zpět | ✓ | ✓ |
 | Rychlost 0,25×–16× pro každý úsek | ✓ | ✓ |
-| Titulky (vpálené nebo .srt; pozice, písma, barvy, animace) | ✓ | ✓ |
+| Texty přes video (pozice, natočení, písma, barvy, animace) | ✓ | ✓ |
+| Textové slidy (titulní karty ze 7 šablon) | ✓ | ✓ |
 | Ztlumení úseku | ✓ | ✓ |
 | Obrázky s přiblížením a vjezdem | ✓ | ✓ |
 | Hudba (mix nebo náhrada zvuku, prolínání) | ✓ | ✓ |
+| Grafika: smajlíci, šipky, tvary, vlastní obrázky | | ✓ |
+| Texty a grafika, které sledují dráhu | | ✓ |
 | Videí v projektu | **jedno** | **několik**, upravovaných jako jedno |
 | Export do galerie | ✓ | ✓ |
 | Délka zdrojového videa | **do 1 hodiny** | bez omezení |
@@ -50,6 +53,9 @@ Jen v tomhle se edice liší. Všechno ostatní funguje ve Free stejně.
 - **Jedno video na projekt.** Obrázky a hudba jsou zdarma; další videa v projektu jsou Pro.
 - **Fade out-in je jediný přechod.** Prolínačky mezi úseky a roztmívání a zatmívání na začátku
   a konci jsou v ceně; prolínání **Interleave** je Pro.
+- **Žádná grafika ani dráhy.** [Grafika]({{ "/cs/operations/graphics/" | relative_url }}) a texty
+  nebo grafika, které [sledují dráhu]({{ "/cs/operations/paths/" | relative_url }}), jsou Pro.
+  Texty, textové slidy a obrázky jsou zdarma.
 
 V aplikaci mají funkce jen pro Pro oranžový štítek **PRO**. Ve Free zůstávají vidět, ale jsou
 zamčené; klepnutím se dozvíš, co dělají.
@@ -72,21 +78,34 @@ z Obchodu Play ho mít nebude.
 > Přepnutí na Free nikdy nic nesmaže. Pokud projekt používá Pro funkce (třeba přechody
 > Interleave), zůstanou uložené a vrátí se, až zase přepneš na Pro.
 
-## Ceny Pro {#pro-pricing}
+## Pro na Google Play {#pro-pricing}
 
-{: .warning }
-> Jakmile bude mobiCut na Google Play, **Pro bude placené**. Testovací přepínač zmizí a Pro
-> se bude kupovat přes Google Play. Ceny zatím nejsou stanovené.
-
-Plán jsou tři způsoby, jak Pro získat, abys mohl vybrat podle toho, jak často stříháš:
+Ve verzi z Google Play se Pro kupuje přes Google Play. Jsou dvě možnosti:
 
 | Možnost | Pro koho |
 |---|---|
-| **Předplatné** (roční, obnovuje se automaticky) | Stříháš pravidelně celou sezónu |
-| **Krátká měsíční propustka** (jeden měsíc, neobnovuje se) | Stříháš občas, třeba po dovolené nebo závodech |
-| **Jednorázový nákup** | Raději zaplatíš jednou a Pro si necháš |
+| **Roční předplatné**, obnovuje se automaticky, s **prvním týdnem zdarma** | Stříháš pravidelně celou sezónu |
+| **Jeden měsíc**, neobnovuje se | Stříháš občas, třeba po dovolené nebo závodech |
 
-Ať se s Pro stane cokoli, **edice Free zůstane zdarma a bez reklam**.
+Ceny ukazuje aplikace ve tvé měně, jak je stanoví Google Play. Testeři
+[uzavřené alfy]({{ "/cs/closed-alpha/" | relative_url }}) dostanou **Pro navždy** přes promo kód.
+
+### Vyzkoušej Pro týden zdarma {#try-pro-free-for-a-week}
+
+Roční předplatné začíná **7 dny zdarma**, jednou na účet Google:
+
+- Klepni na Pro funkci nebo na **Upgrade**; dokud na zkušební týden máš nárok, tlačítko ukazuje
+  **Try Pro free for 7 days** a pod ním roční cenu.
+- Google Play si řekne o platební metodu, ale 7 dní nic nestrhne. Pro se odemkne hned.
+- **Zrušit můžeš kdykoli** v Google Play → **Odběry**: Pro ti zůstane do konce týdne a nic
+  nezaplatíš. Pokud nezrušíš, 8. den začne roční předplatné.
+
+mobiCut tě s tím nebude otravovat: zkušební verze se nabízí jen tam, kde se nabízí Pro tak jako
+tak (u zamčené funkce nebo pod **Upgrade** na uvítací obrazovce), bez vyskakovacích oken,
+připomínek a odpočtů.
+
+Ať zvolíš cokoli, **edice Free zůstane zdarma a bez reklam** a přepnutí zpět na Free nikdy nic
+nesmaže.
 
 ---
 

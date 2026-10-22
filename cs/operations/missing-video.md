@@ -1,7 +1,7 @@
 ---
 title: Chybějící video
 parent: Funkce
-nav_order: 15
+nav_order: 18
 ---
 
 # Když video chybí
@@ -17,4 +17,4 @@ byl na SD kartě či v kameře, která teď není připojená, editor místo ná
 2. Klepni na **Gallery** nebo **Browse files** a vyber **stejné video**.
 
 mobiCut zkontroluje, že má video stejnou délku jako originál, aby všechny střihy, rychlosti
-a titulky pořád seděly. Dokud se video nenajde, je **Export** vypnutý.
+a texty pořád seděly. Dokud se video nenajde, je **Export** vypnutý.

@@ -29,10 +29,13 @@ Back to the [home page]({{ "/" | relative_url }}).
 | Ads | **none, never** | **none, never** |
 | Split, delete, restore, undo | ✓ | ✓ |
 | Speed 0.25×–16× per segment | ✓ | ✓ |
-| Subtitles (burned in or .srt; position, fonts, colours, animation) | ✓ | ✓ |
+| Texts over the video (position, rotation, fonts, colours, animation) | ✓ | ✓ |
+| Text slides (title cards from 7 templates) | ✓ | ✓ |
 | Mute a segment | ✓ | ✓ |
 | Pictures, with zoom and slide effects | ✓ | ✓ |
 | Soundtracks (mix or replace, fades) | ✓ | ✓ |
+| Graphics: smileys, arrows, shapes, your own pictures | | ✓ |
+| Texts and graphics that follow a path | | ✓ |
 | Videos per project | **one** | **several**, edited as one |
 | Export to the gallery | ✓ | ✓ |
 | Length of the source video | **up to 1 hour** | no limit |
@@ -51,6 +54,9 @@ These are the only differences. Everything else works the same in Free.
   is Pro.
 - **Fade out-in is the only transition.** Fades between segments and fade in/out at the start and
   end are included; the **Interleave** crossfade is Pro.
+- **No graphics and no paths.** [Graphics]({{ "/operations/graphics/" | relative_url }}) and
+  texts or graphics that [follow a path]({{ "/operations/paths/" | relative_url }}) are Pro.
+  Texts, text slides and pictures are free.
 
 In the app, Pro-only features carry an orange **PRO** badge. In Free they stay visible but
 locked; tapping one tells you what it does.
@@ -73,21 +79,33 @@ have it.
 > Switching to Free never deletes anything. If a project uses Pro features (for example
 > Interleave transitions), they stay saved and come back when you switch to Pro again.
 
-## Pro pricing
+## Getting Pro on Google Play {#pro-pricing}
 
-{: .warning }
-> Once mobiCut is on Google Play, **Pro will be paid**. The test switch goes away, and Pro is
-> bought through Google Play. Prices aren't set yet.
-
-The plan is three ways to get Pro, so you can pick what fits how often you edit:
+In the Google Play version, Pro is bought through Google Play. There are two ways:
 
 | Option | For whom |
 |---|---|
-| **Subscription** (yearly, renews automatically) | You edit regularly through the season |
-| **Short monthly pass** (one month, doesn't renew) | You edit occasionally, say after a holiday or a competition |
-| **One-time purchase** | You'd rather pay once and keep Pro |
+| **Yearly subscription**, renews automatically, with a **free first week** | You edit regularly through the season |
+| **One month**, doesn't renew | You edit occasionally, say after a holiday or a competition |
 
-Whatever happens with Pro, the **Free edition stays free and without ads**.
+Prices are shown in the app, in your currency, as Google Play sets them. Testers in the
+[closed alpha]({{ "/closed-alpha/" | relative_url }}) get **Pro for life** with a promo code.
+
+### Try Pro free for a week
+
+The yearly subscription starts with **7 days free**, once per Google account:
+
+- Tap a Pro feature or **Upgrade**; while you can still get the trial, the button reads
+  **Try Pro free for 7 days**, with the yearly price under it.
+- Google Play asks for a payment method but charges nothing for 7 days. Pro unlocks right away.
+- **Cancel any time** in Google Play → **Subscriptions**: you keep Pro until the week is over and
+  pay nothing. If you don't cancel, the yearly subscription starts on day 8.
+
+mobiCut never nags about it: the trial is offered only where Pro is offered anyway (a locked
+feature, or **Upgrade** on the welcome screen), with no pop-ups, reminders or countdowns.
+
+Whatever you choose, the **Free edition stays free and without ads**, and switching back to Free
+never deletes anything.
 
 ---
 

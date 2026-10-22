@@ -1,7 +1,7 @@
 ---
 title: Missing video
 parent: Operations
-nav_order: 15
+nav_order: 18
 ---
 
 # When the video is missing
@@ -17,4 +17,4 @@ was on an SD card or camera that is now unplugged, the editor shows this instead
 2. Tap **Gallery** or **Browse files** and pick **the same video**.
 
 mobiCut checks that the video has the same length as the original, so all splits, speeds and
-subtitles still line up. Until it's found, **Export** is disabled.
+texts still line up. Until it's found, **Export** is disabled.

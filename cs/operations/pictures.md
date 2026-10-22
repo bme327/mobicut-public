@@ -1,7 +1,7 @@
 ---
 title: Obrázky
 parent: Funkce
-nav_order: 10
+nav_order: 13
 ---
 
 # Přidat obrázek
@@ -26,8 +26,20 @@ samostatným úsekem, který se ukazuje tak dlouho, jak zvolíš, v klidu nebo v
 {% include screen.html name="picture-add" alt="Dialog Add picture: tlačítka Gallery a Browse files, název vybraného obrázku, Duration 3,0 s a efekty Still, Slow zoom in (vybraný), Slow zoom out a Slide in." %}
 
 Video se v místě přehrávací hlavy rozstřihne a obrázek přijde mezi; všechno za ním se posune
-o délku obrázku, titulky také. Je-li přehrávací hlava méně než desetinu sekundy od střihu, obrázek
+o délku obrázku, texty také. Je-li přehrávací hlava méně než desetinu sekundy od střihu, obrázek
 přijde přímo na ten střih a nevznikne drobný úsek.
+
+## Snímek z videa {#a-still-from-the-video}
+
+Chceš-li použít snímek ze samotného videa, třeba podržet okamžik startu na pár sekund, klepni
+v dialogu **Add picture** na **Video still**. Vezme snímek videa **u přehrávací hlavy** v plném
+rozlišení a vedle názvu (*Still 1:12.4*) ukáže jeho malý náhled. Délku a efekt nastav jako
+u každého obrázku a klepni na **Insert**.
+
+Snímek se uloží s projektem (a zálohuje se s ním), takže zůstane, i když se video později
+přesune. Pod tlačítkem dialog napíše, proč snímek teď vzít nejde: třeba *The playhead is on a
+picture*, *on a text slide* nebo *on a deleted part* (hlava stojí na obrázku, na textovém slidu
+nebo na smazané části).
 
 ## Efekty {#effects}
 
@@ -52,7 +64,7 @@ Funguje jako každý jiný úsek:
 - můžeš ho [smazat a obnovit]({{ "/cs/operations/delete/" | relative_url }}),
 - před něj nebo za něj dát [přechod]({{ "/cs/operations/transitions/" | relative_url }}), třeba
   fade out-in, nebo Interleave, aby se s videem prolnul,
-- můžou přes něj běžet [titulky]({{ "/cs/operations/subtitles/" | relative_url }}).
+- můžou přes něj běžet [texty]({{ "/cs/operations/subtitles/" | relative_url }}) a [grafika]({{ "/cs/operations/graphics/" | relative_url }}).
 
 **Speed** a **Mute** se na obrázky nevztahují a jsou zašedlé, když je obrázek vybraný.
 

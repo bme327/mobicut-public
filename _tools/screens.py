@@ -19,11 +19,11 @@ import cairosvg
 BG = "#0E0F11"; SURF = "#17191C"; SURF_HI = "#22252A"; SEG = "#2B3036"; OUTLINE = "#2E3238"
 TEXT = "#F2F2F0"; MUTED = "#A3A7AE"; ACCENT = "#F2A33A"; ON_ACCENT = "#1A1206"; ACCENT_DIM = "#2A2418"
 DEL = "#2A1515"; DEL_LINE = "#C9595A"; DEL_TEXT = "#F3B4B4"; SUB = "#1F3557"; SUB_TEXT = "#BBD3FF"
-SND = "#1E4034"; SND_TEXT = "#A8E6C8"
+SND = "#1E4034"; SND_TEXT = "#A8E6C8"; GRAPHIC = "#4A2F57"
 CALLOUT = "#3FA9F5"
 
 W, H = 360, 780
-VERSION = "2026-10-20.3"  # app release the screens show
+VERSION = "2026-10-22.1"  # app release the screens show
 SANS = "Inter, sans-serif"; MONO = "DejaVu Sans Mono, monospace"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "screens")
 
@@ -75,6 +75,10 @@ def icon(name, x, y, size=22, color=TEXT):
         "replay5": '<path d="M12 4a8 8 0 1 1-7.6 5.5"/><path d="M4 4v5.5h5.5"/><path d="M10.5 10h3M10.5 10v2.5h1.7a1.6 1.6 0 1 1 0 3.2h-1.7"/>',
         "forward5": '<path d="M12 4a8 8 0 1 0 7.6 5.5"/><path d="M20 4v5.5h-5.5"/><path d="M10.5 10h3M10.5 10v2.5h1.7a1.6 1.6 0 1 1 0 3.2h-1.7"/>',
         "title": '<path d="M5 5h14M12 5v14"/>',
+        "category": '<path d="M12 3 7 11h10z"/><circle cx="17" cy="17" r="4"/><rect x="3" y="13" width="8" height="8" rx="1"/>',
+        "gradient": '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18" stroke-opacity="0.5"/>',
+        "gesture": '<path d="M4 15c3-6 5-6 6-3s2 5 4 2 4-7 6-4"/><path d="M15 19h5"/>',
+        "link": '<path d="M10 14a4 4 0 0 0 5.6 0l3-3a4 4 0 0 0-5.6-5.6l-1 1"/><path d="M14 10a4 4 0 0 0-5.6 0l-3 3a4 4 0 0 0 5.6 5.6l1-1"/>',
         "music": '<path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>',
     }[name]
     return g + p + "</g>"
@@ -172,7 +176,7 @@ def home(projects=True, sheet=False, menu=False):
             s += t(W / 2, 408 + i * 20, line, 13.5, MUTED, 400, "middle")
     else:
         s += t(20, 112, "Recent projects", 13, MUTED)
-        rows = [("Lysá hora flight", "3 segments · 2 subtitles", "Edited 5 minutes ago", "0:48", 0),
+        rows = [("Lysá hora flight", "3 segments · 2 texts", "Edited 5 minutes ago", "0:48", 0),
                 ("Skiing Ramzová", "5 segments", "Edited 2 hours ago", "1:12", 2),
                 ("Ondřejník thermals", "1 segment", "Edited yesterday", "3:05", 1)]
         for i, (name, a, b, dur, sh) in enumerate(rows):
@@ -214,7 +218,8 @@ DEFAULT_SEGS = [  # (fraction of width, label, speed!=1, deleted, selected)
 def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from Lysá hora"), (0.70, 0.93, "Landing")),
            selected_deleted=False, show_deleted=False, transitions=True, transition_set=(), playing=False,
            subtitle_on_preview="", speed_badge="4×", title="Lysá hora flight", time="0:21.4", total="0:48.0",
-           video=True, soundtracks=(), preview_shade=0, selected_muted=False, selected_picture=False):
+           video=True, soundtracks=(), preview_shade=0, selected_muted=False, selected_picture=False,
+           graphics=((0.40, 0.60, "Arrow"),)):
     """segs: (fraction, label, fast, deleted, selected[, kind[, join_before]]); kind "picture" draws
     a picture segment, join_before draws the white join between two clips instead of a split marker.
     soundtracks: (start fraction, end fraction, name, replace) shown in the lane under subtitles."""
@@ -309,12 +314,17 @@ def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from L
     # subtitles
     sy = track_top + track_h + 6
     if not subs:
-        s += t(tl_x, sy + 18, "Subtitles appear here", 11, MUTED, extra='fill-opacity="0.6"')
+        s += t(tl_x, sy + 18, "Texts and graphics appear here", 11, MUTED, extra='fill-opacity="0.6"')
     for a, b, txt in subs:
         s += f'<clipPath id="st{a}"><rect x="{tl_x+tl_w*a}" y="{sy}" width="{tl_w*(b-a)}" height="28" rx="5"/></clipPath>'
         s += rect(tl_x + tl_w * a, sy, tl_w * (b - a), 28, SUB, 5)
         s += f'<g clip-path="url(#st{a})">' + icon("title", tl_x + tl_w * a + 9, sy + 14, 12, SUB_TEXT + "BF")
         s += t(tl_x + tl_w * a + 18, sy + 18, txt, 11, SUB_TEXT) + "</g>"
+    for a, b, txt in (graphics if subs else ()):
+        s += f'<clipPath id="gr{a}"><rect x="{tl_x+tl_w*a}" y="{sy}" width="{tl_w*(b-a)}" height="28" rx="5"/></clipPath>'
+        s += rect(tl_x + tl_w * a, sy, tl_w * (b - a), 28, GRAPHIC, 5)
+        s += f'<g clip-path="url(#gr{a})">' + icon("category", tl_x + tl_w * a + 10, sy + 14, 12, SUB_TEXT + "BF")
+        s += t(tl_x + tl_w * a + 20, sy + 18, txt, 11, SUB_TEXT) + "</g>"
     # soundtrack lane
     if soundtracks:
         ly2 = sy + 32
@@ -337,7 +347,7 @@ def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from L
              ("speed", "Speed", dim if selected_picture else TEXT),
              ("volume_off" if selected_muted else "volume", "Unmute" if selected_muted else "Mute",
               dim if selected_picture else (ACCENT if selected_muted else TEXT)),
-             ("subs", "Subtitle", TEXT), ("plus", "Add", TEXT)]
+             ("subs", "Text", TEXT), ("category", "Graphic", TEXT), ("plus", "Add", TEXT)]
     for i, (ic, lab, col) in enumerate(tools):
         bx = TOOL_X[i]
         s += icon(ic, bx, ty + 28, 22, col) + t(bx, ty + 56, lab, 12, col, 400, "middle")
@@ -345,13 +355,13 @@ def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from L
     return s
 
 
-TOOL_W = (W - 8) / 6
-TOOL_X = [4 + TOOL_W * i + TOOL_W / 2 for i in range(6)]
+TOOL_W = (W - 8) / 7
+TOOL_X = [4 + TOOL_W * i + TOOL_W / 2 for i in range(7)]
 TOOL_Y = H - 24 - 76
 
 
 def tool_ring(i):
-    return (TOOL_X[i] - 28, TOOL_Y + 6, 56, 62)
+    return (TOOL_X[i] - 25, TOOL_Y + 6, 50, 62)
 
 
 # ---------------------------------------------------------------- overlays
@@ -418,7 +428,7 @@ def export_sheet():
         y = top + 104
         for title, opts, sel in [("Resolution", ["Original", "720p"], 0),
                                  ("Frame rate", ["Original · 50 fps", "30 fps"], 0),
-                                 ("Subtitles", ["Burn into video", "Separate .srt file", "Off"], 0)]:
+                                 ("Text", ["Burn into video", "Off"], 0)]:
             s += t(16, y, title, 13, MUTED)
             y += 8
             for i, o in enumerate(opts):
@@ -428,13 +438,13 @@ def export_sheet():
         s += t(16, y - 4, "If this phone can't encode the original settings,", 12, MUTED) + t(16, y + 12, "export steps down automatically.", 12, MUTED)
         s += button(16, y + 20, W - 32, 52, "Export to gallery", size=15)
         return s
-    return editor() + sheet(640, c)
+    return editor() + sheet(600, c)
 
 
 def export_done():
     def body(x, y, w):
-        return t(x, y + 10, "Movies/MobiCut", 14, MUTED) + t(x, y + 32, "Subtitles: Download/MobiCut", 14, MUTED)
-    return editor() + dialog(190, "Saved to gallery", body, [("Share", ACCENT), ("Close", ACCENT), ("Play", ACCENT)])
+        return t(x, y + 10, "Movies/MobiCut", 14, MUTED)
+    return editor() + dialog(170, "Saved to gallery", body, [("Share", ACCENT), ("Close", ACCENT), ("Play", ACCENT)])
 
 
 def export_running():
@@ -502,8 +512,8 @@ def settings_sheet():
         s += t(34, y + 26, "Test build: edition", 13, TEXT, 600)
         s += rect(34, y + 40, 62, 32, "none", 8, OUTLINE, 1) + t(65, y + 61, "Free", 14, TEXT, 500, "middle")
         s += rect(104, y + 40, 58, 32, ACCENT, 8) + t(133, y + 61, "Pro", 14, ON_ACCENT, 600, "middle")
-        s += t(34, y + 92, "Only in test builds. A Play Store release takes", 12, MUTED)
-        s += t(34, y + 108, "the edition from the license.", 12, MUTED)
+        s += t(34, y + 92, "Only in test builds. The Play Store version takes", 12, MUTED)
+        s += t(34, y + 108, "the edition from your Google Play purchase.", 12, MUTED)
         s += t(20, y + 156, "Privacy policy", 15, ACCENT)
         s += t(20, y + 184, f"mobiCut {VERSION}", 12, MUTED)
         return s
@@ -513,18 +523,20 @@ def settings_sheet():
 def add_sheet():
     def c(top):
         s = t(16, top + 52, "Add", 18, TEXT, 600)
-        rows = [("image", "Picture at the pointer", "A still or moving picture, split into the video", False),
-                ("music", "Soundtrack at the pointer", "Music or any audio file, under the video", False),
-                ("video_lib", "Video from Gallery", "Added at the end of the timeline", True),
-                ("video_lib", "Video from files", "SD card, USB, Downloads, Drive…", True)]
-        for i, (ic, title, det, pro) in enumerate(rows):
+        rows = [("title", "Text slide at the pointer", "A title card from a template, split into the video"),
+                ("image", "Picture at the pointer", "A still or moving picture, split into the video"),
+                ("music", "Soundtrack at the pointer", "Music or any audio file, under the video"),
+                ("gradient", "Transitions at every join", "One transition everywhere, plus fade in and out"),
+                ("video_lib", "Video from Gallery", "Added at the end of the timeline"),
+                ("video_lib", "Video from files", "SD card, USB, Downloads, Drive…")]
+        for i, (ic, title, det) in enumerate(rows):
             y = top + 74 + i * 60
             s += icon(ic, 32, y + 24, 24, ACCENT)
             s += t(60, y + 20, title, 15) + t(60, y + 40, det, 12, MUTED)
         # Videos are Pro: the badge sits on their group.
-        s += rect(W - 62, top + 74 + 2 * 60 + 2, 46, 18, ACCENT, 9) + t(W - 39, top + 74 + 2 * 60 + 15, "PRO", 10, ON_ACCENT, 900, "middle")
+        s += rect(W - 62, top + 74 + 4 * 60 + 2, 46, 18, ACCENT, 9) + t(W - 39, top + 74 + 4 * 60 + 15, "PRO", 10, ON_ACCENT, 900, "middle")
         return s
-    return editor() + sheet(340, c)
+    return editor() + sheet(460, c)
 
 
 MEDIA_SEGS = [  # first video, a picture, the first video again, a second video
@@ -616,6 +628,28 @@ def slider(y, label, value, frac):
     return s
 
 
+def outline_button(x, y, w, h, label, icon_name=None):
+    s = rect(x, y, w, h, "none", h / 2, OUTLINE, 1)
+    if icon_name:
+        s += icon(icon_name, x + 20, y + h / 2, 18, ACCENT)
+        return s + t(x + 36, y + h / 2 + 5, label, 14, ACCENT, 500)
+    return s + t(x + w / 2, y + h / 2 + 5, label, 14, ACCENT, 500, "middle")
+
+
+def rotate_handle(cx, top):
+    """The round handle on a stalk above an overlay's box (OverlayLayer)."""
+    return (f'<line x1="{cx}" y1="{top}" x2="{cx}" y2="{top - 22}" stroke="{ACCENT}" stroke-width="1.5"/>'
+            f'<circle cx="{cx}" cy="{top - 30}" r="9" fill="#fff"/><circle cx="{cx}" cy="{top - 30}" r="7" fill="{ACCENT}"/>'
+            f'<path d="M{cx-3.5} {top-31} a3.5 3.5 0 1 1 1 2.6" fill="none" stroke="{ON_ACCENT}" stroke-width="1.4"/>')
+
+
+def path_curve(vy, vh, ex, ey):
+    """A faint captured path across the video, ending near (ex, ey)."""
+    sx, sy = W * 0.12, vy + vh * 0.25
+    return (f'<path d="M{sx} {sy} C{W*0.35} {vy+vh*0.05}, {W*0.45} {vy+vh*0.7}, {ex} {ey} S{W*0.85} {vy+vh*0.4}, {W*0.9} {vy+vh*0.3}" '
+            f'fill="none" stroke="#fff" stroke-opacity="0.55" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/>')
+
+
 def subtitle_editor(tab="Text", text="Take-off from Lysá hora", look="classic"):
     s = status_bar()
     s += icon("back", 28, 52, 24, TEXT) + t(56, 49, "Lysá hora flight", 16, TEXT, 600)
@@ -633,15 +667,18 @@ def subtitle_editor(tab="Text", text="Take-off from Lysá hora", look="classic")
     s += f'<rect x="{x0}" y="{y0}" width="{w0}" height="{h0}" fill="none" stroke="{ACCENT}" stroke-width="1.5" stroke-dasharray="5 4"/>'
     for cx, cy in ((x0, y0), (x0 + w0, y0), (x0, y0 + h0), (x0 + w0, y0 + h0)):
         s += f'<circle cx="{cx}" cy="{cy}" r="8.5" fill="#fff"/><circle cx="{cx}" cy="{cy}" r="7" fill="{ACCENT}"/>'
+    s += rotate_handle(x0 + w0 / 2, y0)
+    if tab == "Path":  # the saved path, faint, through the box centre
+        s += path_curve(SUB_VY, vh, x0 + w0 / 2, y0 + h0 / 2)
     # panel
     top = PANEL_TOP
     s += rect(0, top, W, H - top, SURF)
-    s += t(16, top + 30, "Subtitle", 16, TEXT, 600)
+    s += t(16, top + 30, "Text", 16, TEXT, 600)
     s += icon("play", 238, top + 24, 24, TEXT) + icon("trash", 280, top + 24, 22, DEL_LINE)
     s += button(300, top + 6, 52, 36, "Done")
     tw = (W - 16) / 3
     for i, lab in enumerate(["Text", "Look", "Motion"]):
-        sel = lab == tab
+        sel = lab == tab or (lab == "Motion" and tab == "Path")
         cx = 8 + tw * i + tw / 2
         s += t(cx, top + 68, lab, 14, ACCENT if sel else MUTED, 600 if sel else 400, "middle")
         s += rect(8 + tw * i, top + 80, tw, 2, ACCENT if sel else OUTLINE)
@@ -663,7 +700,7 @@ def subtitle_editor(tab="Text", text="Take-off from Lysá hora", look="classic")
             bxe -= w
             s += rect(bxe, y + 154, w, 38, "none", 19, OUTLINE, 1) + t(bxe + w / 2, y + 178, lab, 13, ACCENT, 600, "middle")
             bxe -= 6
-        s += t(16, y + 212, "Or drag the subtitle along the timeline", 12, MUTED)
+        s += t(16, y + 212, "Or drag the text along the timeline", 12, MUTED)
     elif tab == "Look":
         s += t(16, y, "Font", 13, MUTED)
         s += chips(16, y + 10, ["Sans", "Serif", "Mono", "Condensed", "Casual"], ("Serif",),
@@ -685,6 +722,12 @@ def subtitle_editor(tab="Text", text="Take-off from Lysá hora", look="classic")
             s += f'<circle cx="{cx}" cy="{y + 188}" r="{11 if sel else 13}" fill="{c}"/>'
         s += slider(y + 228, "Text opacity", "100 %", 1.0)
         s += t(16, y + 274, "Background colour", 13, MUTED)  # …and its opacity below, when scrolled
+    elif tab == "Path":  # the Motion tab scrolled down, after a capture
+        s += t(16, y, "Effect while shown", 13, MUTED) + chips(16, y + 10, ["None", "Wobble", "Pulse", "Shake", "Float"], ("None",))
+        s += rect(16, y + 62, W - 32, 1, OUTLINE)
+        s += t(16, y + 96, "Path: 5.0 s recorded", 14) + icon("play", W - 36, y + 91, 24, TEXT)
+        s += outline_button(16, y + 116, 112, 40, "Clear path") + outline_button(136, y + 116, 136, 40, "Capture again")
+        s += outline_button(16, y + 168, 176, 40, "Follow path from…", "link")
     else:
         s += t(16, y, "Ease in", 13, MUTED) + chips(16, y + 10, ["None", "Fade", "Slide", "Zoom", "Type"], ("Zoom",))
         s += slider(y + 66, "Duration", "0.4 s", (0.4 - 0.1) / 1.9)
@@ -716,8 +759,8 @@ def logo(cx, cy, width):
 def welcome(held=False, fill=0.4):
     s = status_bar()
     s += logo(W / 2, 150, W * 0.7)
-    s += t(W / 2, 352, "Quick cuts, speed-ups and subtitles for your", 15, TEXT, 400, "middle")
-    s += t(W / 2, 374, "action clips, right on the phone.", 15, TEXT, 400, "middle")
+    s += t(W / 2, 352, "Quick cuts, speed-ups and text for your action", 15, TEXT, 400, "middle")
+    s += t(W / 2, 374, "clips, right on the phone.", 15, TEXT, 400, "middle")
     s += t(W / 2, 404, f"by Ondřej Spilka · version {VERSION}", 12.5, MUTED, 400, "middle")
     s += t(W / 2 - 92, 442, "Docs", 14, ACCENT, 500, "middle") + t(W / 2, 442, "What's new", 14, ACCENT, 500, "middle")
     s += t(W / 2 + 92, 442, "Privacy", 14, ACCENT, 500, "middle")
@@ -735,6 +778,234 @@ def welcome(held=False, fill=0.4):
     if not held and fill > 0:
         s += f'<g clip-path="url(#cd)">' + t(bx + bw / 2, y + 29, label, 15, ON_ACCENT, 600, "middle") + "</g>"
     return s + nav_bar()
+
+
+# ---------------------------------------------------------------- graphics (model/Graphic.kt, export/ShapeArt.kt)
+YELLOW = "#FFD54F"; RED = "#E53935"
+
+
+def shape_art(name, cx, cy, size, line=RED, fill=None, lw=None):
+    """Simple stand-ins for ShapeArt: drawn into a size×size box centred on (cx, cy)."""
+    r = size / 2
+    lw = lw or max(2, size / 14)
+    x0, y0 = cx - r, cy - r
+    fl = f'fill="{fill}" fill-opacity="0.35"' if fill else 'fill="none"'
+    st = f'stroke="{line}" stroke-width="{lw}" stroke-linecap="round" stroke-linejoin="round"'
+    sl = 'fill="none" ' + st
+    if name.startswith("smiley"):
+        mood = name.split("_")[1]
+        s = f'<circle cx="{cx}" cy="{cy}" r="{r*0.9}" fill="{YELLOW}" stroke="#5D4037" stroke-width="{lw*0.7}"/>'
+        ey = cy - r * 0.2
+        if mood == "wink":
+            s += f'<circle cx="{cx-r*0.32}" cy="{ey}" r="{r*0.09}" fill="#5D4037"/><path d="M{cx+r*0.18} {ey} h{r*0.28}" stroke="#5D4037" stroke-width="{lw*0.7}" stroke-linecap="round"/>'
+        elif mood == "cool":
+            s += f'<path d="M{cx-r*0.6} {ey-r*0.1} h{r*1.2} l-{r*0.1} {r*0.25} h-{r*0.35} l-{r*0.1} -{r*0.15} l-{r*0.1} {r*0.15} h-{r*0.35}z" fill="#212121"/>'
+        else:
+            s += f'<circle cx="{cx-r*0.32}" cy="{ey}" r="{r*0.09}" fill="#5D4037"/><circle cx="{cx+r*0.32}" cy="{ey}" r="{r*0.09}" fill="#5D4037"/>'
+        my = cy + r * 0.3
+        if mood == "sad":
+            s += f'<path d="M{cx-r*0.35} {my+r*0.12} Q{cx} {my-r*0.2} {cx+r*0.35} {my+r*0.12}" fill="none" stroke="#5D4037" stroke-width="{lw*0.7}" stroke-linecap="round"/>'
+        elif mood == "surprised":
+            s += f'<circle cx="{cx}" cy="{my}" r="{r*0.15}" fill="#5D4037"/>'
+        elif mood == "laugh":
+            s += f'<path d="M{cx-r*0.42} {my-r*0.08} Q{cx} {my+r*0.55} {cx+r*0.42} {my-r*0.08}z" fill="#5D4037"/>'
+        else:
+            s += f'<path d="M{cx-r*0.38} {my-r*0.05} Q{cx} {my+r*0.35} {cx+r*0.38} {my-r*0.05}" fill="none" stroke="#5D4037" stroke-width="{lw*0.7}" stroke-linecap="round"/>'
+        return s
+    d = {
+        "arrow": f'<path d="M{x0+r*0.2} {cy+r*0.6} L{x0+r*1.75} {cy-r*0.55} M{x0+r*1.75} {cy-r*0.55} l-{r*0.55} {r*0.05} M{x0+r*1.75} {cy-r*0.55} l-{r*0.15} {r*0.5}" {sl}/>',
+        "block": f'<path d="M{x0+r*0.15} {cy-r*0.25} h{r*0.95} v-{r*0.4} l{r*0.75} {r*0.65} l-{r*0.75} {r*0.65} v-{r*0.4} h-{r*0.95}z" {st} {fl}/>',
+        "curved": f'<path d="M{x0+r*0.25} {cy+r*0.6} Q{x0+r*0.4} {cy-r*0.7} {x0+r*1.7} {cy-r*0.4} M{x0+r*1.7} {cy-r*0.4} l-{r*0.5} -{r*0.25} M{x0+r*1.7} {cy-r*0.4} l-{r*0.35} {r*0.4}" {sl}/>',
+        "rect": f'<rect x="{x0+r*0.2}" y="{cy-r*0.55}" width="{r*1.6}" height="{r*1.1}" {st} {fl}/>',
+        "rounded": f'<rect x="{x0+r*0.2}" y="{cy-r*0.55}" width="{r*1.6}" height="{r*1.1}" rx="{r*0.3}" {st} {fl}/>',
+        "circle": f'<ellipse cx="{cx}" cy="{cy}" rx="{r*0.8}" ry="{r*0.8}" {st} {fl}/>',
+        "star": '<path d="' + "M" + " L".join(f"{cx + (r*0.85 if i % 2 == 0 else r*0.38) * __import__('math').sin(i*3.14159/5)} {cy - (r*0.85 if i % 2 == 0 else r*0.38) * __import__('math').cos(i*3.14159/5)}" for i in range(10)) + f'z" {st} {fl}/>',
+        "line": f'<path d="M{x0+r*0.25} {cy+r*0.5} L{x0+r*1.75} {cy-r*0.5}" {sl}/>',
+        "bubble": f'<path d="M{x0+r*0.4} {cy-r*0.6} h{r*1.2} q{r*0.25} 0 {r*0.25} {r*0.25} v{r*0.55} q0 {r*0.25} -{r*0.25} {r*0.25} h-{r*0.7} l-{r*0.4} {r*0.35} v-{r*0.35} h-{r*0.1} q-{r*0.25} 0 -{r*0.25} -{r*0.25} v-{r*0.55} q0 -{r*0.25} {r*0.25} -{r*0.25}z" {st} {fl}/>',
+        "marker": f'<rect x="{x0+r*0.15}" y="{cy-r*0.25}" width="{r*1.7}" height="{r*0.5}" rx="{r*0.08}" fill="{YELLOW}" fill-opacity="0.6"/>',
+        "tick": f'<path d="M{x0+r*0.3} {cy} l{r*0.45} {r*0.45} l{r*0.95} -{r*0.95}" {sl}/>'.replace(line, "#43A047"),
+        "cross": f'<path d="M{x0+r*0.4} {cy-r*0.6} l{r*1.2} {r*1.2} M{x0+r*1.6} {cy-r*0.6} l-{r*1.2} {r*1.2}" {sl}/>',
+    }
+    return d[name]
+
+
+SMILEYS = ["smiley_happy", "smiley_laugh", "smiley_wink", "smiley_sad", "smiley_surprised", "smiley_cool"]
+OTHERS = ["arrow", "block", "curved", "rect", "rounded", "circle", "star", "line", "bubble", "marker", "tick", "cross"]
+
+
+def graphic_picker():
+    def c(top):
+        s = t(16, top + 52, "Graphic", 18, TEXT, 600)
+        s += t(16, top + 74, "Appears at the pointer, in the middle of the video", 13, MUTED)
+        cell, gap = 46, 9
+        for row, names in enumerate([SMILEYS, OTHERS[:6], OTHERS[6:]]):
+            for i, n in enumerate(names):
+                x = 16 + i * (cell + gap)
+                y = top + 94 + row * (cell + gap)
+                s += rect(x, y, cell, cell, SURF_HI, 10, OUTLINE, 1)
+                s += shape_art(n, x + cell / 2, y + cell / 2, cell * 0.72, fill=RED if n in ("block", "rect", "rounded", "circle", "star", "bubble") else None)
+        y = top + 94 + 3 * (cell + gap) + 6
+        s += outline_button(16, y, 250, 42, "Your own picture from Gallery", "image")
+        return s
+    return editor() + sheet(330, c)
+
+
+def graphic_editor():
+    s = status_bar()
+    s += icon("back", 28, 52, 24, TEXT) + t(56, 49, "Lysá hora flight", 16, TEXT, 600)
+    s += t(56, 66, "1920×1080 · 50 fps · 2:31", 12, MUTED, 400, mono=True) + button(264, 32, 84, 40, "Export")
+    vh = W * 9 / 16
+    s += rect(0, 80, W, PANEL_TOP - 80, "#000") + landscape(0, SUB_VY, W, vh, 0, "ge")
+    # a curved arrow pointing at the glider (top right of the frame)
+    x0, y0, w0, h0 = W * 0.42, SUB_VY + vh * 0.32, W * 0.24, vh * 0.34
+    s += shape_art("curved", x0 + w0 / 2, y0 + h0 / 2, min(w0, h0) * 1.25, "#FF7043", lw=4)
+    s += f'<rect x="{x0}" y="{y0}" width="{w0}" height="{h0}" fill="none" stroke="{ACCENT}" stroke-width="1.5" stroke-dasharray="5 4"/>'
+    for cx, cy in ((x0, y0), (x0 + w0, y0), (x0, y0 + h0), (x0 + w0, y0 + h0)):
+        s += f'<circle cx="{cx}" cy="{cy}" r="8.5" fill="#fff"/><circle cx="{cx}" cy="{cy}" r="7" fill="{ACCENT}"/>'
+    s += rotate_handle(x0 + w0 / 2, y0)
+    top = PANEL_TOP
+    s += rect(0, top, W, H - top, SURF)
+    s += t(16, top + 30, "Curved arrow", 16, TEXT, 600)
+    s += icon("play", 238, top + 24, 24, TEXT) + icon("trash", 280, top + 24, 22, DEL_LINE)
+    s += button(300, top + 6, 52, 36, "Done")
+    tw = (W - 16) / 3
+    for i, lab in enumerate(["Shape", "Look", "Motion"]):
+        sel = lab == "Look"
+        s += t(8 + tw * i + tw / 2, top + 68, lab, 14, ACCENT if sel else MUTED, 600 if sel else 400, "middle")
+        s += rect(8 + tw * i, top + 80, tw, 2, ACCENT if sel else OUTLINE)
+    y = top + 106
+    s += t(16, y, "Line", 14)
+    sw = ["#FFFFFF", "#000000", "#FFEB3B", "#FF7043", "#E53935", "#43A047", "#00BCD4", "#1E88E5", "#D81B60"]
+    for i, c in enumerate(sw):
+        cx = 32 + i * 42
+        sel = c == "#FF7043"
+        s += f'<circle cx="{cx}" cy="{y + 30}" r="16" fill="none" stroke="{ACCENT if sel else OUTLINE}" stroke-width="{3 if sel else 1}"/>'
+        s += f'<circle cx="{cx}" cy="{y + 30}" r="{11 if sel else 13}" fill="{c}"/>'
+    s += slider(y + 72, "Width", "1.2 %", 0.3)
+    s += slider(y + 120, "Opacity", "100 %", 1.0)
+    s += t(16, y + 168, "Position (or drag it on the video)", 13, MUTED)
+    s += chips(16, y + 178, ["Top", "Middle", "Bottom", "Centre"])
+    s += t(16, y + 240, "Rotation", 14) + t(16, y + 256, "Turn it with the round handle on the video", 12, MUTED)
+    s += t(W - 76, y + 246, "0°", 14, TEXT, 400, "end", True) + t(W - 24, y + 246, "Reset", 14, MUTED, 500, "end")
+    return s + nav_bar()
+
+
+# ---------------------------------------------------------------- path capture (ui/PathCapture.kt)
+def path_capture():
+    s = status_bar()
+    top = 24
+    s += rect(0, top, W, 132, SURF)
+    s += t(18, top + 30, "Cancel", 14, ACCENT, 600) + t(W / 2, top + 30, "Capture path", 16, TEXT, 600, "middle")
+    s += button(W - 76, top + 10, 64, 36, "Done")
+    for i, line in enumerate(["Hold your finger on the anchor. After a moment the",
+                              "video plays while you move, so you can follow",
+                              "what you want to track."]):
+        s += t(W / 2, top + 64 + i * 17, line, 12.5, MUTED, 400, "middle")
+    by, bw = top + 112, W - 24
+    s += rect(12, by, bw, 8, BG, 4) + rect(12 + bw * 0.12, by, bw * 0.78, 8, "#ffffff", op=0.22)
+    s += rect(12, by, bw * 0.12, 8, ACCENT, 0, op=0.35) + rect(12 + bw * 0.12, by, bw * 0.39, 8, ACCENT)
+    s += rect(12, by, bw, 8, "none", 4, OUTLINE, 1)
+    # preview: frame outlined, outside dimmed
+    ptop, pbot = top + 132, H - 24 - 96
+    s += rect(0, ptop, W, pbot - ptop, "#000")
+    vh = W * 9 / 16
+    vy = ptop + (pbot - ptop - vh) / 2
+    s += landscape(0, vy, W, vh, 0, "pc")
+    s += rect(0, ptop, W, vy - ptop, "#000", op=0.6) + rect(0, vy + vh, W, pbot - vy - vh, "#000", op=0.6)
+    s += f'<rect x="1" y="{vy}" width="{W-2}" height="{vh}" fill="none" stroke="#fff" stroke-opacity="0.7" stroke-width="1.5"/>'
+    # recorded track so far, and the arrow riding on it next to the glider
+    gx, gy = 228 * W / 320, vy + 58 * vh / 180
+    s += (f'<path d="M{W*0.12} {vy+vh*0.62} C{W*0.3} {vy+vh*0.5}, {W*0.5} {vy+vh*0.45}, {gx-34} {gy+30}" fill="none" '
+          f'stroke="{ACCENT}" stroke-width="3" stroke-linecap="round" stroke-opacity="0.85"/>')
+    ax, ay = gx - 34, gy + 30
+    s += shape_art("curved", ax, ay, 44, "#FF7043", lw=3.5)
+    s += f'<circle cx="{ax}" cy="{ay}" r="13" fill="none" stroke="#fff" stroke-width="2.5"/><circle cx="{ax}" cy="{ay}" r="3" fill="#fff"/>'
+    s += f'<circle cx="{ax+10}" cy="{ay+26}" r="22" fill="#fff" fill-opacity="0.18" stroke="#fff" stroke-opacity="0.5"/>'
+    # bottom bar
+    s += rect(0, pbot, W, 96, SURF)
+    s += t(12, pbot + 24, "Recording… 2.5 s of 5.0 s · lift your finger", 13, ACCENT)
+    s += t(12, pbot + 41, "to finish", 13, ACCENT)
+    s += chips(12, pbot + 52, ["Steps", "Smooth"], ("Smooth",))
+    s += chips(176, pbot + 52, ["½×", "1×"], ("1×",))
+    return s + nav_bar()
+
+
+# ---------------------------------------------------------------- text slide (ui/SlideDialog.kt)
+def slide_art(x, y, w, h, title, line2, uid, scale=1.0, template="gradient"):
+    s = f'<defs><linearGradient id="sl{uid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1E3A5F"/><stop offset="1" stop-color="#E5532F"/></linearGradient></defs>'
+    if template == "gradient":
+        s += rect(x, y, w, h, f"url(#sl{uid})", 4 * scale)
+    elif template == "band":
+        s += rect(x, y, w, h, "#10151C", 4 * scale) + rect(x, y + h * 0.36, w, h * 0.3, "#E5532F")
+    elif template == "cinema":
+        s += rect(x, y, w, h, "#000", 4 * scale) + rect(x, y + h * 0.15, w, h * 0.7, "#1E3A5F")
+    elif template == "frame":
+        s += rect(x, y, w, h, "#1E3A5F", 4 * scale) + rect(x + w * 0.06, y + h * 0.1, w * 0.88, h * 0.8, "none", 0, "#F2F2F0", 1.2 * scale)
+    elif template == "split":
+        s += rect(x, y, w, h, "#1E3A5F", 4 * scale) + rect(x + w / 2, y, w / 2, h, "#E5532F")
+    elif template == "minimal":
+        s += rect(x, y, w, h, "#F2F2F0", 4 * scale)
+    else:  # classic
+        s += rect(x, y, w, h, "#1E3A5F", 4 * scale)
+    col = "#10151C" if template == "minimal" else "#FFFFFF"
+    s += t(x + w / 2, y + h * 0.5, title, h * 0.16, col, 700, "middle")
+    if line2:
+        s += t(x + w / 2, y + h * 0.68, line2, h * 0.08, col, 400, "middle")
+    return s
+
+
+def text_slide_sheet():
+    def c(top):
+        s = t(16, top + 50, "Text slide", 18, TEXT, 600) + button(W - 104, top + 28, 88, 40, "Insert")
+        pw = W - 32
+        s += slide_art(16, top + 82, pw, pw * 9 / 16, "Lysá hora", "First flight of the season", "big")
+        y = top + 82 + pw * 9 / 16 + 14
+        s += rect(16, y, W - 32, 52, "none", 4, MUTED, 1) + t(26, y - 2, "Title", 11, MUTED).replace('y="', 'y="', 1)
+        s += rect(24, y - 8, 34, 12, SURF) + t(28, y + 2, "Title", 11, MUTED) + t(30, y + 32, "Lysá hora", 15)
+        y += 64
+        s += rect(16, y, W - 32, 52, "none", 4, MUTED, 1) + rect(24, y - 8, 152, 12, SURF) + t(28, y + 2, "Second line (optional)", 11, MUTED)
+        s += t(30, y + 32, "First flight of the season", 15)
+        y += 66
+        tw = (W - 32) / 2
+        for i, lab in enumerate(["Templates", "Customize"]):
+            sel = i == 0
+            s += t(16 + tw * i + tw / 2, y + 14, lab, 14, ACCENT if sel else MUTED, 600 if sel else 400, "middle")
+            s += rect(16 + tw * i, y + 24, tw, 2, ACCENT if sel else OUTLINE)
+        y += 38
+        tiles = [("Classic", "classic"), ("Gradient", "gradient"), ("Band", "band"), ("Cinema", "cinema"), ("Minimal", "minimal")]
+        for i, (lab, tpl) in enumerate(tiles):
+            x = 16 + i * 84
+            sel = tpl == "gradient"
+            s += slide_art(x, y, 76, 43, "Lysá hora", "", f"t{i}", 0.5, tpl)
+            if sel:
+                s += rect(x - 2, y - 2, 80, 47, "none", 6, ACCENT, 2)
+            s += t(x + 38, y + 60, lab, 12, ACCENT if sel else MUTED, 400, "middle")
+        y += 84
+        s += t(16, y + 22, "Shown for", 14) + stepper(W - 16 - 136, y, "4.0 s")
+        return s
+    return editor() + sheet(H - 40, c)
+
+
+# ---------------------------------------------------------------- transitions at every join (ui/Sheets.kt)
+def switch(x, y, on):
+    s = rect(x, y, 52, 32, ACCENT if on else SURF, 16, None if on else MUTED, 2)
+    return s + f'<circle cx="{x + (36 if on else 16)}" cy="{y + 16}" r="{12 if on else 8}" fill="{ON_ACCENT if on else MUTED}"/>'
+
+
+def every_join_dialog():
+    def body(x, y, w):
+        s = t(x, y + 6, "Type", 13, MUTED)
+        s += radio(x + 10, y + 32, True) + t(x + 30, y + 30, "Fade out-in", 15) + t(x + 30, y + 46, "Dips to black and back", 12, MUTED)
+        s += radio(x + 10, y + 80, False) + t(x + 30, y + 78, "Interleave", 15) + rect(x + 112, y + 66, 34, 15, ACCENT, 7) + t(x + 129, y + 77, "PRO", 9, ON_ACCENT, 900, "middle") + t(x + 30, y + 94, "Crossfade. The video gets shorter", 12, MUTED)
+        s += t(x, y + 136, "Duration", 14) + t(x, y + 153, "Each, in the", 12, MUTED) + t(x, y + 168, "export", 12, MUTED)
+        s += stepper(x + w - 136, y + 122, "2.0 s")
+        s += t(x, y + 208, "Fade in & out", 15) + t(x, y + 225, "At the start and the end", 12, MUTED) + t(x, y + 240, "of the video", 12, MUTED)
+        s += switch(x + w - 52, y + 200, True)
+        s += t(x, y + 280, "Replace existing", 15) + t(x, y + 297, "Otherwise only joins without", 12, MUTED) + t(x, y + 312, "one get it", 12, MUTED)
+        s += switch(x + w - 52, y + 272, False)
+        s += t(x, y + 346, "Adds 3 transitions.", 12, ACCENT)
+        return s
+    return editor(transition_set=(1,)) + dialog(500, "Transitions at every join", body, [("Cancel", ACCENT), ("Apply", ACCENT)], width=330)
 
 
 # ---------------------------------------------------------------- tablet, landscape (EditorScreen wide layout)
@@ -828,9 +1099,9 @@ def t_bottom_row():
     s += icon("forward5", 152, cy, 22, TEXT) + icon("skip_next", 192, cy, 22, TEXT)
     s += t(216, cy - 3, "0:21.4", 11, TEXT, 400, mono=True) + t(216, cy + 11, "0:48.0", 11, MUTED, 400, mono=True)
     s += icon("undo", TW - T_TOOLS_W - 28, cy, 24, TEXT)
-    bw = (T_TOOLS_W - 8) / 6
+    bw = (T_TOOLS_W - 8) / 7
     for i, (ic, lab) in enumerate([("cut", "Split"), ("trash", "Delete"), ("speed", "Speed"),
-                                   ("volume", "Mute"), ("subs", "Subtitle"), ("plus", "Add")]):
+                                   ("volume", "Mute"), ("subs", "Text"), ("category", "Graphic"), ("plus", "Add")]):
         bx = TW - T_TOOLS_W + 4 + bw * i + bw / 2
         s += icon(ic, bx, cy - 10, 22, TEXT) + t(bx, cy + 18, lab, 12, TEXT, 400, "middle")
     return s
@@ -844,7 +1115,7 @@ def tablet_subtitle():
     top, px = 80, TW - T_PANEL_W
     s = t_header() + t_preview(0, top, px, TH - 24 - top, "Take-off from Lysá hora", box=True)
     s += rect(px, top, T_PANEL_W, TH - 24 - top, SURF)
-    s += t(px + 16, top + 30, "Subtitle", 16, TEXT, 600)
+    s += t(px + 16, top + 30, "Text", 16, TEXT, 600)
     s += icon("play", TW - 122, top + 24, 24, TEXT) + icon("trash", TW - 80, top + 24, 22, DEL_LINE)
     s += button(TW - 60, top + 6, 52, 36, "Done")
     tw = (T_PANEL_W - 16) / 3
@@ -869,7 +1140,7 @@ def tablet_subtitle():
         bxe -= w
         s += rect(bxe, y + 154, w, 38, "none", 19, OUTLINE, 1) + t(bxe + w / 2, y + 178, lab, 13, ACCENT, 600, "middle")
         bxe -= 6
-    s += t(px + 16, y + 212, "Or drag the subtitle along the timeline", 12, MUTED)
+    s += t(px + 16, y + 212, "Or drag the text along the timeline", 12, MUTED)
     return t_frame(s)
 
 
@@ -909,7 +1180,8 @@ SCREENS = {
               + callout(3, 60, TL_TRACK_TOP + 150, ring=(20, TL_TRACK_TOP + 128, 40, 40)),
     "speed": speed_sheet,
     "subtitle-editor": lambda: subtitle_editor("Text")
-                       + callout(1, SUB_BOX_PX[0] + SUB_BOX_PX[2] / 2, SUB_BOX_PX[1] - 18)
+                       + callout(1, SUB_BOX_PX[0] + 60, SUB_BOX_PX[1] - 16)
+                       + callout(7, SUB_BOX_PX[0] + SUB_BOX_PX[2] / 2 + 30, SUB_BOX_PX[1] - 32)
                        + callout(2, SUB_BOX_PX[0] + SUB_BOX_PX[2] + 2, SUB_BOX_PX[1] + SUB_BOX_PX[3] + 18)
                        + callout(3, 16 + 4, PANEL_TOP + 52, ring=(8, PANEL_TOP + 50, W - 16, 36))
                        + callout(4, W - 12, PANEL_TOP + 98 + 176, ring=(10, PANEL_TOP + 98 + 128, W - 20, 70))
@@ -937,7 +1209,7 @@ SCREENS = {
                       + callout(2, 16 + 340 * 0.72, MEDIA_TOP - 14, ring=(16 + 340 * 0.72 - 8, MEDIA_TOP, 16, 84))
                       + callout(3, 16 + 340 * 0.44 + 92, MEDIA_TOP + 69, ring=(16 + 340 * 0.44 + 2, MEDIA_TOP + 58, 82, 22))
                       + callout(4, 30, MEDIA_TOP + 132, ring=(18, MEDIA_TOP + 120, 344, 26))
-                      + callout(5, TOOL_X[5] - 22, TOOL_Y + 4, ring=tool_ring(5)),
+                      + callout(5, TOOL_X[6] - 22, TOOL_Y + 4, ring=tool_ring(6)),
     "mute": lambda: editor(segs=[(0.36, "1×", False, False, False), (0.30, "1× · muted", False, False, True), (0.34, "1×", False, False, False)],
                            speed_badge="", selected_muted=True, transitions=False)
                     + callout(1, 16 + 340 * 0.51, TL_TRACK_TOP - 16, ring=(16 + 340 * 0.36, TL_TRACK_TOP, 340 * 0.30, 84))
@@ -948,6 +1220,12 @@ SCREENS = {
     "welcome": lambda: welcome() + callout(1, W / 2 - 134, 438, ring=(W / 2 - 122, 424, 244, 28)) + callout(2, W / 2 + 72, 520, ring=(W / 2 - 60, 496, 120, 48))
                + callout(3, 30, 676, ring=(16, 686, 106, 56)) + callout(4, W - 30, 676, ring=(124, 686, W - 140, 56)),
     "settings-edition": lambda: settings_sheet() + callout(1, 182, 575, ring=(26, 572, 144, 48)),
+    "graphic-picker": graphic_picker,
+    "graphic-editor": graphic_editor,
+    "path-capture": path_capture,
+    "path-row": lambda: subtitle_editor("Path", look="classic"),
+    "text-slide": text_slide_sheet,
+    "transitions-every-join": every_join_dialog,
 }
 
 

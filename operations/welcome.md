@@ -14,7 +14,9 @@ your edition. After 5 seconds it moves on to your projects by itself.
 
 1. **Docs** opens this website; **What's new** opens the notes of the latest release;
    **Privacy** opens the [privacy policy]({{ "/privacy/" | relative_url }}).
-2. **Upgrade** shows what [Pro]({{ "/editions/" | relative_url }}) adds. In Pro the screen shows
+2. **Upgrade** shows what [Pro]({{ "/editions/" | relative_url }}) adds. In the Google Play
+   version, while your account can still get the free week of Pro, the button reads
+   **Try Pro free**. In Pro the screen shows
    the **PRO** badge and *All features unlocked* instead.
 3. **Hold…** keeps the welcome screen open (the button then reads **Held**), for example to
    note the version for a bug report.

@@ -1,7 +1,7 @@
 ---
 title: Several videos
 parent: Operations
-nav_order: 12
+nav_order: 15
 ---
 
 # Several videos in one project
@@ -41,7 +41,7 @@ In Free these two items carry the **PRO** badge; tapping them explains Pro. Free
 ## Remove a whole video
 
 Select any of its segments, tap **ⓘ**, then **Remove this whole video** and confirm. All its
-segments go, and the subtitles on it with them. **Undo** brings it back. The project's last video
+segments go, and the texts on it with them. **Undo** brings it back. The project's last video
 can't be removed.
 
 ## Export

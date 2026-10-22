@@ -25,10 +25,11 @@ raw clip into a short video before you even get home:
 
 - **cut it into segments** and throw away the boring parts,
 - **speed up** the long stretches (up to 16×) or slow down the best moment (down to 0.25×),
-- **add subtitles** to say where and what it is,
+- **add texts** to say where and what it is, and **title cards** between the parts,
 - **join the parts with fades** so the cuts look intentional,
 - **put in photos** with a slow zoom or slide, and **music** under it all,
 - **mute** the wind noise, and (Pro) **join several videos** into one,
+- (Pro) put **arrows, smileys and shapes** on the video and make them **follow** a glider or skier,
 - **export** a new video to your gallery, ready to share.
 
 ## Your video stays where it is
@@ -55,13 +56,13 @@ raw clip into a short video before you even get home:
 - Choosing a smaller resolution (720p) or 30 fps makes it faster still, and the file smaller.
 - The result lands straight in your gallery, ready to share.
 
-{% include screen.html name="editor" alt="The mobiCut editor: video preview at the top, a timeline with three segments, subtitle chips and the Split, Delete, Speed, Mute, Subtitle and Add tools at the bottom." caption="The editor, where all the work happens." %}
+{% include screen.html name="editor" alt="The mobiCut editor: video preview at the top, a timeline with three segments, text chips and the Split, Delete, Speed, Mute, Text, Graphic and Add tools at the bottom." caption="The editor, where all the work happens." %}
 
 ## How it works, in one minute
 
 1. Start a **project** from a video in your gallery or on an SD card or USB camera.
 2. The whole video is one **segment** on the timeline. **Split** it where something changes.
-3. Give each segment what it needs: **delete** it, change its **speed**, add a **subtitle** over it.
+3. Give each segment what it needs: **delete** it, change its **speed**, add a **text** over it.
 4. **Export.** The new video lands in `Movies/MobiCut` in your gallery.
 
 Your edits save automatically, so you can close the app and come back to a project any time.
@@ -75,11 +76,11 @@ mobiCut comes in two editions: **Free** and **Pro**.
 > Free is a complete editor with a few limits, not a trial.
 
 Free's only limits: source videos **up to 1 hour**, **one video per project**, a small
-**(mc) mobiCut logo** in the top right corner of exports, and **Fade out-in** as the only
-transition. Pro removes them.
+**(mc) mobiCut logo** in the top right corner of exports, **Fade out-in** as the only
+transition, and no **graphics** or **paths**. Pro removes them.
 
-During testing, **Pro can be switched on for free** in Settings. After the Play Store launch,
-Pro will be paid: a subscription, a short monthly pass, or a one-time purchase.
+In the APK from this site, **Pro can be switched on for free** in Settings. On Google Play, Pro
+is a yearly subscription with a **free first week**, or a month that doesn't renew.
 
 [Compare Free and Pro →]({{ "/editions/" | relative_url }}){: .btn .btn-outline }
 

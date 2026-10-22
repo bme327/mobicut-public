@@ -7,7 +7,7 @@ permalink: /privacy/
 # Privacy policy
 {: .no_toc }
 
-**mobiCut** (Android app, package `app.mobicut`) · Last updated: 21 October 2026
+**mobiCut** (Android app, package `app.mobicut`) · Last updated: 22 October 2026
 
 1. TOC
 {:toc}
@@ -34,21 +34,22 @@ only to the files you pick, not to the rest of your storage. It reads them on th
 the preview, the timeline and file details (length, resolution) and to export your edit.
 Nothing is uploaded.
 
-**Your projects.** Your edits (cuts, speeds, subtitles and other settings), the project name, a
-link to the source files and a small thumbnail are saved in the app's private storage on your
+**Your projects.** Your edits (cuts, speeds, texts and other settings), the project name, a
+link to the source files, a small thumbnail, and copies of the video stills you take and of
+the pictures you use as graphics are saved in the app's private storage on your
 phone, so you can continue later. Deleting a project removes it. Uninstalling the app removes
 them too, unless you choose to keep the app's data in Android's uninstall dialog.
 
-**Exported files.** Exported videos are saved to *Movies/MobiCut* and subtitle files (.srt) to
-*Download/MobiCut* on your phone. They're your files: mobiCut doesn't send them anywhere, and
+**Exported files.** Exported videos are saved to *Movies/MobiCut* on your phone. They're your files: mobiCut doesn't send them anywhere, and
 they stay when you uninstall the app.
 
 **Settings.** A few app preferences (such as your edition) are stored on the phone.
 
 mobiCut does not access your camera, microphone, location, contacts, accounts or any other data,
-and asks for no runtime permissions. The only permission in the app is *view network
-connections* (added by Android's media library), which can only check whether the phone is
-online; it cannot connect or send anything.
+and asks for no runtime permissions. Besides *view network connections* (added by Android's
+media library, which can only check whether the phone is online), the app has Google Play's
+*billing* permission, used only to ask Google Play whether Pro is unlocked and to open its
+payment screen. Neither lets mobiCut connect to the internet or send anything.
 
 ## What we collect and share
 
@@ -64,8 +65,8 @@ These are not part of mobiCut's own data handling, but you may meet them while u
   mobiCut's projects (not your videos) in that backup so they come back on a new phone. This is done by Android under
   [Google's privacy policy](https://policies.google.com/privacy); you can turn it off in your
   phone's settings.
-- **Google Play.** Installing from Google Play, and buying Pro once it's offered there, is handled
-  by Google. Payments go through Google Play; mobiCut never sees your payment details and only
+- **Google Play.** Installing from Google Play, and buying Pro or starting its free trial there,
+  is handled by Google. Payments go through Google Play; mobiCut never sees your payment details and only
   learns from Google Play whether Pro is unlocked on your account. See
   [Google's privacy policy](https://policies.google.com/privacy).
 - **Links and feedback.** The *Docs*, *What's new* and *Privacy* buttons on the welcome screen,

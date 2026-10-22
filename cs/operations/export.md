@@ -1,7 +1,7 @@
 ---
 title: Export
 parent: Funkce
-nav_order: 14
+nav_order: 17
 ---
 
 # Export hotového videa
@@ -26,10 +26,13 @@ Export z tvých úprav vytvoří nové video. Originálu se nedotkne.
      rozměry menší než originál.
    - **Frame rate**: *Original*, nebo *30 fps* (nabízí se u videí s 50/60 fps). 30 fps zmenší
      soubor a na sdílení to bohatě stačí.
-   - **Subtitles** (má-li projekt nějaké): *Burn into video*, *Separate .srt file* nebo *Off*.
+   - **Text** (má-li projekt texty): *Burn into video* nebo *Off*. Grafika se vpálí vždy.
 3. Klepni na **Export to gallery**.
 
-{% include screen.html name="export" alt="Panel Export s volbami rozlišení, snímkové frekvence a titulků." %}
+Pokud některé spoje ještě nemají přechod, mobiCut se nejdřív zeptá, jestli je přidat; viz
+[Přechody]({{ "/cs/operations/transitions/#when-you-export" | relative_url }}).
+
+{% include screen.html name="export" alt="Panel Export s volbami rozlišení, snímkové frekvence a textů." %}
 
 ## Během exportu {#while-it-exports}
 

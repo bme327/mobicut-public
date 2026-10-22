@@ -1,7 +1,7 @@
 ---
 title: Více videí
 parent: Funkce
-nav_order: 12
+nav_order: 15
 ---
 
 # Více videí v jednom projektu
@@ -41,7 +41,7 @@ Ve Free mají tyto dvě položky štítek **PRO**; klepnutím se dozvíš o Pro.
 ## Odstranit celé video {#remove-a-whole-video}
 
 Vyber kterýkoli jeho úsek, klepni na **ⓘ**, pak **Remove this whole video** a potvrď. Zmizí
-všechny jeho úseky i titulky na něm. **Undo** ho vrátí. Poslední video projektu odstranit nejde.
+všechny jeho úseky i texty na něm. **Undo** ho vrátí. Poslední video projektu odstranit nejde.
 
 ## Export {#export}
 

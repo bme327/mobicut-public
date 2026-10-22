@@ -70,7 +70,7 @@ Long-press the mobiCut icon → **App info** → **Uninstall**.
   [can't find its video]({{ "/operations/missing-video/" | relative_url }}). Pick the same video
   again and all edits are kept.
 
-Videos you exported stay in `Movies/MobiCut`, subtitle files in `Download/MobiCut`, either way.
+Videos you exported stay in `Movies/MobiCut` either way.
 
 ## Troubleshooting
 

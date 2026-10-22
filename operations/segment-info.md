@@ -1,7 +1,7 @@
 ---
 title: Segment details
 parent: Operations
-nav_order: 13
+nav_order: 16
 ---
 
 # Segment details
@@ -21,7 +21,7 @@ finished video.
 | **In the export** | Start and end in the finished video, or *Deleted* |
 | **Export length** | How long it lasts in the finished video |
 | **Audio** | *On*, *On, natural pitch* (sped up or slowed down), *Muted* ([you muted it]({{ "/operations/mute/" | relative_url }})) or *Muted (8× and above)*. Not shown for pictures. |
-| **Subtitles** | How many subtitles touch this segment, if any |
+| **Texts** | How many texts touch this segment, if any |
 
 For a deleted segment the dialog has a **Restore** button.
 
@@ -31,5 +31,5 @@ For a deleted segment the dialog has a **Restore** button.
 
 - **Duration & effect…** (pictures): opens the [picture settings]({{ "/operations/pictures/" | relative_url }}#change-or-remove-a-picture).
 - **Remove this picture** / **Remove this whole video**: takes the whole file out of the
-  project, all its segments and the subtitles on it, after you confirm. **Undo** brings it back.
+  project, all its segments and the texts on it, after you confirm. **Undo** brings it back.
   Shown when the project has more than one video or picture; the last one can't be removed.

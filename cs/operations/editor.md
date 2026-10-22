@@ -17,7 +17,7 @@ nav_order: 3
 ## Přehrát a pozastavit {#play-and-pause}
 
 Klepni na **▶** pod náhledem. Přehrávání už odpovídá tvým úpravám: smazané úseky se přeskakují,
-zrychlené úseky hrají rychle, titulky se ve videu objevují i s animací, prolínačky ztmavují obraz
+zrychlené úseky hrají rychle, texty a grafika se ve videu objevují i s animací, prolínačky ztmavují obraz
 a Interleave se prolínají.
 
 Dva malé časy vedle tlačítek jsou pozice v **hotovém videu** (nahoře) a jeho celková délka
@@ -59,7 +59,7 @@ obrys); nástroje pracují s vybraným úsekem.
 | Kulaté tlačítko na střihu | Přechod (viz [Přechody]({{ "/cs/operations/transitions/" | relative_url }})) |
 | ⓘ na vybraném úseku | [Podrobnosti úseku]({{ "/cs/operations/segment-info/" | relative_url }}) |
 | Časy nad pásem | Časy v *původním* videu (videa a obrázky za sebou) |
-| Zelené štítky pod titulky | [Hudba]({{ "/cs/operations/soundtracks/" | relative_url }}); stopa se ukáže, až nějakou přidáš |
+| Zelené štítky pod texty | [Hudba]({{ "/cs/operations/soundtracks/" | relative_url }}); stopa se ukáže, až nějakou přidáš |
 
 ## Přiblížení {#zoom-in}
 
@@ -71,7 +71,7 @@ U dlouhého videa potřebuje střih přesnost. Použij cokoli z toho:
 
 ## Zpět {#undo}
 
-**↶** (vpravo nahoře u ovládání) vrátí poslední změnu: střih, smazání, změnu rychlosti, titulek,
+**↶** (vpravo nahoře u ovládání) vrátí poslední změnu: střih, smazání, změnu rychlosti, text, grafiku,
 přechod, ztlumení, obrázek, hudbu nebo přidané video. Opakovaným klepnutím jdeš dál do historie.
 
 ## Otočení obrazovky {#turn-the-screen}

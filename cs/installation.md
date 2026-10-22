@@ -70,7 +70,7 @@ Podrž ikonu mobiCutu → **Informace o aplikaci** → **Odinstalovat**.
   [nemůže najít své video]({{ "/cs/operations/missing-video/" | relative_url }}). Vyber znovu stejné
   video a všechny úpravy zůstanou.
 
-Exportovaná videa zůstanou v `Movies/MobiCut` a soubory titulků v `Download/MobiCut` v každém případě.
+Exportovaná videa zůstanou v `Movies/MobiCut` v každém případě.
 
 ## Řešení potíží
 

@@ -20,7 +20,7 @@ Projekt je jedno video a všechno, co jsi s ním udělal. mobiCut projekty uklá
 
 1. **Settings**: edice, zásady ochrany soukromí a verze aplikace.
 2. **New project**: nový projekt.
-3. **Projekt**: miniatura, délka hotového videa, počet úseků a titulků a kdy byl naposledy
+3. **Projekt**: miniatura, délka hotového videa, počet úseků a textů a kdy byl naposledy
    upravený. Klepnutím ho otevřeš.
 4. **Nabídka ⋮**: přejmenovat nebo smazat.
 
@@ -76,6 +76,5 @@ a všechno, co jsi exportoval, zůstane v galerii.**
 | Tvoje úpravy | V aplikaci a v tvé záloze Google. Při odinstalaci zůstanou, když zaškrtneš **Zachovat data aplikace** (viz [Odinstalace]({{ "/cs/installation/#uninstalling" | relative_url }})). |
 | Původní video | **Tam, kde bylo.** mobiCut na něj jen odkazuje: nikdy ho nekopíruje, nestahuje ani nenahrává. |
 | Exportovaná videa | `Movies/MobiCut` (objeví se v galerii) |
-| Soubory titulků (.srt) | `Download/MobiCut` |
 
 Pokud se původní video přesune nebo smaže, viz [Chybějící video]({{ "/cs/operations/missing-video/" | relative_url }}).

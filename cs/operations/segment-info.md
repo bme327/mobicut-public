@@ -1,7 +1,7 @@
 ---
 title: Podrobnosti úseku
 parent: Funkce
-nav_order: 13
+nav_order: 16
 ---
 
 # Podrobnosti úseku
@@ -20,7 +20,7 @@ Klepni na **ⓘ** na vybraném úseku a uvidíš přesně, co pokrývá a jak sk
 | **In the export** | Začátek a konec v hotovém videu, nebo *Deleted* |
 | **Export length** | Jak dlouho trvá v hotovém videu |
 | **Audio** | *On*, *On, natural pitch* (zrychlený nebo zpomalený), *Muted* ([ztlumil jsi ho]({{ "/cs/operations/mute/" | relative_url }})) nebo *Muted (8× and above)*. U obrázků se neukazuje. |
-| **Subtitles** | Kolik titulků se úseku dotýká, pokud nějaké |
+| **Texts** | Kolik textů se úseku dotýká, pokud nějaké |
 
 U smazaného úseku má dialog tlačítko **Restore**.
 
@@ -30,5 +30,5 @@ U smazaného úseku má dialog tlačítko **Restore**.
 
 - **Duration & effect…** (obrázky): otevře [nastavení obrázku]({{ "/cs/operations/pictures/" | relative_url }}#change-or-remove-a-picture).
 - **Remove this picture** / **Remove this whole video**: po potvrzení odebere z projektu celý
-  soubor, všechny jeho úseky i titulky na něm. **Undo** ho vrátí.
+  soubor, všechny jeho úseky i texty na něm. **Undo** ho vrátí.
   Ukazuje se, když má projekt víc než jedno video nebo obrázek; poslední odstranit nejde.

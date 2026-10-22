@@ -1,7 +1,7 @@
 ---
 title: Pictures
 parent: Operations
-nav_order: 10
+nav_order: 13
 ---
 
 # Add a picture
@@ -26,8 +26,19 @@ becomes a segment of its own, shown for as long as you choose, standing still or
 {% include screen.html name="picture-add" alt="The Add picture dialog: Gallery and Browse files buttons, the picked picture's name, Duration 3.0 s, and the effects Still, Slow zoom in (selected), Slow zoom out and Slide in." %}
 
 The video is split at the playhead and the picture goes in between; everything after it moves
-on by the picture's duration, subtitles included. If the playhead is within a tenth of a second of
+on by the picture's duration, texts included. If the playhead is within a tenth of a second of
 a split, the picture goes right at that split instead of making a tiny segment.
+
+## A still from the video
+
+To use a frame of the video itself, for example to hold the moment of take-off for a few
+seconds, tap **Video still** in the **Add picture** dialog. It takes the video's frame **at the
+playhead**, in full resolution, and shows a small preview of it next to its name
+(*Still 1:12.4*). Set the duration and effect as for any picture and tap **Insert**.
+
+The still is saved with the project (and backed up with it), so it stays even if the video is
+later moved. Under the button, the dialog says why a still can't be taken right now: for example
+*The playhead is on a picture*, *on a text slide* or *on a deleted part*.
 
 ## Effects
 
@@ -52,7 +63,7 @@ It works like any other segment:
 - [delete and restore]({{ "/operations/delete/" | relative_url }}) it,
 - put a [transition]({{ "/operations/transitions/" | relative_url }}) before or after it, for
   example a fade out-in, or an Interleave so it crossfades with the video,
-- [subtitles]({{ "/operations/subtitles/" | relative_url }}) can run over it.
+- [texts]({{ "/operations/subtitles/" | relative_url }}) and [graphics]({{ "/operations/graphics/" | relative_url }}) can run over it.
 
 **Speed** and **Mute** don't apply to pictures and are greyed out when one is selected.
 

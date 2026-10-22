@@ -1,7 +1,7 @@
 ---
 title: Export
 parent: Operations
-nav_order: 14
+nav_order: 17
 ---
 
 # Export the finished video
@@ -26,10 +26,14 @@ Export builds a new video from your edits. The original is not touched.
      sizes smaller than the original are offered.
    - **Frame rate**: *Original*, or *30 fps* (offered for 50/60 fps videos). 30 fps makes the
      file smaller and is plenty for sharing.
-   - **Subtitles** (if the project has any): *Burn into video*, *Separate .srt file* or *Off*.
+   - **Text** (if the project has texts): *Burn into video* or *Off*. Graphics are always
+     burned in.
 3. Tap **Export to gallery**.
 
-{% include screen.html name="export" alt="The Export sheet with resolution, frame rate and subtitle options." %}
+If some joins have no transition yet, mobiCut first asks whether to add them; see
+[Transitions]({{ "/operations/transitions/#when-you-export" | relative_url }}).
+
+{% include screen.html name="export" alt="The Export sheet with resolution, frame rate and text options." %}
 
 ## While it exports
 

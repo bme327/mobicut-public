@@ -60,7 +60,7 @@ This page says what you'll need and what to do, step by step.
 way back to Free. Most users will run Free, so it needs testing too.
 
 1. Create a project from your test video.
-2. Try **split**, **delete**, **speed**, a **subtitle**, a **picture** and your **soundtrack**.
+2. Try **split**, **delete**, **speed**, a **text**, a **picture** and your **soundtrack**.
 3. Check that Pro features show the orange **PRO** badge and are locked, and that **Fade
    out-in** is the only transition.
 4. **Export.** The video should have the small **(mc)** logo in the top right corner.

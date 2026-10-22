@@ -7,7 +7,7 @@ permalink: /cs/privacy/
 # Zásady ochrany soukromí
 {: .no_toc }
 
-**mobiCut** (aplikace pro Android, balíček `app.mobicut`) · Poslední změna: 21. října 2026
+**mobiCut** (aplikace pro Android, balíček `app.mobicut`) · Poslední změna: 22. října 2026
 
 {: .note }
 > Toto je překlad. Pokud by se lišil od [anglické verze]({{ "/privacy/" | relative_url }}),
@@ -36,21 +36,22 @@ vybíráš soubor vlastním výběrem Androidu (Galerie nebo Soubory). mobiCut d
 k souborům, které vybereš, ne ke zbytku úložiště. Čte je v telefonu, aby ukázal náhled, časovou
 osu a údaje o souboru (délku, rozlišení) a aby exportoval tvůj sestřih. Nic se nenahrává.
 
-**Tvoje projekty.** Tvoje úpravy (střihy, rychlosti, titulky a další nastavení), název projektu,
-odkaz na zdrojové soubory a malá miniatura se ukládají do soukromého úložiště aplikace v telefonu,
+**Tvoje projekty.** Tvoje úpravy (střihy, rychlosti, texty a další nastavení), název projektu,
+odkaz na zdrojové soubory, malá miniatura a kopie snímků z videa, které vezmeš, a obrázků,
+které použiješ jako grafiku, se ukládají do soukromého úložiště aplikace v telefonu,
 abys mohl pokračovat později. Smazáním projektu se odstraní. Odinstalací aplikace se odstraní také,
 pokud si v dialogu odinstalace Androidu nezvolíš zachování dat aplikace.
 
-**Exportované soubory.** Exportovaná videa se ukládají do *Movies/MobiCut* a soubory titulků
-(.srt) do *Download/MobiCut* v telefonu. Jsou to tvoje soubory: mobiCut je nikam neposílá a po
+**Exportované soubory.** Exportovaná videa se ukládají do *Movies/MobiCut* v telefonu. Jsou to tvoje soubory: mobiCut je nikam neposílá a po
 odinstalaci aplikace zůstanou.
 
 **Nastavení.** Pár předvoleb aplikace (třeba tvoje edice) je uloženo v telefonu.
 
 mobiCut nepřistupuje k fotoaparátu, mikrofonu, poloze, kontaktům, účtům ani k jiným datům a
-nežádá žádná oprávnění za běhu. Jediné oprávnění v aplikaci je *zobrazení síťových připojení*
-(přidává ho mediální knihovna Androidu), které umí jen zjistit, jestli je telefon online; nemůže
-se připojit ani nic odeslat.
+nežádá žádná oprávnění za běhu. Kromě *zobrazení síťových připojení* (přidává ho mediální
+knihovna Androidu a umí jen zjistit, jestli je telefon online) má aplikace oprávnění Google Play
+k *fakturaci*, které slouží jen k dotazu na Google Play, jestli je Pro odemčené, a k otevření jeho
+platební obrazovky. Ani jedno mobiCutu nedovolí připojit se k internetu nebo něco odeslat.
 
 ## Co sbíráme a sdílíme
 
@@ -66,7 +67,8 @@ Nejsou součástí toho, jak mobiCut nakládá s daty, ale při jeho používán
   projekty mobiCutu (ne tvoje videa), aby se vrátily v novém telefonu. To dělá Android podle
   [zásad ochrany soukromí Googlu](https://policies.google.com/privacy); vypnout to můžeš
   v nastavení telefonu.
-- **Google Play.** Instalaci z Google Play a nákup Pro, až tam bude nabízen, zajišťuje Google.
+- **Google Play.** Instalaci z Google Play a nákup Pro nebo spuštění jeho zkušební verze tam
+  zajišťuje Google.
   Platby jdou přes Google Play; mobiCut nikdy nevidí tvoje platební údaje a od Google Play se
   dozví jen to, jestli je na tvém účtu Pro odemčené. Viz
   [zásady ochrany soukromí Googlu](https://policies.google.com/privacy).

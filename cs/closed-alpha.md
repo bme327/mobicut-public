@@ -61,7 +61,7 @@ Tady najdeš, co budeš potřebovat a co udělat, krok za krokem.
 Většina uživatelů bude mít Free, takže i to je potřeba otestovat.
 
 1. Vytvoř projekt ze svého testovacího videa.
-2. Vyzkoušej **rozdělení**, **smazání**, **rychlost**, **titulek**, **obrázek** a svou **hudbu**.
+2. Vyzkoušej **rozdělení**, **smazání**, **rychlost**, **text**, **obrázek** a svou **hudbu**.
 3. Zkontroluj, že Pro funkce mají oranžový štítek **PRO** a jsou zamčené a že jediný přechod je
    **Fade out-in**.
 4. **Exportuj.** Ve videu má být vpravo nahoře malé logo **(mc)**.

@@ -1,7 +1,7 @@
 ---
 title: Soundtracks
 parent: Operations
-nav_order: 11
+nav_order: 14
 ---
 
 # Add a soundtrack
@@ -22,11 +22,11 @@ overlapping.
 3. Pick the audio file.
 
 The track starts at the playhead's place in the finished video (at the very start if the
-playhead is at the end). A **soundtrack lane** appears under the subtitle track: one green chip
+playhead is at the end). A **soundtrack lane** appears under the overlay track: one green chip
 per track, with **♪** and the track's name. Overlapping tracks stack in the lane and play
 together.
 
-{% include screen.html name="media-timeline" alt="The editor with a picture segment, a muted segment, two videos, and the soundtrack lane with two tracks under the subtitles." caption="The soundtrack lane (marker 4) under the subtitles. Marker 5 is Add." %}
+{% include screen.html name="media-timeline" alt="The editor with a picture segment, a muted segment, two videos, and the soundtrack lane with two tracks under the texts." caption="The soundtrack lane (marker 4) under the texts. Marker 5 is Add." %}
 
 A soundtrack belongs to the **finished video's** timeline: it stays at its place when you split,
 delete or speed up the video under it. Whatever runs past the end of the video is **cut off**.
