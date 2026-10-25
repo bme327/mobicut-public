@@ -34,16 +34,16 @@ Každá stránka níže popisuje jednu věc, kterou v mobiCutu uděláš. Jsi-li
    [Speed]({{ "/cs/operations/speed/" | relative_url }}),
    [Mute]({{ "/cs/operations/mute/" | relative_url }}),
    [Text]({{ "/cs/operations/subtitles/" | relative_url }}),
-   [Graphic]({{ "/cs/operations/graphics/" | relative_url }}) (Pro) a **Add**.
+   [Graphic]({{ "/cs/operations/graphics/" | relative_url }}) a **Add**.
 
 ## Add: slidy, obrázky, hudba, přechody, další videa
 
 **Add** (poslední nástroj) přidá do projektu další obsah:
 
-{% include screen.html name="add" alt="Panel Add: Text slide at the pointer, Picture at the pointer, Soundtrack at the pointer, Transitions at every join a Video from Gallery a Video from files (PRO)." %}
+{% include screen.html name="add" alt="Panel Add: Text slide at the pointer, Picture at the pointer, Soundtrack at the pointer, Transitions at every join a Video from Gallery a Video from files." %}
 
 - [Text slide at the pointer]({{ "/cs/operations/text-slides/" | relative_url }}): titulní karta ze šablony vložená do videa.
 - [Picture at the pointer]({{ "/cs/operations/pictures/" | relative_url }}): statický nebo pohyblivý obrázek vložený do videa.
 - [Soundtrack at the pointer]({{ "/cs/operations/soundtracks/" | relative_url }}): hudba pod videem, ve vlastní stopě.
 - [Transitions at every join]({{ "/cs/operations/transitions/#transitions-at-every-join" | relative_url }}): jeden přechod všude, k tomu roztmívání a zatmívání.
-- [Video from Gallery / from files]({{ "/cs/operations/videos/" | relative_url }}): další video na konec časové osy (Pro).
+- [Video from Gallery / from files]({{ "/cs/operations/videos/" | relative_url }}): další video na konec časové osy.

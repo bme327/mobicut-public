@@ -34,10 +34,12 @@ Back to the [home page]({{ "/" | relative_url }}).
 | Mute a segment | ✓ | ✓ |
 | Pictures, with zoom and slide effects | ✓ | ✓ |
 | Soundtracks (mix or replace, fades) | ✓ | ✓ |
-| Graphics: smileys, arrows, shapes, your own pictures | | ✓ |
-| Texts and graphics that follow a path | | ✓ |
-| Videos per project | **one** | **several**, edited as one |
+| Graphics: smileys, arrows, shapes, your own pictures, hand drawing | ✓ | ✓ |
+| Several videos in one project | ✓ | ✓ |
+| Texts and graphics that follow something: **AI path** | ✓ | ✓ |
+| … or a path **drawn by hand** | | ✓ |
 | Export to the gallery | ✓ | ✓ |
+| Export resolution and frame rate | **up to 1080p, 30 fps** | as filmed, up to **4K and 60 fps** |
 | Length of the source video | **up to 1 hour** | no limit |
 | Transitions | **Fade out-in**, fade in/out at start and end | all, including **Interleave** (crossfade) |
 | Logo in the exported video | **small (mc) mobiCut logo, top right** | none |
@@ -50,13 +52,14 @@ These are the only differences. Everything else works the same in Free.
   long. A shorter cut of a longer flight needs Pro.
 - **A small (mc) mobiCut logo** in the top right corner of every exported video. It also shows in
   the preview, so what you see is what you get.
-- **One video per project.** Pictures and soundtracks are free; adding more videos to a project
-  is Pro.
+- **Exports up to 1080p at 30 fps.** A video filmed in 4K or at 50/60 fps exports at 1080p and
+  30 fps; Pro exports it as filmed. Videos filmed at 1080p/30 fps or less export as they are.
 - **Fade out-in is the only transition.** Fades between segments and fade in/out at the start and
   end are included; the **Interleave** crossfade is Pro.
-- **No graphics and no paths.** [Graphics]({{ "/operations/graphics/" | relative_url }}) and
-  texts or graphics that [follow a path]({{ "/operations/paths/" | relative_url }}) are Pro.
-  Texts, text slides and pictures are free.
+- **Paths drawn by hand are Pro.** The [AI path]({{ "/operations/paths/" | relative_url }}#ai-path)
+  is free: circle a glider and a text or graphic follows it. Drawing the path with your finger is Pro.
+  [Graphics]({{ "/operations/graphics/" | relative_url }}), texts, text slides, pictures and
+  [several videos]({{ "/operations/videos/" | relative_url }}) in a project are all free.
 
 In the app, Pro-only features carry an orange **PRO** badge. In Free they stay visible but
 locked; tapping one tells you what it does.
@@ -101,8 +104,10 @@ The yearly subscription starts with **7 days free**, once per Google account:
 - **Cancel any time** in Google Play → **Subscriptions**: you keep Pro until the week is over and
   pay nothing. If you don't cancel, the yearly subscription starts on day 8.
 
-mobiCut never nags about it: the trial is offered only where Pro is offered anyway (a locked
-feature, or **Upgrade** on the welcome screen), with no pop-ups, reminders or countdowns.
+mobiCut never nags about it: the trial is offered where Pro is offered anyway (a locked
+feature, or **Upgrade** on the welcome screen), and **once** after your first export in Free:
+*Like your video? Try Pro free for 7 days*. **Not now** closes it for good. There are no other
+pop-ups, reminders or countdowns.
 
 Whatever you choose, the **Free edition stays free and without ads**, and switching back to Free
 never deletes anything.

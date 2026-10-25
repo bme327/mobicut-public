@@ -22,8 +22,8 @@ Export z tvých úprav vytvoří nové video. Originálu se nedotkne.
 
 1. Klepni na **Export** nahoře v editoru.
 2. Nahoře v panelu zkontroluj délku a počet úseků a pak vyber:
-   - **Resolution**: *Original*, nebo menší (1080p, 720p) pro menší soubor. Nabízejí se jen
-     rozměry menší než originál.
+   - **Resolution**: *Original* (s rozměrem, např. *Original · 2160p*), nebo menší (1080p, 720p)
+     pro menší soubor. Nabízejí se jen rozměry menší než originál.
    - **Frame rate**: *Original*, nebo *30 fps* (nabízí se u videí s 50/60 fps). 30 fps zmenší
      soubor a na sdílení to bohatě stačí.
    - **Text** (má-li projekt texty): *Burn into video* nebo *Off*. Grafika se vpálí vždy.
@@ -33,6 +33,13 @@ Pokud některé spoje ještě nemají přechod, mobiCut se nejdřív zeptá, jes
 [Přechody]({{ "/cs/operations/transitions/#when-you-export" | relative_url }}).
 
 {% include screen.html name="export" alt="Panel Export s volbami rozlišení, snímkové frekvence a textů." %}
+
+### 4K a 60 fps ve Free {#4k-and-60-fps}
+
+Free exportuje nejvýš v **1080p a 30 fps**. U videa natočeného ve 4K nebo s 50/60 fps mají volby
+nad tím štítek **PRO** (klepnutím se dozvíš o Pro) a panel začíná na **1080p** a **30 fps**.
+Videa natočená v 1080p/30 fps a méně se i ve Free exportují v původním nastavení.
+Viz [Free a Pro]({{ "/cs/editions/" | relative_url }}).
 
 ## Během exportu {#while-it-exports}
 
@@ -52,6 +59,9 @@ Video se uloží do **`Movies/MobiCut`** a objeví se v galerii. Z dialogu můž
 - **Play**: přehrát ho,
 - **Share**: rovnou ho poslat do aplikace na zprávy,
 - **Close**: zavřít.
+
+Ve Free po tvém **prvním** exportu nabídne zavření tohoto dialogu jednou týden Pro zdarma
+(*Like your video? Try Pro free for 7 days*). **Not now** ho zavře a už se neobjeví.
 
 {% include screen.html name="export-done" alt="Dialog Saved to gallery s Play, Share a Close." %}
 

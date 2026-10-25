@@ -72,6 +72,19 @@ On a long video a split needs precision. Use any of:
 - **pinch** the timeline with two fingers,
 - the **slider** between them to move along the zoomed timeline.
 
+## Zoom the preview {#zoom-the-preview}
+
+**Pinch the video** with two fingers to look closer (up to 6×), and move it with the same two
+fingers. It works everywhere the preview shows: playing, editing a text or graphic, drawing and
+capturing a path. A chip on the preview shows how far in you are (e.g. *2.5×*); tap it to see the
+whole frame again. Zooming only changes your view, not the exported video.
+
+## Full screen {#full-screen}
+
+Tap the **full-screen** button in the corner of the preview to watch the edit big. A landscape
+video turns the screen sideways. The controls at the bottom (play/pause, time, seek bar) hide
+while it plays; touch the screen to bring them back. The large button at the top takes you back.
+
 ## Undo
 
 **↶** (top right of the controls) takes back the last change: a split, a delete, a speed change,

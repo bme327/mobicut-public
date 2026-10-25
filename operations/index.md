@@ -31,16 +31,16 @@ then **The editor** for a tour of the screen.
    [Speed]({{ "/operations/speed/" | relative_url }}),
    [Mute]({{ "/operations/mute/" | relative_url }}),
    [Text]({{ "/operations/subtitles/" | relative_url }}),
-   [Graphic]({{ "/operations/graphics/" | relative_url }}) (Pro) and **Add**.
+   [Graphic]({{ "/operations/graphics/" | relative_url }}) and **Add**.
 
 ## Add: slides, pictures, soundtracks, transitions, more videos
 
 **Add** (the last tool) puts more into the project:
 
-{% include screen.html name="add" alt="The Add sheet: Text slide at the pointer, Picture at the pointer, Soundtrack at the pointer, Transitions at every join, and Video from Gallery and Video from files (PRO)." %}
+{% include screen.html name="add" alt="The Add sheet: Text slide at the pointer, Picture at the pointer, Soundtrack at the pointer, Transitions at every join, and Video from Gallery and Video from files." %}
 
 - [Text slide at the pointer]({{ "/operations/text-slides/" | relative_url }}): a title card from a template, split into the video.
 - [Picture at the pointer]({{ "/operations/pictures/" | relative_url }}): a still or moving picture, split into the video.
 - [Soundtrack at the pointer]({{ "/operations/soundtracks/" | relative_url }}): music under the video, in its own lane.
 - [Transitions at every join]({{ "/operations/transitions/#transitions-at-every-join" | relative_url }}): one transition everywhere, plus fade in and out.
-- [Video from Gallery / from files]({{ "/operations/videos/" | relative_url }}): another video at the end of the timeline (Pro).
+- [Video from Gallery / from files]({{ "/operations/videos/" | relative_url }}): another video at the end of the timeline.

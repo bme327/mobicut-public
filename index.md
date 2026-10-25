@@ -28,8 +28,8 @@ raw clip into a short video before you even get home:
 - **add texts** to say where and what it is, and **title cards** between the parts,
 - **join the parts with fades** so the cuts look intentional,
 - **put in photos** with a slow zoom or slide, and **music** under it all,
-- **mute** the wind noise, and (Pro) **join several videos** into one,
-- (Pro) put **arrows, smileys and shapes** on the video and make them **follow** a glider or skier,
+- **mute** the wind noise, and **join several videos** into one,
+- put **arrows, smileys and shapes** on the video and make them **follow** a glider or skier,
 - **export** a new video to your gallery, ready to share.
 
 ## Your video stays where it is
@@ -75,9 +75,9 @@ mobiCut comes in two editions: **Free** and **Pro**.
 > **Free will always be free, and always free of ads.** No ads in either edition, ever.
 > Free is a complete editor with a few limits, not a trial.
 
-Free's only limits: source videos **up to 1 hour**, **one video per project**, a small
+Free's only limits: source videos **up to 1 hour**, exports **up to 1080p at 30 fps**, a small
 **(mc) mobiCut logo** in the top right corner of exports, **Fade out-in** as the only
-transition, and no **graphics** or **paths**. Pro removes them.
+transition, and paths only from the **AI path** (drawing them by hand is Pro). Pro removes them.
 
 In the APK from this site, **Pro can be switched on for free** in Settings. On Google Play, Pro
 is a yearly subscription with a **free first week**, or a month that doesn't renew.

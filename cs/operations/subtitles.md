@@ -92,8 +92,8 @@ Ikona koše text smaže. Tlačítko **Zpět** telefonu editor zavře, stejně ja
   Každý má **Duration** 0,1–2 s; žádný nezabere víc než polovinu času textu na obrazovce.
 - **Effect while shown**: *Wobble* (jemně se kolébá), *Pulse* (dýchá větší a menší),
   *Shake* (třese se), *Float* (pohupuje se nahoru a dolů).
-- **Follow something moving** <span class="label label-yellow">PRO</span>: nakresli prstem dráhu
-  a text po ní pojede. Viz [Sledování dráhy]({{ "/cs/operations/paths/" | relative_url }}).
+- **Follow something moving**: zakroužkuj objekt a **AI dráha** ho bude sledovat, nebo nakresli
+  dráhu prstem (**Draw by hand**, Pro). Viz [Sledování dráhy]({{ "/cs/operations/paths/" | relative_url }}).
 
 Při pozastavení ukazuje náhled text v klidu, aby se snadno umisťoval. Pohyb uvidíš klepnutím na **▶**.
 

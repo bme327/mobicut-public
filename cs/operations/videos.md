@@ -8,7 +8,7 @@ nav_order: 15
 {: .no_toc }
 
 Dej let a přistání natočené jinou kamerou do jednoho videa: přidej do časové osy projektu další
-videa a upravuj je společně. **Pro.**
+videa a upravuj je společně. Ve Free i v Pro.
 
 1. TOC
 {:toc}
@@ -23,8 +23,7 @@ videa a upravuj je společně. **Pro.**
 Video přijde na **konec** časové osy a přehrávací hlava skočí na jeho začátek. Pak jeho části
 stříhej, maž, zrychluj a tlum jako jakékoli jiné.
 
-Ve Free mají tyto dvě položky štítek **PRO**; klepnutím se dozvíš o Pro. Do
-[hodinového limitu]({{ "/cs/editions/" | relative_url }}) Free se počítají všechna videa projektu dohromady.
+Do [hodinového limitu]({{ "/cs/editions/" | relative_url }}) Free se počítají všechna videa projektu dohromady.
 
 ## Na časové ose {#on-the-timeline}
 
@@ -49,10 +48,6 @@ všechny jeho úseky i texty na něm. **Undo** ho vrátí. Poslední video proje
   velikosti nebo orientace se do toho rámu vejdou, s černými pruhy tam, kde se tvary liší.
 - Všechno hraje za sebou, takže export je dlouhý jako časová osa;
   [hudba]({{ "/cs/operations/soundtracks/" | relative_url }}) přesahující jeho konec se ořízne.
-
-{: .note }
-> Projekt s více videi se otevře i ve Free (třeba po přepnutí testovací edice), ale **Export**
-> je zamčený, dokud nepřepneš zpět na Pro. Nic se neztratí.
 
 ## Video nejde najít {#a-video-cant-be-found}
 

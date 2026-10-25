@@ -69,6 +69,19 @@ U dlouhého videa potřebuje střih přesnost. Použij cokoli z toho:
 - **roztažení dvěma prsty** na časové ose,
 - **posuvník** mezi nimi pro pohyb po přiblížené ose.
 
+## Přiblížení náhledu {#zoom-the-preview}
+
+**Roztáhni video** dvěma prsty a podíváš se zblízka (až 6×); stejnými dvěma prsty ho posouváš.
+Funguje to všude, kde je náhled: při přehrávání, úpravě textu nebo grafiky, kreslení i nahrávání
+dráhy. Štítek na náhledu ukazuje, jak moc je přiblíženo (např. *2.5×*); klepnutím uvidíš zase
+celý snímek. Přiblížení mění jen tvůj pohled, ne exportované video.
+
+## Celá obrazovka {#full-screen}
+
+Klepni na tlačítko **celé obrazovky** v rohu náhledu a uvidíš střih ve velkém. Video na šířku
+otočí obrazovku. Ovládání dole (přehrát/pozastavit, čas, posuvník) se při přehrávání schová;
+dotkni se obrazovky a vrátí se. Velké tlačítko nahoře tě vrátí zpět.
+
 ## Zpět {#undo}
 
 **↶** (vpravo nahoře u ovládání) vrátí poslední změnu: střih, smazání, změnu rychlosti, text, grafiku,

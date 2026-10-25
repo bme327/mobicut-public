@@ -4,7 +4,7 @@ parent: Operations
 nav_order: 9
 ---
 
-# Graphics <span class="label label-yellow">PRO</span>
+# Graphics
 {: .no_toc }
 
 Smileys, arrows, circles, stars and your own pictures over the video: point at the landing
@@ -23,7 +23,7 @@ give them a look and motion, and they're burned into the export exactly as the p
 2. Tap **Graphic** in the toolbar.
 3. Pick a shape, or **Your own picture from Gallery**.
 
-{% include screen.html name="graphic-picker" alt="The Graphic sheet: Appears at the pointer, in the middle of the video; a row of six smileys, then arrows, rectangle, rounded, circle, star, line, speech bubble, marker, tick and cross, and a Your own picture from Gallery button." %}
+{% include screen.html name="graphic-picker" alt="The Graphic sheet: Appears at the pointer, in the middle of the video; a row of six smileys, then arrows, rectangle, rounded, circle, star, line, speech bubble, marker, tick and cross, and Hand drawn and Your own picture from Gallery buttons." %}
 
 The new graphic appears **at the playhead**, in the **middle of the video**, for **5 s**, with
 the motion of the last graphic you edited. Its editor opens right away, and a purple chip with its
@@ -84,6 +84,18 @@ missing, it's for letters), and **Follow something moving** to make the graphic
 
 **Done** closes the editor; all changes are one step for **Undo**. The bin icon deletes the graphic.
 
+## Hand drawn {#hand-drawn}
+
+Draw your own mark on the video: circle the landing spot, underline a name.
+
+1. In the **Graphic** sheet, tap **Hand drawn**. The video pauses and fills the screen.
+2. **Draw with your finger.** Lift it and touch again for another line.
+3. Under the video, set the **Line thickness** and the colour; **↶** takes back the last line.
+4. Tap **Done drawing** to keep it, or **Cancel**.
+
+The drawing becomes a graphic like any other: move, resize, turn and animate it. Its **Shape** tab
+has **Draw again**, and **Look** sets the line thickness and colour.
+
 ## Your own picture
 
 Pick a picture from the gallery and it's copied into the project (large photos are scaled down
@@ -103,6 +115,6 @@ either way.
 
 ## Free and Pro
 
-Graphics are **Pro**. In Free the **Graphic** tool carries the **PRO** badge. A project that
-already has graphics keeps them when you switch to Free: they're just not shown or exported, and
-they come back with Pro. See [Free and Pro]({{ "/editions/" | relative_url }}).
+Graphics are **Free**: every shape, your own pictures and hand drawing. Only making a graphic
+follow a path **drawn by hand** is Pro; the [AI path]({{ "/operations/paths/" | relative_url }}#ai-path)
+is free. See [Free and Pro]({{ "/editions/" | relative_url }}).

@@ -91,8 +91,8 @@ The bin icon deletes the text. The phone's **Back** button closes the editor, li
   Each has a **Duration** of 0.1–2 s; neither takes more than half the text's time on screen.
 - **Effect while shown**: *Wobble* (gently rocks), *Pulse* (breathes bigger and smaller),
   *Shake* (jitters), *Float* (bobs up and down).
-- **Follow something moving** <span class="label label-yellow">PRO</span>: draw a path with your
-  finger and the text moves along it. See [Follow a path]({{ "/operations/paths/" | relative_url }}).
+- **Follow something moving**: circle the object and the **AI path** follows it, or draw the
+  path with your finger (**Draw by hand**, Pro). See [Follow a path]({{ "/operations/paths/" | relative_url }}).
 
 While paused, the preview shows the text still, so it's easy to place. Tap **▶** to see it move.
 

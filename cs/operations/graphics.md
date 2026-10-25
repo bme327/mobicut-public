@@ -4,7 +4,7 @@ parent: Funkce
 nav_order: 9
 ---
 
-# Grafika <span class="label label-yellow">PRO</span>
+# Grafika
 {: .no_toc }
 
 Smajlíci, šipky, kruhy, hvězdy a vlastní obrázky přes video: ukaž na místo přistání, zakroužkuj
@@ -23,7 +23,7 @@ videu, dáš jí vzhled a pohyb a export ji vpálí přesně tak, jak ji ukazuje
 2. Klepni na **Graphic** v liště nástrojů.
 3. Vyber tvar, nebo **Your own picture from Gallery** (vlastní obrázek z galerie).
 
-{% include screen.html name="graphic-picker" alt="Panel Graphic: Appears at the pointer, in the middle of the video; řada šesti smajlíků, pod ní šipky, obdélník, zaoblený obdélník, kruh, hvězda, čára, bublina, zvýrazňovač, fajfka a křížek, a tlačítko Your own picture from Gallery." %}
+{% include screen.html name="graphic-picker" alt="Panel Graphic: Appears at the pointer, in the middle of the video; řada šesti smajlíků, pod ní šipky, obdélník, zaoblený obdélník, kruh, hvězda, čára, bublina, zvýrazňovač, fajfka a křížek, a tlačítka Hand drawn a Your own picture from Gallery." %}
 
 Nová grafika se objeví **u přehrávací hlavy**, **uprostřed videa**, na **5 s** a s pohybem
 grafiky, kterou jsi upravoval naposledy. Hned se otevře její editor a na stopě překryvů pod
@@ -84,6 +84,18 @@ pro písmena) a **Follow something moving**, aby grafika
 
 **Done** editor zavře; všechny změny jsou pro **Undo** jeden krok. Ikona koše grafiku smaže.
 
+## Kreslení rukou {#hand-drawn}
+
+Nakresli do videa vlastní značku: zakroužkuj místo přistání, podtrhni jméno.
+
+1. V panelu **Graphic** klepni na **Hand drawn**. Video se zastaví a vyplní obrazovku.
+2. **Kresli prstem.** Zvedni ho a dotkni se znovu pro další čáru.
+3. Pod videem nastav **Line thickness** a barvu; **↶** vrátí poslední čáru.
+4. Klepni na **Done drawing** a kresba zůstane, nebo na **Cancel**.
+
+Z kresby je grafika jako každá jiná: posouvej ji, měň velikost, natáčej a animuj. Na kartě
+**Shape** má **Draw again** a na **Look** se nastavuje tloušťka a barva čáry.
+
 ## Vlastní obrázek {#your-own-picture}
 
 Vyber obrázek z galerie a zkopíruje se do projektu (velké fotky se zmenší na 1600 px). Obrázky
@@ -102,6 +114,6 @@ v exportu (*Burn into video* / *Off*) rozhoduje jen o textech; grafika zůstane 
 
 ## Free a Pro {#free-and-pro}
 
-Grafika je **Pro**. Ve verzi Free má nástroj **Graphic** odznak **PRO**. Projekt, který už grafiku
-má, si ji po přepnutí na Free ponechá: jen se neukazuje ani neexportuje a s Pro se vrátí. Viz
-[Free a Pro]({{ "/cs/editions/" | relative_url }}).
+Grafika je **Free**: všechny tvary, vlastní obrázky i kreslení rukou. Jen dráha **kreslená
+rukou**, po které grafika jede, je Pro; [AI dráha]({{ "/cs/operations/paths/" | relative_url }}#ai-path)
+je zdarma. Viz [Free a Pro]({{ "/cs/editions/" | relative_url }}).

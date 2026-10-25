@@ -8,7 +8,7 @@ nav_order: 15
 {: .no_toc }
 
 Put a flight and the landing filmed on another camera into one video: add more videos to the
-project's timeline and edit them together. **Pro.**
+project's timeline and edit them together. Free and Pro alike.
 
 1. TOC
 {:toc}
@@ -23,8 +23,7 @@ project's timeline and edit them together. **Pro.**
 The video goes at the **end** of the timeline and the playhead jumps to its start. From there,
 split, delete, speed up and mute its parts like any others.
 
-In Free these two items carry the **PRO** badge; tapping them explains Pro. Free's
-[1-hour limit]({{ "/editions/" | relative_url }}) counts all the project's videos together.
+Free's [1-hour limit]({{ "/editions/" | relative_url }}) counts all the project's videos together.
 
 ## On the timeline
 
@@ -51,10 +50,6 @@ can't be removed.
   differ.
 - Everything plays one after another, so the export is as long as the timeline;
   [soundtracks]({{ "/operations/soundtracks/" | relative_url }}) running past its end are cut off.
-
-{: .note }
-> A project with several videos opens in Free too (for example after switching the test
-> edition), but **Export** is locked until you switch back to Pro. Nothing is lost.
 
 ## A video can't be found
 

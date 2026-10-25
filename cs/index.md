@@ -29,8 +29,8 @@ udělá krátké video, ještě než dojedeš domů:
 - **přidáš texty**, kde to je a co to je, a mezi části **titulní karty**,
 - části **spojíš prolínačkami**, aby střihy vypadaly záměrně,
 - **vložíš fotky** s pomalým přiblížením nebo vjezdem a pod to všechno **hudbu**,
-- **ztlumíš** šum větru a (Pro) **spojíš víc videí** do jednoho,
-- (Pro) dáš do videa **šipky, smajlíky a tvary** a necháš je **sledovat** paraglidistu nebo lyžaře,
+- **ztlumíš** šum větru a **spojíš víc videí** do jednoho,
+- dáš do videa **šipky, smajlíky a tvary** a necháš je **sledovat** paraglidistu nebo lyžaře,
 - **exportuješ** nové video do galerie, připravené ke sdílení.
 
 ## Tvoje video zůstává, kde je
@@ -76,9 +76,9 @@ mobiCut má dvě edice: **Free** a **Pro**.
 > **Free bude vždy zdarma a vždy bez reklam.** Žádné reklamy v žádné edici, nikdy.
 > Free je plnohodnotný střihač s několika omezeními, ne zkušební verze.
 
-Jediná omezení Free: zdrojová videa **do 1 hodiny**, **jedno video na projekt**, malé
+Jediná omezení Free: zdrojová videa **do 1 hodiny**, export **do 1080p a 30 fps**, malé
 **logo (mc) mobiCut** v pravém horním rohu exportu, **Fade out-in** jako jediný přechod
-a žádná **grafika** ani **dráhy**. Pro je odstraní.
+a dráhy jen z **AI dráhy** (kreslení rukou je Pro). Pro je odstraní.
 
 V APK z tohoto webu **jde Pro zapnout zdarma** v **⚙ Settings**. Na Google Play je Pro roční
 předplatné s **prvním týdnem zdarma**, nebo měsíc, který se neobnovuje.

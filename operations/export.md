@@ -22,8 +22,8 @@ Export builds a new video from your edits. The original is not touched.
 
 1. Tap **Export** at the top of the editor.
 2. Check the length and number of segments at the top of the sheet, then choose:
-   - **Resolution**: *Original*, or a smaller one (1080p, 720p) for a smaller file. Only
-     sizes smaller than the original are offered.
+   - **Resolution**: *Original* (with its size, e.g. *Original · 2160p*), or a smaller one
+     (1080p, 720p) for a smaller file. Only sizes smaller than the original are offered.
    - **Frame rate**: *Original*, or *30 fps* (offered for 50/60 fps videos). 30 fps makes the
      file smaller and is plenty for sharing.
    - **Text** (if the project has texts): *Burn into video* or *Off*. Graphics are always
@@ -34,6 +34,13 @@ If some joins have no transition yet, mobiCut first asks whether to add them; se
 [Transitions]({{ "/operations/transitions/#when-you-export" | relative_url }}).
 
 {% include screen.html name="export" alt="The Export sheet with resolution, frame rate and text options." %}
+
+### 4K and 60 fps in Free {#4k-and-60-fps}
+
+Free exports up to **1080p at 30 fps**. For a video filmed in 4K or at 50/60 fps, the options above
+that carry the **PRO** badge (tapping one explains Pro), and the sheet starts on **1080p** and
+**30 fps**. Videos filmed at 1080p/30 fps or less export at their original settings in Free too.
+See [Free and Pro]({{ "/editions/" | relative_url }}).
 
 ## While it exports
 
@@ -53,6 +60,9 @@ The video is saved to **`Movies/MobiCut`** and appears in the gallery. From the 
 - **Play** it,
 - **Share** it straight to a messaging app,
 - **Close**.
+
+In Free, after your **first** export, closing this dialog offers the free week of Pro once
+(*Like your video? Try Pro free for 7 days*). **Not now** closes it, and it doesn't come back.
 
 {% include screen.html name="export-done" alt="Saved to gallery dialog with Play, Share and Close." %}
 

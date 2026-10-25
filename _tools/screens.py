@@ -426,7 +426,7 @@ def export_sheet():
         s = t(16, top + 52, "Export", 18, TEXT, 600)
         s += t(16, top + 76, "Length 0:48.0 · 3 segments", 13, MUTED, 400, mono=True)
         y = top + 104
-        for title, opts, sel in [("Resolution", ["Original", "720p"], 0),
+        for title, opts, sel in [("Resolution", ["Original · 1080p", "720p"], 0),
                                  ("Frame rate", ["Original · 50 fps", "30 fps"], 0),
                                  ("Text", ["Burn into video", "Off"], 0)]:
             s += t(16, y, title, 13, MUTED)
@@ -533,8 +533,6 @@ def add_sheet():
             y = top + 74 + i * 60
             s += icon(ic, 32, y + 24, 24, ACCENT)
             s += t(60, y + 20, title, 15) + t(60, y + 40, det, 12, MUTED)
-        # Videos are Pro: the badge sits on their group.
-        s += rect(W - 62, top + 74 + 4 * 60 + 2, 46, 18, ACCENT, 9) + t(W - 39, top + 74 + 4 * 60 + 15, "PRO", 10, ON_ACCENT, 900, "middle")
         return s
     return editor() + sheet(460, c)
 
@@ -845,9 +843,10 @@ def graphic_picker():
                 s += rect(x, y, cell, cell, SURF_HI, 10, OUTLINE, 1)
                 s += shape_art(n, x + cell / 2, y + cell / 2, cell * 0.72, fill=RED if n in ("block", "rect", "rounded", "circle", "star", "bubble") else None)
         y = top + 94 + 3 * (cell + gap) + 6
-        s += outline_button(16, y, 250, 42, "Your own picture from Gallery", "image")
+        s += outline_button(16, y, W - 32, 42, "Hand drawn", "gesture")
+        s += outline_button(16, y + 52, W - 32, 42, "Your own picture from Gallery", "image")
         return s
-    return editor() + sheet(330, c)
+    return editor() + sheet(382, c)
 
 
 def graphic_editor():
@@ -925,8 +924,8 @@ def path_capture():
     s += rect(0, pbot, W, 96, SURF)
     s += t(12, pbot + 24, "Recording… 2.5 s of 5.0 s · lift your finger", 13, ACCENT)
     s += t(12, pbot + 41, "to finish", 13, ACCENT)
-    s += chips(12, pbot + 52, ["Steps", "Smooth"], ("Smooth",))
-    s += chips(176, pbot + 52, ["½×", "1×"], ("1×",))
+    s += chips(12, pbot + 52, ["½×", "1×"], ("1×",))
+    s += chips(112, pbot + 52, ["Auto-play"])
     return s + nav_bar()
 
 

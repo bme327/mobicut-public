@@ -34,10 +34,12 @@ Zpět na [úvod]({{ "/cs/" | relative_url }}).
 | Ztlumení úseku | ✓ | ✓ |
 | Obrázky s přiblížením a vjezdem | ✓ | ✓ |
 | Hudba (mix nebo náhrada zvuku, prolínání) | ✓ | ✓ |
-| Grafika: smajlíci, šipky, tvary, vlastní obrázky | | ✓ |
-| Texty a grafika, které sledují dráhu | | ✓ |
-| Videí v projektu | **jedno** | **několik**, upravovaných jako jedno |
+| Grafika: smajlíci, šipky, tvary, vlastní obrázky, kreslení rukou | ✓ | ✓ |
+| Víc videí v jednom projektu | ✓ | ✓ |
+| Texty a grafika, které něco sledují: **AI dráha** | ✓ | ✓ |
+| … nebo dráha **nakreslená rukou** | | ✓ |
 | Export do galerie | ✓ | ✓ |
+| Rozlišení a snímková frekvence exportu | **do 1080p, 30 fps** | jak bylo natočeno, až **4K a 60 fps** |
 | Délka zdrojového videa | **do 1 hodiny** | bez omezení |
 | Přechody | **Fade out-in**, roztmívání a zatmívání na začátku a konci | všechny, včetně **Interleave** (prolínání) |
 | Logo v exportovaném videu | **malé logo (mc) mobiCut vpravo nahoře** | žádné |
@@ -50,12 +52,15 @@ Jen v tomhle se edice liší. Všechno ostatní funguje ve Free stejně.
   Kratší sestřih delšího letu potřebuje Pro.
 - **Malé logo (mc) mobiCut** v pravém horním rohu každého exportovaného videa. Je vidět i v
   náhledu, takže co vidíš, to dostaneš.
-- **Jedno video na projekt.** Obrázky a hudba jsou zdarma; další videa v projektu jsou Pro.
+- **Export do 1080p a 30 fps.** Video natočené ve 4K nebo s 50/60 fps se exportuje v 1080p
+  a 30 fps; Pro ho exportuje tak, jak bylo natočeno. Videa natočená v 1080p/30 fps a méně se
+  exportují beze změny.
 - **Fade out-in je jediný přechod.** Prolínačky mezi úseky a roztmívání a zatmívání na začátku
   a konci jsou v ceně; prolínání **Interleave** je Pro.
-- **Žádná grafika ani dráhy.** [Grafika]({{ "/cs/operations/graphics/" | relative_url }}) a texty
-  nebo grafika, které [sledují dráhu]({{ "/cs/operations/paths/" | relative_url }}), jsou Pro.
-  Texty, textové slidy a obrázky jsou zdarma.
+- **Dráhy kreslené rukou jsou Pro.** [AI dráha]({{ "/cs/operations/paths/" | relative_url }}#ai-path)
+  je zdarma: zakroužkuj paraglidistu a text nebo grafika ho bude sledovat. Kreslení dráhy prstem je Pro.
+  [Grafika]({{ "/cs/operations/graphics/" | relative_url }}), texty, textové slidy, obrázky a
+  [víc videí]({{ "/cs/operations/videos/" | relative_url }}) v projektu jsou zdarma.
 
 V aplikaci mají funkce jen pro Pro oranžový štítek **PRO**. Ve Free zůstávají vidět, ale jsou
 zamčené; klepnutím se dozvíš, co dělají.
@@ -100,9 +105,10 @@ Roční předplatné začíná **7 dny zdarma**, jednou na účet Google:
 - **Zrušit můžeš kdykoli** v Google Play → **Odběry**: Pro ti zůstane do konce týdne a nic
   nezaplatíš. Pokud nezrušíš, 8. den začne roční předplatné.
 
-mobiCut tě s tím nebude otravovat: zkušební verze se nabízí jen tam, kde se nabízí Pro tak jako
-tak (u zamčené funkce nebo pod **Upgrade** na uvítací obrazovce), bez vyskakovacích oken,
-připomínek a odpočtů.
+mobiCut tě s tím nebude otravovat: zkušební verze se nabízí tam, kde se nabízí Pro tak jako
+tak (u zamčené funkce nebo pod **Upgrade** na uvítací obrazovce), a **jednou** po tvém prvním
+exportu ve Free: *Like your video? Try Pro free for 7 days*. **Not now** ji zavře natrvalo.
+Žádná další vyskakovací okna, připomínky ani odpočty.
 
 Ať zvolíš cokoli, **edice Free zůstane zdarma a bez reklam** a přepnutí zpět na Free nikdy nic
 nesmaže.
