@@ -67,8 +67,21 @@ Ve Free po tvém **prvním** exportu nabídne zavření tohoto dialogu jednou t�
 
 ## Logo mobiCutu {#the-mobicut-logo}
 
-Edice Free přidá do pravého horního rohu exportovaného videa malé logo **(mc) mobiCut** (vidíš ho
-i v náhledu, takže žádná překvapení). Pro exportuje bez něj. Ve Free ukazuje panel exportu
-**Remove watermark** se štítkem **PRO**.
+Edice Free přidá do pravého horního rohu exportovaného videa malé logo **mobiCut** (ikona
+aplikace a název; vidíš ho i v náhledu, takže žádná překvapení). Pro exportuje bez něj. Ve Free
+ukazuje panel exportu **Remove watermark** se štítkem **PRO**.
+
+### Logo PRO pro propagační videa {#pro-logo}
+
+S Pro můžeš logo do videa vrátit schválně, s oranžovým štítkem **PRO** za ním, třeba ve videu,
+které ukazuje, co jsi v mobiCutu udělal:
+
+1. Na úvodní obrazovce klepni na **⚙ Settings**.
+2. Zapni **Pro logo** (značka 1).
+
+{% include screen.html name="settings-pro-logo" alt="Panel Settings v Pro se zapnutým přepínačem Pro logo." %}
+
+Logo se pak ukazuje v náhledu i v každém exportu, dokud ho zase nevypneš. Ve výchozím stavu je
+vypnuté a přepínač je jen v Pro.
 
 Žádné reklamy se neukazují před exportem, během něj ani po něm, v žádné edici. Viz [Free a Pro]({{ "/cs/editions/" | relative_url }}).

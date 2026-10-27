@@ -7,7 +7,7 @@ permalink: /privacy/
 # Privacy policy
 {: .no_toc }
 
-**mobiCut** (Android app, package `app.mobicut`) · Last updated: 22 October 2026
+**mobiCut** (Android app, package `app.mobicut`) · Last updated: 27 October 2026
 
 1. TOC
 {:toc}
@@ -44,6 +44,10 @@ them too, unless you choose to keep the app's data in Android's uninstall dialog
 they stay when you uninstall the app.
 
 **Settings.** A few app preferences (such as your edition) are stored on the phone.
+
+**Error reports.** If mobiCut crashes, a description of the error is saved on the phone and
+shown when you next open the app, so you can copy it and send it to us yourself if you want to.
+It's deleted once shown. Nothing is sent automatically.
 
 mobiCut does not access your camera, microphone, location, contacts, accounts or any other data,
 and asks for no runtime permissions. Besides *view network connections* (added by Android's

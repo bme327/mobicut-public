@@ -42,7 +42,7 @@ Zpět na [úvod]({{ "/cs/" | relative_url }}).
 | Rozlišení a snímková frekvence exportu | **do 1080p, 30 fps** | jak bylo natočeno, až **4K a 60 fps** |
 | Délka zdrojového videa | **do 1 hodiny** | bez omezení |
 | Přechody | **Fade out-in**, roztmívání a zatmívání na začátku a konci | všechny, včetně **Interleave** (prolínání) |
-| Logo v exportovaném videu | **malé logo (mc) mobiCut vpravo nahoře** | žádné |
+| Logo v exportovaném videu | **malé logo mobiCut vpravo nahoře** | žádné (volitelně [logo PRO]({{ "/cs/operations/export/#pro-logo" | relative_url }})) |
 
 ## Omezení edice Free
 
@@ -50,7 +50,7 @@ Jen v tomhle se edice liší. Všechno ostatní funguje ve Free stejně.
 
 - **Zdrojová videa do 1 hodiny.** Video, ze kterého projekt zakládáš, může mít nejvýš 60 minut.
   Kratší sestřih delšího letu potřebuje Pro.
-- **Malé logo (mc) mobiCut** v pravém horním rohu každého exportovaného videa. Je vidět i v
+- **Malé logo mobiCut** (ikona aplikace a název) v pravém horním rohu každého exportovaného videa. Je vidět i v
   náhledu, takže co vidíš, to dostaneš.
 - **Export do 1080p a 30 fps.** Video natočené ve 4K nebo s 50/60 fps se exportuje v 1080p
   a 30 fps; Pro ho exportuje tak, jak bylo natočeno. Videa natočená v 1080p/30 fps a méně se

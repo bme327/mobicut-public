@@ -25,6 +25,13 @@ The form asks for two things that make a bug fixable:
 
 {% include screen.html name="settings-edition" alt="The Settings sheet; the app version is at the bottom." caption="Where to find the version: ⚙ Settings, at the bottom." %}
 
+### If the app crashed {#crash}
+
+When mobiCut closes unexpectedly, it shows **mobiCut closed unexpectedly** the next time you open
+it, with a report of the error. Tap **Copy** and paste the report into the bug form, together
+with what you were doing. The report is shown only once; it never leaves the phone unless you
+send it.
+
 ## Feature requests
 
 Describe what you'd like mobiCut to do and what it would help you with.

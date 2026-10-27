@@ -68,8 +68,21 @@ In Free, after your **first** export, closing this dialog offers the free week o
 
 ## The mobiCut logo
 
-The Free edition adds a small **(mc) mobiCut** logo in the top right corner of the exported
-video (you see it in the preview too, so there are no surprises). Pro exports without it. In
-Free, the export sheet shows **Remove watermark** with a **PRO** badge.
+The Free edition adds a small **mobiCut** logo (the app icon and the name) in the top right
+corner of the exported video (you see it in the preview too, so there are no surprises). Pro
+exports without it. In Free, the export sheet shows **Remove watermark** with a **PRO** badge.
+
+### The PRO logo, for promo videos {#pro-logo}
+
+With Pro you can put the logo back on purpose, with an orange **PRO** tag after it, for example
+in a video that shows off what you made with mobiCut:
+
+1. On the start screen, tap **⚙ Settings**.
+2. Turn on **Pro logo** (marker 1).
+
+{% include screen.html name="settings-pro-logo" alt="The Settings sheet in Pro, with the Pro logo switch turned on." %}
+
+The logo then shows in the preview and in every export until you turn it off again. It's off by
+default, and the switch is there only in Pro.
 
 No ads appear before, during or after the export, in either edition. See [Free and Pro]({{ "/editions/" | relative_url }}).

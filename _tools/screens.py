@@ -23,7 +23,7 @@ SND = "#1E4034"; SND_TEXT = "#A8E6C8"; GRAPHIC = "#4A2F57"
 CALLOUT = "#3FA9F5"
 
 W, H = 360, 780
-VERSION = "2026-10-22.1"  # app release the screens show
+VERSION = "2026-10-26.1"  # app release the screens show
 SANS = "Inter, sans-serif"; MONO = "DejaVu Sans Mono, monospace"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "screens")
 
@@ -504,10 +504,17 @@ def delete_project_dialog():
 
 
 def settings_sheet():
+    """ui/Pro.kt SettingsSheet in Pro: Edition, Pro logo switch, test-build switch, Privacy, version."""
     def c(top):
         s = t(20, top + 52, "Settings", 18, TEXT, 600)
         s += t(20, top + 90, "Edition", 15) + rect(W - 66, top + 76, 46, 18, ACCENT, 9) + t(W - 43, top + 89, "PRO", 10, ON_ACCENT, 900, "middle")
         y = top + 112
+        s += t(20, y + 16, "Pro logo", 15)
+        s += t(20, y + 36, "Shows the mobiCut PRO logo in the", 12, MUTED)
+        s += t(20, y + 52, "top-right corner of the preview and", 12, MUTED)
+        s += t(20, y + 68, "export, e.g. for promo videos.", 12, MUTED)
+        s += rect(W - 72, y + 20, 52, 30, ACCENT, 15) + f'<circle cx="{W - 35}" cy="{y + 35}" r="11" fill="{ON_ACCENT}"/>'
+        y += 90
         s += rect(20, y, W - 40, 124, "none", 12, OUTLINE, 1)
         s += t(34, y + 26, "Test build: edition", 13, TEXT, 600)
         s += rect(34, y + 40, 62, 32, "none", 8, OUTLINE, 1) + t(65, y + 61, "Free", 14, TEXT, 500, "middle")
@@ -517,7 +524,7 @@ def settings_sheet():
         s += t(20, y + 156, "Privacy policy", 15, ACCENT)
         s += t(20, y + 184, f"mobiCut {VERSION}", 12, MUTED)
         return s
-    return home() + sheet(352, c)
+    return home() + sheet(442, c)
 
 
 def add_sheet():
@@ -742,13 +749,26 @@ SUB_BOX_PX = (SUB_BOX[0] * W, SUB_VY + SUB_BOX[1] * W * 9 / 16, SUB_BOX[2] * W, 
 MEDIA_TOP = TL_TRACK_TOP - 26  # timeline moves up when the soundtrack lane is shown
 
 # ---------------------------------------------------------------- welcome (ui/StartupScreen.kt)
+def logo_mark(cx, cy, d):
+    """The app icon cropped round inside an orange ring (export/LogoMark.kt)."""
+    inner = d / 2 * (1 - 2 * 0.07)
+    k = inner / 36  # ic_launcher_foreground: 108-unit viewport, launcher circle r 36 around 54
+    X = lambda v: cx + (v - 54) * k
+    Y = lambda v: cy + (v - 54) * k
+    s = f'<circle cx="{cx}" cy="{cy}" r="{d / 2}" fill="{ACCENT}"/><circle cx="{cx}" cy="{cy}" r="{inner}" fill="#1B1E22"/>'
+    for x0, y0, x1, y1 in ((30, 38, 50, 70), (58, 38, 78, 70)):
+        s += rect(X(x0), Y(y0), (x1 - x0) * k, (y1 - y0) * k, ACCENT)
+    for hx, hy in ((33, 42), (43, 42), (33, 62), (43, 62), (61, 42), (71, 42), (61, 62), (71, 62)):
+        s += rect(X(hx), Y(hy), 4 * k, 4 * k, "#0E0F11")
+    return s
+
+
 def logo(cx, cy, width):
-    """The (mc) disc + "mobiCut" wordmark, sized like Logo(): disc 1.25 em, gap 0.3 em."""
+    """The icon mark + "mobiCut" wordmark, sized like Logo(): mark 1.25 em, gap 0.3 em."""
     font = width / (1.25 + 0.3 + 3.6)
     disc = font * 1.25
     x0 = cx - width / 2
-    s = f'<circle cx="{x0 + disc / 2}" cy="{cy}" r="{disc / 2}" fill="{ACCENT}"/>'
-    s += t(x0 + disc / 2, cy + font * 0.22, "mc", font * 0.62, ON_ACCENT, 700, "middle", extra='letter-spacing="-1"')
+    s = logo_mark(x0 + disc / 2, cy, disc)
     s += (f'<text x="{x0 + disc + font * 0.3}" y="{cy + font * 0.36}" font-family="{SANS}" font-size="{font}" fill="{TEXT}">'
           f'mobi<tspan font-weight="700">Cut</tspan></text>')
     return s
@@ -1219,6 +1239,7 @@ SCREENS = {
     "welcome": lambda: welcome() + callout(1, W / 2 - 134, 438, ring=(W / 2 - 122, 424, 244, 28)) + callout(2, W / 2 + 72, 520, ring=(W / 2 - 60, 496, 120, 48))
                + callout(3, 30, 676, ring=(16, 686, 106, 56)) + callout(4, W - 30, 676, ring=(124, 686, W - 140, 56)),
     "settings-edition": lambda: settings_sheet() + callout(1, 182, 575, ring=(26, 572, 144, 48)),
+    "settings-pro-logo": lambda: settings_sheet() + callout(1, 314, 524, ring=(282, 464, 64, 42)),
     "graphic-picker": graphic_picker,
     "graphic-editor": graphic_editor,
     "path-capture": path_capture,

@@ -42,7 +42,7 @@ Back to the [home page]({{ "/" | relative_url }}).
 | Export resolution and frame rate | **up to 1080p, 30 fps** | as filmed, up to **4K and 60 fps** |
 | Length of the source video | **up to 1 hour** | no limit |
 | Transitions | **Fade out-in**, fade in/out at start and end | all, including **Interleave** (crossfade) |
-| Logo in the exported video | **small (mc) mobiCut logo, top right** | none |
+| Logo in the exported video | **small mobiCut logo, top right** | none (optional [PRO logo]({{ "/operations/export/#pro-logo" | relative_url }})) |
 
 ## The Free edition's limits
 
@@ -50,7 +50,7 @@ These are the only differences. Everything else works the same in Free.
 
 - **Source videos up to 1 hour.** The video you start a project from can be at most 60 minutes
   long. A shorter cut of a longer flight needs Pro.
-- **A small (mc) mobiCut logo** in the top right corner of every exported video. It also shows in
+- **A small mobiCut logo** (the app icon and the name) in the top right corner of every exported video. It also shows in
   the preview, so what you see is what you get.
 - **Exports up to 1080p at 30 fps.** A video filmed in 4K or at 50/60 fps exports at 1080p and
   30 fps; Pro exports it as filmed. Videos filmed at 1080p/30 fps or less export as they are.

@@ -64,7 +64,7 @@ Většina uživatelů bude mít Free, takže i to je potřeba otestovat.
 2. Vyzkoušej **rozdělení**, **smazání**, **rychlost**, **text**, **obrázek** a svou **hudbu**.
 3. Zkontroluj, že Pro funkce mají oranžový štítek **PRO** a jsou zamčené a že jediný přechod je
    **Fade out-in**.
-4. **Exportuj.** Ve videu má být vpravo nahoře malé logo **(mc)**.
+4. **Exportuj.** Ve videu má být vpravo nahoře malé logo **mobiCut**.
 
 ## Uplatni kód a otestuj Pro
 

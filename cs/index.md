@@ -77,7 +77,7 @@ mobiCut má dvě edice: **Free** a **Pro**.
 > Free je plnohodnotný střihač s několika omezeními, ne zkušební verze.
 
 Jediná omezení Free: zdrojová videa **do 1 hodiny**, export **do 1080p a 30 fps**, malé
-**logo (mc) mobiCut** v pravém horním rohu exportu, **Fade out-in** jako jediný přechod
+**logo mobiCut** v pravém horním rohu exportu, **Fade out-in** jako jediný přechod
 a dráhy jen z **AI dráhy** (kreslení rukou je Pro). Pro je odstraní.
 
 V APK z tohoto webu **jde Pro zapnout zdarma** v **⚙ Settings**. Na Google Play je Pro roční

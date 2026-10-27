@@ -63,7 +63,7 @@ way back to Free. Most users will run Free, so it needs testing too.
 2. Try **split**, **delete**, **speed**, a **text**, a **picture** and your **soundtrack**.
 3. Check that Pro features show the orange **PRO** badge and are locked, and that **Fade
    out-in** is the only transition.
-4. **Export.** The video should have the small **(mc)** logo in the top right corner.
+4. **Export.** The video should have the small **mobiCut** logo in the top right corner.
 
 ## Redeem the code and test Pro
 

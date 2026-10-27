@@ -76,7 +76,7 @@ mobiCut comes in two editions: **Free** and **Pro**.
 > Free is a complete editor with a few limits, not a trial.
 
 Free's only limits: source videos **up to 1 hour**, exports **up to 1080p at 30 fps**, a small
-**(mc) mobiCut logo** in the top right corner of exports, **Fade out-in** as the only
+**mobiCut logo** in the top right corner of exports, **Fade out-in** as the only
 transition, and paths only from the **AI path** (drawing them by hand is Pro). Pro removes them.
 
 In the APK from this site, **Pro can be switched on for free** in Settings. On Google Play, Pro

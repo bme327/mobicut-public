@@ -24,6 +24,12 @@ Formulář chce dvě věci, díky kterým jde chybu opravit:
 
 {% include screen.html name="settings-edition" alt="Panel Settings; verze aplikace je dole." caption="Kde najdeš verzi: ⚙ Settings, úplně dole." %}
 
+### Když aplikace spadla {#crash}
+
+Když se mobiCut nečekaně zavře, při dalším otevření ukáže **mobiCut closed unexpectedly** se
+zprávou o chybě. Klepni na **Copy** a zprávu vlož do formuláře pro chybu, spolu s tím, co jsi
+zrovna dělal. Zpráva se ukáže jen jednou; z telefonu nikam neodejde, pokud ji sám neodešleš.
+
 ## Návrhy funkcí
 
 Popiš, co by měl mobiCut umět a s čím by ti to pomohlo.

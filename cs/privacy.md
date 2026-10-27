@@ -7,7 +7,7 @@ permalink: /cs/privacy/
 # Zásady ochrany soukromí
 {: .no_toc }
 
-**mobiCut** (aplikace pro Android, balíček `app.mobicut`) · Poslední změna: 22. října 2026
+**mobiCut** (aplikace pro Android, balíček `app.mobicut`) · Poslední změna: 27. října 2026
 
 {: .note }
 > Toto je překlad. Pokud by se lišil od [anglické verze]({{ "/privacy/" | relative_url }}),
@@ -46,6 +46,10 @@ pokud si v dialogu odinstalace Androidu nezvolíš zachování dat aplikace.
 odinstalaci aplikace zůstanou.
 
 **Nastavení.** Pár předvoleb aplikace (třeba tvoje edice) je uloženo v telefonu.
+
+**Zprávy o chybách.** Když mobiCut spadne, popis chyby se uloží v telefonu a ukáže se při dalším
+otevření aplikace, abys ho mohl zkopírovat a sám nám poslat, pokud chceš. Po zobrazení se smaže.
+Nic se neodesílá automaticky.
 
 mobiCut nepřistupuje k fotoaparátu, mikrofonu, poloze, kontaktům, účtům ani k jiným datům a
 nežádá žádná oprávnění za běhu. Kromě *zobrazení síťových připojení* (přidává ho mediální
