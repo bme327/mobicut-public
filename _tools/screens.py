@@ -23,7 +23,7 @@ SND = "#1E4034"; SND_TEXT = "#A8E6C8"; GRAPHIC = "#4A2F57"
 CALLOUT = "#3FA9F5"
 
 W, H = 360, 780
-VERSION = "2026-10-26.1"  # app release the screens show
+VERSION = "2026-10-27.1"  # app release the screens show
 SANS = "Inter, sans-serif"; MONO = "DejaVu Sans Mono, monospace"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "screens")
 
