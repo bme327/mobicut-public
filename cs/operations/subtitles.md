@@ -52,7 +52,8 @@ Ikona koše text smaže. Tlačítko **Zpět** telefonu editor zavře, stejně ja
 
 ### Text {#text}
 
-- Samotný text; zalamuje se do rámečku.
+- Samotný text; zalamuje se do rámečku. **Enter** začne nový řádek, takže text může mít víc
+  řádků (pole jich ukáže až pět).
 - **Duration**: jak dlouho zůstane na obrazovce v hotovém videu, **−** / **+** po půl sekundě
   (0,5–60 s).
 - **Starts at**: kdy se objeví.
@@ -71,6 +72,13 @@ Ikona koše text smaže. Tlačítko **Zpět** telefonu editor zavře, stejně ja
 - **Text colour** a **Text opacity**: barva a krytí textu.
 - **Background colour** a **Background opacity**: zaoblený pruh za textem. Pod 40 % dostane text
   jemný stín, aby zůstal čitelný i proti sněhu a obloze.
+- **Background shape**: *One box* za všemi řádky, nebo *Box per line*: každý řádek má vlastní
+  zaoblený rámeček, široký jako ten řádek. S *Box per line*:
+  - **Line spacing**: mezera mezi rámečky, 0–60 % výšky písma.
+  - **Box while typing** (s nástupem *Type*): rámeček *Grows* (roste s psanými písmeny), nebo
+    *Whole line* (celý řádek hned, jak se řádek začne psát).
+
+{% include screen.html name="subtitle-lines" alt="Dvouřádkový text ve videu, každý řádek ve vlastním tmavém rámečku; karta Look posunutá k Background colour, Background opacity, Background shape s vybraným Box per line, Line spacing 20 % a Box while typing Grows." %}
 - **Position (or drag it on the video)**: *Top*, *Middle*, *Bottom* a *Centre* tam rámeček
   umístí jedním klepnutím. Když text [sleduje dráhu]({{ "/cs/operations/paths/" | relative_url }}),
   jsou skryté.
@@ -87,9 +95,19 @@ Ikona koše text smaže. Tlačítko **Zpět** telefonu editor zavře, stejně ja
   - *Fade*: plynule se objeví a vytratí,
   - *Slide*: přijede zespodu, odjede dolů a přitom se prolne,
   - *Zoom*: zvětší se dovnitř, zmenší se ven,
-  - *Type*: vypíše se písmeno po písmenu (při odchodu se vytratí).
+  - *Type*: vypíše se písmeno po písmenu; při odchodu se zase umaže a vytratí.
 
   Každý má **Duration** 0,1–2 s; žádný nezabere víc než polovinu času textu na obrazovce.
+- **Typing speed** (při nástupu *Type*): *Slow*, *Normal* nebo *Fast*, zhruba 6, 12 nebo 24
+  písmen za sekundu. Nový řádek chvilku počká, takže řádky začínají jeden po druhém. Dlouhý text
+  se píše tak dlouho, jak potřebuje; zrychlí jen tehdy, kdyby se nestihl dopsat před odchodem.
+  Emoji nebo vlajka se objeví celá, jako jedno písmeno.
+- **Cursor** (s *Type* na nástupu nebo odchodu): kurzor na konci textu, dokud se píše.
+
+{% include screen.html name="subtitle-typing" alt="Karta Motion: Ease in Type s Typing speed Normal, Ease out Fade 0,3 s a zapnutý Cursor. Ve videu je druhý řádek napůl napsaný a za ním kurzor." %}
+
+{: .note }
+> Texty, které už ve starších projektech používaly *Type*, si nechají svou délku, dokud nevybereš rychlost.
 - **Effect while shown**: *Wobble* (jemně se kolébá), *Pulse* (dýchá větší a menší),
   *Shake* (třese se), *Float* (pohupuje se nahoru a dolů).
 - **Follow something moving**: zakroužkuj objekt a **AI dráha** ho bude sledovat, nebo nakresli
