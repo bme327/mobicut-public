@@ -664,7 +664,19 @@ def subtitle_editor(tab="Text", text="Take-off from Lysá hora", look="classic")
     s += rect(0, 80, W, PANEL_TOP - 80, "#000") + landscape(0, SUB_VY, W, vh, 0, "se")
     bx, by, bw, bh = SUB_BOX
     x0, y0, w0, h0 = bx * W, SUB_VY + by * vh, bw * W, bh * vh
-    if look == "classic":
+    if look == "lines":  # two lines, a box per line; the second one still typing, with the cursor
+        h0 = bh * vh * 1.9
+        y0 -= bh * vh * 0.9
+        l1, l2 = "Take-off from Lysá hora", "Wind 12 km"
+        for i, (line, full) in enumerate(((l1, l1), (l2, "Wind 12 km/h SW"))):
+            lw = len(line) * 6.9 + 16
+            ly = y0 + 5 + i * 22
+            fx = W / 2 - (len(full) * 6.9 + 16) / 2  # centred as the whole line will be
+            lx = W / 2 - lw / 2 if i == 0 else fx
+            s += rect(lx, ly, lw, 19, "#000", 4, op=0.72) + t(lx + 8, ly + 14, line, 13, "#fff")
+            if i == 1:
+                s += rect(lx + lw - 7, ly + 3, 2, 13, "#fff")
+    elif look == "classic":
         s += rect(x0, y0, w0, h0, "#000", 4, op=0.72) + t(W / 2, y0 + h0 / 2 + 4.5, text, 13, "#fff", 400, "middle")
     else:  # bold serif, yellow, no background: a soft shadow keeps it readable
         s += t(W / 2 + 1, y0 + h0 / 2 + 7, text, 19, "#000", 700, "middle", extra='fill-opacity="0.6" font-family="DejaVu Serif, serif"').replace(f'font-family="{SANS}" ', "")
@@ -683,7 +695,7 @@ def subtitle_editor(tab="Text", text="Take-off from Lysá hora", look="classic")
     s += button(300, top + 6, 52, 36, "Done")
     tw = (W - 16) / 3
     for i, lab in enumerate(["Text", "Look", "Motion"]):
-        sel = lab == tab or (lab == "Motion" and tab == "Path")
+        sel = lab == tab or (lab == "Motion" and tab in ("Path", "Typing")) or (lab == "Look" and tab == "LookLines")
         cx = 8 + tw * i + tw / 2
         s += t(cx, top + 68, lab, 14, ACCENT if sel else MUTED, 600 if sel else 400, "middle")
         s += rect(8 + tw * i, top + 80, tw, 2, ACCENT if sel else OUTLINE)
@@ -727,6 +739,25 @@ def subtitle_editor(tab="Text", text="Take-off from Lysá hora", look="classic")
             s += f'<circle cx="{cx}" cy="{y + 188}" r="{11 if sel else 13}" fill="{c}"/>'
         s += slider(y + 228, "Text opacity", "100 %", 1.0)
         s += t(16, y + 274, "Background colour", 13, MUTED)  # …and its opacity below, when scrolled
+    elif tab == "LookLines":  # the Look tab scrolled to the background
+        s += t(16, y, "Background colour", 13, MUTED)
+        sw = ["#FFFFFF", "#000000", "#FFEB3B", "#F2A33A", "#E53935", "#43A047", "#00BCD4", "#1E88E5", "#D81B60"]
+        for i, c in enumerate(sw):
+            cx = 32 + i * 42
+            sel = c == "#000000"
+            s += f'<circle cx="{cx}" cy="{y + 28}" r="16" fill="none" stroke="{ACCENT if sel else OUTLINE}" stroke-width="{3 if sel else 1}"/>'
+            s += f'<circle cx="{cx}" cy="{y + 28}" r="{11 if sel else 13}" fill="{c}"/>'
+        s += slider(y + 68, "Background opacity", "72 %", 0.72)
+        s += t(16, y + 114, "Background shape", 13, MUTED) + chips(16, y + 124, ["One box", "Box per line"], ("Box per line",))
+        s += slider(y + 182, "Line spacing", "20 %", 20 / 60)
+        s += t(16, y + 228, "Box while typing", 13, MUTED) + chips(16, y + 238, ["Grows", "Whole line"], ("Grows",))
+    elif tab == "Typing":  # the Motion tab with Type
+        s += t(16, y, "Ease in", 13, MUTED) + chips(16, y + 10, ["None", "Fade", "Slide", "Zoom", "Type"], ("Type",))
+        s += t(16, y + 66, "Typing speed", 13, MUTED) + chips(16, y + 76, ["Slow", "Normal", "Fast"], ("Normal",))
+        s += t(16, y + 132, "Ease out", 13, MUTED) + chips(16, y + 142, ["None", "Fade", "Slide", "Zoom", "Type"], ("Fade",))
+        s += slider(y + 198, "Duration", "0.3 s", (0.3 - 0.1) / 1.9)
+        s += chips(16, y + 236, ["Cursor"], ("Cursor",))
+        s += t(16, y + 292, "Effect while shown", 13, MUTED)
     elif tab == "Path":  # the Motion tab scrolled down, after a capture
         s += t(16, y, "Effect while shown", 13, MUTED) + chips(16, y + 10, ["None", "Wobble", "Pulse", "Shake", "Float"], ("None",))
         s += rect(16, y + 62, W - 32, 1, OUTLINE)
@@ -1208,6 +1239,8 @@ SCREENS = {
                        + callout(6, 342, PANEL_TOP + 52, ring=(298, PANEL_TOP + 4, 56, 40)),
     "subtitle-look": lambda: subtitle_editor("Look", look="styled"),
     "subtitle-motion": lambda: subtitle_editor("Motion", look="styled"),
+    "subtitle-lines": lambda: subtitle_editor("LookLines", look="lines"),
+    "subtitle-typing": lambda: subtitle_editor("Typing", look="lines"),
     "subtitles-timeline": lambda: editor(subtitle_on_preview="Take-off from Lysá hora", speed_badge="", playhead=0.2)
                           + callout(1, 16 + 340 * 0.19, TL_TRACK_TOP + 106, ring=(16 + 340 * 0.08 - 4, TL_TRACK_TOP + 86, 340 * 0.22 + 8, 36))
                           + callout(2, TOOL_X[4] + 26, TOOL_Y + 4, ring=tool_ring(4)),

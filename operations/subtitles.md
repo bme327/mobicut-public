@@ -52,7 +52,8 @@ The bin icon deletes the text. The phone's **Back** button closes the editor, li
 
 ### Text
 
-- The text itself; it wraps to the box.
+- The text itself; it wraps to the box. **Enter** starts a new line, so a text can have several
+  lines (the field shows up to five).
 - **Duration**: how long it stays on screen in the finished video, **−** / **+** in half-second
   steps (0.5–60 s).
 - **Starts at**: when it appears.
@@ -71,6 +72,13 @@ The bin icon deletes the text. The phone's **Back** button closes the editor, li
 - **Text colour** and **Text opacity**.
 - **Background colour** and **Background opacity**: the rounded band behind the text. Below 40 %
   the text gets a soft shadow, so it stays readable over snow and sky.
+- **Background shape**: *One box* behind all lines, or *Box per line*: each line gets its own
+  rounded box, as wide as that line. With *Box per line*:
+  - **Line spacing**: the gap between the boxes, 0–60 % of the text height.
+  - **Box while typing** (with the *Type* entrance): *Grows* with the letters as they're typed,
+    or shows the *Whole line* as soon as the line starts.
+
+{% include screen.html name="subtitle-lines" alt="A two-line text on the video, each line in its own dark box; the Look tab scrolled to Background colour, Background opacity, Background shape with Box per line selected, Line spacing 20 % and Box while typing Grows." %}
 - **Position (or drag it on the video)**: *Top*, *Middle*, *Bottom* and *Centre* put the box
   there in one tap. They're hidden while the text [follows a path]({{ "/operations/paths/" | relative_url }}).
 - **Rotation**: the angle the text is turned by, and **Reset** to straighten it.
@@ -86,9 +94,19 @@ The bin icon deletes the text. The phone's **Back** button closes the editor, li
   - *Fade*,
   - *Slide*: in from below, out downwards, fading,
   - *Zoom*: grows in, shrinks out,
-  - *Type*: typed out letter by letter (on the way out it fades).
+  - *Type*: typed out letter by letter; on the way out it deletes itself and fades.
 
   Each has a **Duration** of 0.1–2 s; neither takes more than half the text's time on screen.
+- **Typing speed** (when it comes in with *Type*): *Slow*, *Normal* or *Fast*, about 6, 12 or 24
+  letters a second. A new line pauses for a moment, so lines start one after another. A long text
+  types as long as it needs; only if it wouldn't finish before its exit starts does it speed up.
+  An emoji or a flag appears whole, like one letter.
+- **Cursor** (with *Type* in or out): a cursor at the end of the text while it's being typed.
+
+{% include screen.html name="subtitle-typing" alt="The Motion tab: Ease in Type with Typing speed Normal, Ease out Fade 0.3 s and Cursor on. On the video the second line is half typed, with the cursor after it." %}
+
+{: .note }
+> Texts that already used *Type* in older projects keep their duration until you pick a speed.
 - **Effect while shown**: *Wobble* (gently rocks), *Pulse* (breathes bigger and smaller),
   *Shake* (jitters), *Float* (bobs up and down).
 - **Follow something moving**: circle the object and the **AI path** follows it, or draw the
