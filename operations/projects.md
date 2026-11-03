@@ -31,13 +31,15 @@ start screen lists them, newest first. (Before it, mobiCut briefly shows the
    - **Gallery**: videos on this phone.
    - **Browse files**: an SD card, a USB camera or drive, Downloads, Google Drive and other
      file providers. Use this for action cameras plugged in by USB.
+   - **Slideshow from pictures**: up to 50 photos made into a video; see
+     [Slideshow]({{ "/operations/slideshow/" | relative_url }}).
 3. Pick the video. The editor opens with the whole video as one segment.
 
 {: .note }
 > In the **Free** edition the source video can be **up to 1 hour** long. Longer videos need
 > [Pro]({{ "/editions/" | relative_url }}).
 
-{% include screen.html name="new-project" alt="The 'New project from…' sheet with Gallery and Browse files." %}
+{% include screen.html name="new-project" alt="The 'New project from…' sheet with Gallery, Browse files and Slideshow from pictures." %}
 
 {: .tip }
 You can also start from another app: in the gallery, **Share** a video and choose **MobiCut**.
