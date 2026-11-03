@@ -23,6 +23,10 @@ becomes a segment of its own, shown for as long as you choose, standing still or
 4. Set the **Duration** with **−** and **+** (0.5 s steps, from 0.5 s to 60 s; it starts at 3 s).
 5. Choose an **Effect** (see below), then tap **Insert**.
 
+{: .tip }
+Many photos and no video? Start a [slideshow]({{ "/operations/slideshow/" | relative_url }}) instead:
+all pictures go in at once.
+
 {% include screen.html name="picture-add" alt="The Add picture dialog: Gallery and Browse files buttons, the picked picture's name, Duration 3.0 s, and the effects Still, Slow zoom in (selected), Slow zoom out and Slide in." %}
 
 The video is split at the playhead and the picture goes in between; everything after it moves

@@ -59,6 +59,7 @@ def icon(name, x, y, size=22, color=TEXT):
         "more": f'<circle cx="12" cy="5" r="1.6" fill="{color}"/><circle cx="12" cy="12" r="1.6" fill="{color}"/><circle cx="12" cy="19" r="1.6" fill="{color}"/>',
         "movie": '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14M3 9h4M3 15h4M17 9h4M17 15h4"/>',
         "gallery": '<rect x="6" y="3" width="15" height="15" rx="2"/><path d="M3 7v12a2 2 0 0 0 2 2h12"/><path d="m9 15 3-4 2 2 2-3 3 5z"/>',
+        "slideshow": '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M10 9.5v5l4-2.5z"/>',
         "folder": '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
         "eye_off": '<path d="M3 3l18 18"/><path d="M10.6 6.1A10 10 0 0 1 22 12a14 14 0 0 1-3 3.7M6.6 6.6A14 14 0 0 0 2 12s3.6 7 10 7a9.6 9.6 0 0 0 5.4-1.6"/>',
         "eye": '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
@@ -194,15 +195,18 @@ def home(projects=True, sheet=False, menu=False):
     s += nav_bar()
     if sheet:
         s += scrim()
-        top = H - 230
+        top = H - 334
         s += f'<path d="M0 {top+28} Q0 {top} 28 {top} H{W-28} Q{W} {top} {W} {top+28} V{H} H0Z" fill="{SURF}"/>'
         s += rect(W / 2 - 16, top + 14, 32, 4, MUTED, 2)
         s += t(20, top + 60, "New project from…", 18, TEXT, 600)
         for i, (ic, title, det) in enumerate([("gallery", "Gallery", "Videos on this phone"),
-                                              ("folder", "Browse files", "SD card, USB camera or drive, Downloads, Drive")]):
-            y = top + 82 + i * 62
+                                              ("folder", "Browse files", "SD card, USB camera or drive,|Downloads, Drive"),
+                                              ("slideshow", "Slideshow from pictures", "Pick up to 50 pictures and make a|video of them")]):
+            y = top + 82 + i * 72
             s += icon(ic, 33, y + 24, 26, ACCENT)
-            s += t(62, y + 20, title, 16) + t(62, y + 40, det, 13, MUTED)
+            s += t(62, y + 20, title, 16)
+            for k, line in enumerate(det.split("|")):
+                s += t(62, y + 40 + k * 17, line, 13, MUTED)
         s += nav_bar()
     return s
 
@@ -567,6 +571,28 @@ def picture_dialog():
         s += t(x, y + 392, "Transitions work as for any segment: use", 12, MUTED) + t(x, y + 408, "the buttons on the timeline.", 12, MUTED)
         return s
     return editor(segs=MEDIA_SEGS, speed_badge="", preview_shade=1) + dialog(560, "Add picture", body, [("Cancel", ACCENT), ("Insert", ACCENT)])
+
+
+def slideshow_dialog():
+    def body(x, y, w):
+        s = t(x, y + 6, "12 pictures", 14)
+        for i in range(5):
+            s += f'<svg x="{x + i * 52}" y="{y + 18}" width="48" height="48"><clipPath id="ss{i}"><rect width="48" height="48" rx="6"/></clipPath><g clip-path="url(#ss{i})">' + landscape(-12, 0, 72, 48, i % 3, f"ss{i}") + "</g></svg>"
+        s += t(x, y + 98, "Length of the video", 14) + t(x + w, y + 98, "1:00", 16, TEXT, 400, "end", True)
+        frac = (60 - 12) / (240 - 12)
+        s += rect(x, y + 114, w, 4, SURF, 2) + rect(x, y + 114, w * frac, 4, ACCENT, 2)
+        s += f'<circle cx="{x + w * frac}" cy="{y + 116}" r="9" fill="{ACCENT}"/>'
+        s += t(x, y + 142, "About 5.0 s per picture", 12, MUTED)
+        s += t(x, y + 174, "Shape", 13, MUTED) + chips(x, y + 184, ["Landscape", "Portrait", "Square"], selected=("Landscape",))
+        s += t(x, y + 240, "Resolution", 13, MUTED) + chips(x, y + 250, ["720p", "1080p", "4K"], selected=("1080p",))
+        s += t(x, y + 300, "1920×1080 · 30 fps", 12, MUTED)
+        s += t(x, y + 332, "Effect", 13, MUTED) + chips(x, y + 342, ["Still", "Zoom in", "Zoom out"], selected=("Zoom in",))
+        s += chips(x, y + 382, ["Slide in"])
+        s += t(x, y + 440, "Transitions between", 15) + t(x, y + 458, "pictures", 15)
+        s += t(x, y + 476, "Fade out-in, 2.0 s each,", 12, MUTED) + t(x, y + 491, "with fade in and out", 12, MUTED)
+        s += switch(x + w - 52, y + 440, True)
+        return s
+    return home() + dialog(650, "Slideshow", body, [("Cancel", ACCENT), ("Create", ACCENT)], width=330)
 
 
 def soundtrack_dialog():
@@ -1267,6 +1293,7 @@ SCREENS = {
                     + callout(1, 16 + 340 * 0.51, TL_TRACK_TOP - 16, ring=(16 + 340 * 0.36, TL_TRACK_TOP, 340 * 0.30, 84))
                     + callout(2, TOOL_X[3] + 26, TOOL_Y + 4, ring=tool_ring(3)),
     "picture-add": picture_dialog,
+    "slideshow": slideshow_dialog,
     "soundtrack": soundtrack_dialog,
     "segment-info-picture": segment_info_picture,
     "welcome": lambda: welcome() + callout(1, W / 2 - 134, 438, ring=(W / 2 - 122, 424, 244, 28)) + callout(2, W / 2 + 72, 520, ring=(W / 2 - 60, 496, 120, 48))

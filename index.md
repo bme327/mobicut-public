@@ -28,6 +28,7 @@ raw clip into a short video before you even get home:
 - **add texts** to say where and what it is, and **title cards** between the parts,
 - **join the parts with fades** so the cuts look intentional,
 - **put in photos** with a slow zoom or slide, and **music** under it all,
+- make a **slideshow** from up to 50 photos in one go, at the length and size you choose,
 - **mute** the wind noise, and **join several videos** into one,
 - put **arrows, smileys and shapes** on the video and make them **follow** a glider or skier,
 - **export** a new video to your gallery, ready to share.
