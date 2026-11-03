@@ -64,20 +64,6 @@ These are the only differences. Everything else works the same in Free.
 In the app, Pro-only features carry an orange **PRO** badge. In Free they stay visible but
 locked; tapping one tells you what it does.
 
-## Try Pro now, in test builds
-
-While mobiCut is in testing, **every Pro feature can be switched on for free**.
-Test builds are the APKs from the [installation page]({{ "/installation/" | relative_url }}).
-
-1. On the start screen, tap **⚙ Settings**.
-2. Under **Test build: edition**, tap **Pro** (marker 1). Tap **Free** to see the app as Free
-   users will.
-
-{% include screen.html name="settings-edition" alt="The Settings sheet with Edition: PRO and the Test build: edition switch set to Pro, with the Privacy policy link and the app version below." %}
-
-Test builds start in **Pro**. The switch only exists in test builds; the Play Store version won't
-have it.
-
 {: .note }
 > Switching to Free never deletes anything. If a project uses Pro features (for example
 > Interleave transitions), they stay saved and come back when you switch to Pro again.

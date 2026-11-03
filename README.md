@@ -3,19 +3,19 @@
 User documentation for **mobiCut**, a small video editor for Android, published with GitHub Pages.
 
 - Site: https://bme327.github.io/mobicut-public/
-- Install the app: https://github.com/bme327/mobicut-public/releases/latest/download/mobicut.apk
+- The app: planned for Google Play in mid-November 2026. There is no public APK download.
 
 ## Layout
 
 | Path | What |
 |---|---|
 | `index.md` | Intro: what mobiCut is, editions (Free / Pro) |
-| `installation.md` | Installing and updating from the APK |
+| `installation.md` | Availability (Google Play, planned), updating, uninstalling |
 | `operations/*.md` | One page per operation |
 | `assets/screens/*.png` | Drawn screen illustrations (generated) |
 | `assets/screens/real/*.png` | Real phone screenshots; a file here replaces the illustration with the same name |
 | `_tools/screens.py` | Draws the illustrations from the app's UI (colors and labels from its Compose code) |
-| `_config.yml` | Theme, `apk_url`, `app_version` |
+| `_config.yml` | Theme, `release_planned`, `app_version` |
 | `cs/` | Czech translation: the same paths under `cs/` (`cs/installation.md` ↔ `installation.md`) |
 
 Regenerate illustrations: `pip install cairosvg && python3 _tools/screens.py`

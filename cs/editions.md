@@ -65,20 +65,6 @@ Jen v tomhle se edice liší. Všechno ostatní funguje ve Free stejně.
 V aplikaci mají funkce jen pro Pro oranžový štítek **PRO**. Ve Free zůstávají vidět, ale jsou
 zamčené; klepnutím se dozvíš, co dělají.
 
-## Vyzkoušej Pro hned, v testovacích sestaveních
-
-Dokud se mobiCut testuje, **jdou všechny Pro funkce zapnout zdarma**.
-Testovací sestavení jsou APK ze [stránky instalace]({{ "/cs/installation/" | relative_url }}).
-
-1. Na úvodní obrazovce klepni na **⚙ Settings**.
-2. V části **Test build: edition** klepni na **Pro** (značka 1). Klepnutím na **Free** uvidíš
-   aplikaci tak, jak ji uvidí uživatelé Free.
-
-{% include screen.html name="settings-edition" alt="Panel Settings s Edition: PRO a přepínačem Test build: edition nastaveným na Pro, pod ním odkaz na zásady ochrany soukromí a verze aplikace." %}
-
-Testovací sestavení startují v **Pro**. Přepínač je jen v testovacích sestaveních; verze
-z Obchodu Play ho mít nebude.
-
 {: .note }
 > Přepnutí na Free nikdy nic nesmaže. Pokud projekt používá Pro funkce (třeba přechody
 > Interleave), zůstanou uložené a vrátí se, až zase přepneš na Pro.
