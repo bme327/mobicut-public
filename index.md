@@ -6,14 +6,15 @@ nav_order: 1
 
 # mobiCut
 
+{: .note }
+> **mobiCut is planned to be released on Google Play in {{ site.release_planned }}.**
+
 **A small video editor for Android, made for quick edits of action clips right on the phone.**
 {: .fs-6 .fw-300 }
 
-[Install the app]({{ "/installation/" | relative_url }}){: .btn .btn-primary .mr-2 }
+[Coming to Google Play]({{ "/installation/" | relative_url }}){: .btn .btn-primary .mr-2 }
 [See what it can do]({{ "/operations/" | relative_url }}){: .btn .mr-2 }
 [Free & Pro]({{ "/editions/" | relative_url }}){: .btn }
-
-{% include downloads.html %}
 
 ---
 
@@ -80,8 +81,7 @@ Free's only limits: source videos **up to 1 hour**, exports **up to 1080p at 30 
 **mobiCut logo** in the top right corner of exports, **Fade out-in** as the only
 transition, and paths only from the **AI path** (drawing them by hand is Pro). Pro removes them.
 
-In the APK from this site, **Pro can be switched on for free** in Settings. On Google Play, Pro
-is a yearly subscription with a **free first week**, or a month that doesn't renew.
+On Google Play, Pro is a yearly subscription with a **free first week**, or a month that doesn't renew.
 
 [Compare Free and Pro →]({{ "/editions/" | relative_url }}){: .btn .btn-outline }
 

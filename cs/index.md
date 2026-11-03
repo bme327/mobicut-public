@@ -7,14 +7,15 @@ permalink: /cs/
 
 # mobiCut
 
+{: .note }
+> **mobiCut má vyjít na Google Play {{ site.release_planned_cs }}.**
+
 **Malý střihač videa pro Android, udělaný na rychlé úpravy akčních záběrů přímo v telefonu.**
 {: .fs-6 .fw-300 }
 
-[Nainstalovat aplikaci]({{ "/cs/installation/" | relative_url }}){: .btn .btn-primary .mr-2 }
+[Brzy na Google Play]({{ "/cs/installation/" | relative_url }}){: .btn .btn-primary .mr-2 }
 [Co umí]({{ "/cs/operations/" | relative_url }}){: .btn .mr-2 }
 [Free a Pro]({{ "/cs/editions/" | relative_url }}){: .btn }
-
-{% include downloads.html %}
 
 ---
 
@@ -80,8 +81,7 @@ Jediná omezení Free: zdrojová videa **do 1 hodiny**, export **do 1080p a 30 f
 **logo mobiCut** v pravém horním rohu exportu, **Fade out-in** jako jediný přechod
 a dráhy jen z **AI dráhy** (kreslení rukou je Pro). Pro je odstraní.
 
-V APK z tohoto webu **jde Pro zapnout zdarma** v **⚙ Settings**. Na Google Play je Pro roční
-předplatné s **prvním týdnem zdarma**, nebo měsíc, který se neobnovuje.
+Na Google Play je Pro roční předplatné s **prvním týdnem zdarma**, nebo měsíc, který se neobnovuje.
 
 [Porovnat Free a Pro →]({{ "/cs/editions/" | relative_url }}){: .btn .btn-outline }
 
