@@ -19,7 +19,7 @@ nav_order: 2
 ## What you'll need
 
 - A phone with **Android 10 or newer**.
-- About 70 MB free for the app, plus room for the videos you export.
+- The download from Google Play is under 20 MB; you also need room for the videos you export.
 
 Want to try it before the release? Join the
 [closed alpha on Google Play]({{ "/closed-alpha/" | relative_url }}).

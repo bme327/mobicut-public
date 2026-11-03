@@ -19,7 +19,7 @@ nav_order: 2
 ## Co budeš potřebovat {#what-youll-need}
 
 - Telefon s **Androidem 10 nebo novějším**.
-- Asi 70 MB volného místa na aplikaci, plus místo na exportovaná videa.
+- Stažení z Google Play má méně než 20 MB; místo potřebuješ i na exportovaná videa.
 
 Chceš si ho vyzkoušet ještě před vydáním? Přidej se do
 [uzavřeného alfa testu na Google Play]({{ "/cs/closed-alpha/" | relative_url }}).
