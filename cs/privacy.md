@@ -7,7 +7,7 @@ permalink: /cs/privacy/
 # Zásady ochrany soukromí
 {: .no_toc }
 
-**mobiCut** (aplikace pro Android, balíček `app.mobicut`) · Poslední změna: 27. října 2026
+**mobiCut** (aplikace pro Android, balíček `app.mobicut`) · Poslední změna: 5. listopadu 2026
 
 {: .note }
 > Toto je překlad. Pokud by se lišil od [anglické verze]({{ "/privacy/" | relative_url }}),
@@ -20,9 +20,13 @@ permalink: /cs/privacy/
 
 ## Shrnutí
 
-mobiCut je střihač videa, který funguje celý v tvém telefonu. Nemá účty, reklamy, analytiku ani
-sledování. Nesbírá osobní údaje, nikam neposílá tvoje videa ani projekty a s nikým nesdílí žádná
-data. Aplikace nemá ani oprávnění používat internet.
+mobiCut je střihač videa, který funguje celý v tvém telefonu. Stručně:
+
+- **Tvoje videa nikdy neopustí telefon.** Střih i export probíhají v telefonu, nic se nenahrává.
+- **Žádný účet, reklamy, analytika ani sledování.** Nesbíráme osobní údaje a nic nesdílíme.
+- **Žádný internet.** Aplikace nemá ani oprávnění ho používat.
+- **Pro vyřizuje Google Play.** Tvoje platební údaje nikdy nevidíme.
+- **Máš to pod kontrolou.** Smažeš projekt, exportovaný soubor nebo aplikaci, a je to pryč.
 
 ## Kdo jsme
 
@@ -76,8 +80,10 @@ Nejsou součástí toho, jak mobiCut nakládá s daty, ale při jeho používán
   Platby jdou přes Google Play; mobiCut nikdy nevidí tvoje platební údaje a od Google Play se
   dozví jen to, jestli je na tvém účtu Pro odemčené. Viz
   [zásady ochrany soukromí Googlu](https://policies.google.com/privacy).
-- **Odkazy a zpětná vazba.** Tlačítka *Docs*, *What's new* a *Privacy* na uvítací obrazovce
-  a *Privacy policy* v Settings otevřou tento web na GitHubu v prohlížeči.
+- **Odkazy a zpětná vazba.** Tlačítka *Návod*, *Novinky* a *Soukromí* na uvítací obrazovce
+  a *Ochrana soukromí* v Nastavení otevřou tento web na GitHubu v okně prohlížeče nad aplikací.
+  *Ohodnotit mobiCut* otevře stránku mobiCutu na Google Play a *Sdílet mobiCut* předá zprávu
+  s tímto odkazem aplikaci, kterou vybereš; mobiCut sám nic neposílá.
   Stažení aplikace z tohoto webu a posílání zpětné vazby přes
   [GitHub issues](https://github.com/bme327/mobicut-public/issues) probíhá na GitHubu podle
   [prohlášení GitHubu o ochraně soukromí](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement).

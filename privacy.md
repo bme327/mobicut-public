@@ -7,7 +7,7 @@ permalink: /privacy/
 # Privacy policy
 {: .no_toc }
 
-**mobiCut** (Android app, package `app.mobicut`) · Last updated: 27 October 2026
+**mobiCut** (Android app, package `app.mobicut`) · Last updated: 5 November 2026
 
 1. TOC
 {:toc}
@@ -16,10 +16,13 @@ permalink: /privacy/
 
 ## Summary
 
-mobiCut is a video editor that works entirely on your phone. It has no accounts, no ads, no
-analytics and no tracking. It does not collect personal data, does not send your videos or
-projects anywhere, and does not share data with anyone. The app does not even have permission
-to use the internet.
+mobiCut is a video editor that works entirely on your phone. In short:
+
+- **Your videos never leave your phone.** Editing and export happen on the phone; nothing is uploaded.
+- **No account, no ads, no analytics, no tracking.** We collect no personal data and share nothing.
+- **No internet.** The app doesn't even have permission to use it.
+- **Pro is handled by Google Play.** We never see your payment details.
+- **You're in control.** Delete a project, an exported file or the app, and it's gone.
 
 ## Who we are
 
@@ -74,7 +77,9 @@ These are not part of mobiCut's own data handling, but you may meet them while u
   learns from Google Play whether Pro is unlocked on your account. See
   [Google's privacy policy](https://policies.google.com/privacy).
 - **Links and feedback.** The *Docs*, *What's new* and *Privacy* buttons on the welcome screen,
-  and *Privacy policy* in Settings, open this website on GitHub in your browser.
+  and *Privacy policy* in Settings, open this website on GitHub in a browser tab over the app.
+  *Rate mobiCut* opens mobiCut's Google Play page, and *Share mobiCut* hands a message with that
+  link to the app you choose; mobiCut sends nothing itself.
   Downloading the app from this site, and sending feedback through
   [GitHub issues](https://github.com/bme327/mobicut-public/issues), happens on GitHub under
   [GitHub's privacy statement](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement).
