@@ -80,11 +80,12 @@ Nejsou součástí toho, jak mobiCut nakládá s daty, ale při jeho používán
   Platby jdou přes Google Play; mobiCut nikdy nevidí tvoje platební údaje a od Google Play se
   dozví jen to, jestli je na tvém účtu Pro odemčené. Viz
   [zásady ochrany soukromí Googlu](https://policies.google.com/privacy).
-- **Odkazy a zpětná vazba.** Tlačítka *Návod*, *Novinky* a *Soukromí* na uvítací obrazovce
-  a *Ochrana soukromí* v Nastavení otevřou tento web na GitHubu v okně prohlížeče nad aplikací.
+- **Odkazy a zpětná vazba.** Tyto zásady jsou součástí aplikace a otevřou se i bez internetu
+  (*Soukromí* na uvítací obrazovce, *Ochrana soukromí* v Nastavení). Tlačítka *Návod* a *Novinky*
+  otevřou dokumentaci mobiCutu na GitHubu v okně prohlížeče nad aplikací.
   *Ohodnotit mobiCut* otevře stránku mobiCutu na Google Play a *Sdílet mobiCut* předá zprávu
   s tímto odkazem aplikaci, kterou vybereš; mobiCut sám nic neposílá.
-  Stažení aplikace z tohoto webu a posílání zpětné vazby přes
+  Posílání zpětné vazby přes
   [GitHub issues](https://github.com/bme327/mobicut-public/issues) probíhá na GitHubu podle
   [prohlášení GitHubu o ochraně soukromí](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement).
   Cokoli napíšeš do issue, je veřejné; neuváděj prosím osobní údaje.
