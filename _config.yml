@@ -15,7 +15,7 @@ footer_content: "mobiCut documentation. Screens are illustrations of the app; re
 release_planned: "mid-November 2026"
 release_planned_cs: "v polovině listopadu 2026"
 # Release the pages describe (release/<date>.<n> of the app repo).
-app_version: "2026-11-03.1"
+app_version: "2026-11-05.1"
 
 exclude:
   - _tools

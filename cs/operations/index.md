@@ -19,16 +19,17 @@ Každá stránka níže popisuje jednu věc, kterou v mobiCutu uděláš. Jsi-li
 3. **Náhled.** Ukazuje video tak, jak bude vypadat: smazané části se přeskakují, rychlost,
    přechody, texty a grafika jsou použité. Klepnutím na text nebo grafiku ve videu je umístíš,
    natočíš a nastavíš jim vzhled.
-   Štítek v rohu ukazuje rychlost vybraného úseku.
-4. **Přehrát / pozastavit**, kolem toho **na začátek**, **o 5 s zpět**, **o 5 s vpřed** a **na konec**.
-   Malé časy vedle ukazují pozici (nahoře) a délku (dole) *hotového* videa, ne originálu.
-5. **Zpět** (Undo) vrátí poslední změnu.
+4. **Lišta přehrávače**: pozice a délka *hotového* videa (`0:21.4 / 0:48.0`), **oko** pro
+   zobrazení smazaných úseků, **rychlost náhledu** (`1×`) a **celá obrazovka**.
+5. **Přehrát / pozastavit**, kolem toho **na začátek**, **o 1 s zpět**, **o 5 s zpět**,
+   **o 5 s vpřed**, **o 1 s vpřed** a **na konec**.
 6. **Časová osa.** Každý blok je úsek; oranžové značky jsou střihy; bílá čára je přehrávací
    hlava. Viz [Editor]({{ "/cs/operations/editor/" | relative_url }}).
-7. **Stopa překryvů.** Modré štítky jsou [texty]({{ "/cs/operations/subtitles/" | relative_url }}),
+7. **Stopy.** Modré štítky jsou [texty]({{ "/cs/operations/subtitles/" | relative_url }}),
    fialové [grafika]({{ "/cs/operations/graphics/" | relative_url }}): klepnutím je upravíš, tažením
-   posuneš v čase.
-8. **Zobrazit smazané, oddálit, posuvník, přiblížit.**
+   posuneš v čase. Pod nimi [hudba]({{ "/cs/operations/soundtracks/" | relative_url }}).
+8. **Oddálit, celé video, přiblížit, Zpět (Undo).** Pruh je celé video: světlá část je to, co
+   ukazuje časová osa, bílá čárka je přehrávací hlava; klepnutím nebo tažením tam skočíš.
 9. **Nástroje:** [Split]({{ "/cs/operations/split/" | relative_url }}),
    [Delete / Restore]({{ "/cs/operations/delete/" | relative_url }}),
    [Speed]({{ "/cs/operations/speed/" | relative_url }}),

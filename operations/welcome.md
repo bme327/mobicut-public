@@ -12,8 +12,9 @@ your edition. After 5 seconds it moves on to your projects by itself.
 
 {% include screen.html name="welcome" alt="The welcome screen: mobiCut logo, a one-line description, author and version, Docs, What's new and Privacy links, Free edition with an Upgrade button, and the Hold… and Straight to app buttons at the bottom." %}
 
-1. **Docs** opens this website; **What's new** opens the notes of the latest release;
-   **Privacy** opens the [privacy policy]({{ "/privacy/" | relative_url }}).
+1. **Docs** opens this website and **What's new** the notes of the latest release, in a browser
+   tab over the app (Back returns to mobiCut). **Privacy** shows the
+   [privacy policy]({{ "/privacy/" | relative_url }}) inside the app, also without the internet.
 2. **Upgrade** shows what [Pro]({{ "/editions/" | relative_url }}) adds. In the Google Play
    version, while your account can still get the free week of Pro, the button reads
    **Try Pro free**. In Pro the screen shows

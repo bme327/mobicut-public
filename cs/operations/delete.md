@@ -20,7 +20,7 @@ Celková délka pod náhledem se zkrátí.
 
 ## Zobrazit smazané úseky {#see-deleted-segments}
 
-Klepni na **oko** vlevo dole u časové osy (značka 3). Smazané úseky se znovu objeví, červeně
+Klepni na **oko** v liště přehrávače pod náhledem (značka 3). Smazané úseky se znovu objeví, červeně
 šrafované s nápisem **Deleted** (značka 1). Dalším klepnutím na oko je skryješ.
 
 ## Obnovit úsek {#restore-a-segment}

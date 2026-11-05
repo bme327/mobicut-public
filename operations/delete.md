@@ -21,7 +21,7 @@ The total length under the preview gets shorter.
 
 ## See deleted segments
 
-Tap the **eye** at the bottom left of the timeline (marker 3). Deleted segments appear again,
+Tap the **eye** in the player bar under the preview (marker 3). Deleted segments appear again,
 hatched in red and labelled **Deleted** (marker 1). Tap the eye again to hide them.
 
 ## Restore a segment

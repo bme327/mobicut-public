@@ -42,6 +42,9 @@ Otevři [text]({{ "/cs/operations/subtitles/" | relative_url }}) nebo
   **Accept** nechá dráhu až do toho místa.
 - AI dráha sleduje věci ve **videu**; nenabízí se, když překryv začíná na obrázku nebo textovém
   slidu.
+- Sleduje objekt až k prvnímu **střihu** v hotovém videu: tam, kde začíná další video, nebo kde jsi
+  smazal víc než 2 sekundy. Za střihem zůstane překryv tam, kde dráha skončila (v nové scéně ho
+  případně zkrať nebo posuň). Kratší smazané kousky sleduje skrz.
 - Běží v telefonu. Nic se nikam nenahrává.
 
 ## Nakreslit dráhu rukou {#capture-a-path}

@@ -17,15 +17,16 @@ then **The editor** for a tour of the screen.
 1. **Project name and video details.** Tap to [rename]({{ "/operations/projects/#rename-a-project" | relative_url }}).
 2. **Export**: build the finished video. See [Export]({{ "/operations/export/" | relative_url }}).
 3. **Preview.** Shows the video as it will look: deleted parts are skipped, speed, transitions
-   texts and graphics are applied. Tap a text or graphic on the video to place, turn and style it. A badge in the corner shows the speed of the selected segment.
-4. **Play / pause**, with **to the beginning**, **back 5 s**, **forward 5 s** and **to the end** around it.
-   The small times next to them are the position (top) and the length (bottom) of the *finished*
-   video, not of the original.
-5. **Undo** the last change.
+   texts and graphics are applied. Tap a text or graphic on the video to place, turn and style it.
+4. **Player bar**: the position and the length of the *finished* video (`0:21.4 / 0:48.0`), the
+   **eye** to show deleted segments, the **preview speed** (`1×`) and **full screen**.
+5. **Play / pause**, with **to the beginning**, **back 1 s**, **back 5 s**, **forward 5 s**,
+   **forward 1 s** and **to the end** around it.
 6. **Timeline.** Each block is a segment; orange markers are splits; the white line is the
    playhead. See [The editor]({{ "/operations/editor/" | relative_url }}).
-7. **Overlay track.** Blue chips are [texts]({{ "/operations/subtitles/" | relative_url }}), purple ones [graphics]({{ "/operations/graphics/" | relative_url }}): tap one to edit it, drag it to move it in time.
-8. **Show deleted, zoom out, scroll, zoom in.**
+7. **Lanes.** Blue chips are [texts]({{ "/operations/subtitles/" | relative_url }}), purple ones [graphics]({{ "/operations/graphics/" | relative_url }}): tap one to edit it, drag it to move it in time. Below them, [soundtracks]({{ "/operations/soundtracks/" | relative_url }}).
+8. **Zoom out, the whole video, zoom in, Undo.** The bar is the whole video: the light part is what
+   the timeline shows, the white line is the playhead; tap or drag it to go there.
 9. **Tools:** [Split]({{ "/operations/split/" | relative_url }}),
    [Delete / Restore]({{ "/operations/delete/" | relative_url }}),
    [Speed]({{ "/operations/speed/" | relative_url }}),

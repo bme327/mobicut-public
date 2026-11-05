@@ -46,22 +46,27 @@ společně.
 
 Chceš-li dát celému videu stejné přechody najednou, klepni na **Add** → **Transitions at every join**.
 
-{% include screen.html name="transitions-every-join" alt="Dialog Transitions at every join: Type Fade out-in (vybráno) nebo Interleave s odznakem PRO, Duration 2.0 s každý v exportu, zapnuté Fade in & out, Replace existing a Adds 3 transitions." %}
+{% include screen.html name="transitions-every-join" alt="Dialog Transitions at every join: Type Fade out-in nebo Interleave (vybráno, odznak PRO), Duration 1.0 s každý v exportu, vypnuté Fade in at the start, zapnuté Fade out at the end, Replace existing a Adds 3 transitions." %}
 
 - **Type**: *Fade out-in* nebo *Interleave* <span class="label label-yellow">PRO</span>.
 - **Duration**: délka každého přechodu v exportu.
-- **Fade in & out**: video navíc roztmí na začátku a zatmí na konci.
+- **Fade in at the start**: video se navíc na začátku roztmí z černé. Ve výchozím stavu vypnuto,
+  takže video začne prvním záběrem a jeho náhled v galerii nebude černý.
+- **Fade out at the end**: video se navíc na konci zatmí do černé, obraz i zvuk (ve výchozím
+  stavu zapnuto).
 - **Replace existing** (když už některé spoje přechod mají): nastaví tenhle přechod na všech
   spojích. Jinak ho dostanou jen spoje bez přechodu.
 
 Řádek dole říká, co **Apply** udělá (*Adds 3 transitions.*). Celá změna je pro **Undo** jeden
-krok a volba se zapamatuje na příště (na začátku Fade, 2 s, s roztmíváním a zatmíváním).
+krok a volba se zapamatuje na příště (na začátku: Interleave v Pro, Fade out-in ve Free, 1 s,
+bez roztmívání, se zatmíváním na konci).
 
 ### Při exportu {#when-you-export}
 
 Když některé spoje při klepnutí na **Export** nemají přechod, mobiCut se jednou zeptá: **Add
 transitions?** Napíše, kolik míst přechod nemá, a nabídne zapamatovaný typ a délku:
 
+- **Fade in at the start** (vypnuté, dokud ho nezapneš) přidá i roztmívání na začátku,
 - **Add & export** je přidá a pokračuje exportem,
 - **Export as is** exportuje bez nich (pro tenhle projekt se znovu nezeptá, dokud aplikaci
   neotevřeš znovu),
