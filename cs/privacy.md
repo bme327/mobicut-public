@@ -7,7 +7,7 @@ permalink: /cs/privacy/
 # Zásady ochrany soukromí
 {: .no_toc }
 
-**mobiCut** (aplikace pro Android, balíček `app.mobicut`) · Poslední změna: 5. listopadu 2026
+**mobiCut** (aplikace pro Android, balíček `app.mobicut`) · Poslední změna: 6. listopadu 2026
 
 {: .note }
 > Toto je překlad. Pokud by se lišil od [anglické verze]({{ "/privacy/" | relative_url }}),
@@ -30,8 +30,8 @@ mobiCut je střihač videa, který funguje celý v tvém telefonu. Stručně:
 
 ## Kdo jsme
 
-mobiCut vyvíjí Ondřej Spilka (bmesoft), Česká republika, který za aplikaci i tyto zásady
-odpovídá. Viz [Kontakt](#contact) níže.
+mobiCut vyvíjí bmesoft. bmesoft je samostatný vývojář Ondřej Spilka, Česká republika, který
+za aplikaci i tyto zásady odpovídá. Viz [Kontakt](#contact) níže.
 
 ## K čemu aplikace přistupuje a proč
 
