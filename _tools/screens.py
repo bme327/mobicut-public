@@ -852,12 +852,46 @@ def logo(cx, cy, width):
     return s
 
 
+# bmesoft mark, 100-unit box (bme327/mobicut tools/bmesoft-logo.py; app drawable bmesoft_mark)
+BMESOFT_MARK = ("M55.9,0.35A50,50 0 0 1 84.51,86.18L74.81,73.25A34,34 0 0 0 55.9,16.52Z"
+                "M75.07,93.26A50,50 0 0 1 24.93,93.26L34.63,80.33A34,34 0 0 0 65.37,80.33Z"
+                "M15.49,86.18A50,50 0 0 1 44.1,0.35L44.1,16.52A34,34 0 0 0 25.19,73.25Z"
+                "M29.4,50a20.6,20.6 0 1 0 41.2,0a20.6,20.6 0 1 0 -41.2,0Z")
+
+
+def _text_width(s, size, weight):
+    try:
+        from PIL import ImageFont
+        name = "Inter-Black.otf" if weight >= 800 else "Inter-Regular.otf"
+        return ImageFont.truetype("/usr/share/fonts/opentype/inter/" + name, 100).getlength(s) * size / 100
+    except Exception:
+        return len(s) * size * (0.62 if weight >= 800 else 0.55)
+
+
+def byline(cx, y, rest, size):
+    """StartupScreen's Byline: "by (mark) bmesoft · <rest>", centred."""
+    m = size * 1.25
+    parts = [("by ", MUTED, 400), (None, None, None), ("\u00a0bmesoft", TEXT, 900), (f" · {rest}", MUTED, 400)]
+    width = sum(m if p is None else _text_width(p, size, w) for p, _, w in parts)
+    x = cx - width / 2
+    s = ""
+    for p, color, w in parts:
+        if p is None:
+            k = m / 100
+            s += f'<path fill="#E97233" transform="translate({x:.2f} {y - size * 0.36 - m / 2:.2f}) scale({k:.4f})" d="{BMESOFT_MARK}"/>'
+            x += m
+        else:
+            s += t(x, y, p, size, color, w, "start", extra='xml:space="preserve"')
+            x += _text_width(p, size, w)
+    return s
+
+
 def welcome(held=False, fill=0.4):
     s = status_bar()
     s += logo(W / 2, 150, W * 0.7)
     s += t(W / 2, 352, "Quick cuts, speed-ups and text for your action", 15, TEXT, 400, "middle")
     s += t(W / 2, 374, "clips, right on the phone.", 15, TEXT, 400, "middle")
-    s += t(W / 2, 404, f"by Ondřej Spilka · version {VERSION}", 12.5, MUTED, 400, "middle")
+    s += byline(W / 2, 404, f"version {VERSION}", 12.5)
     s += t(W / 2 - 92, 442, "Docs", 14, ACCENT, 500, "middle") + t(W / 2, 442, "What's new", 14, ACCENT, 500, "middle")
     s += t(W / 2 + 92, 442, "Privacy", 14, ACCENT, 500, "middle")
     s += t(W / 2, 486, "Free edition", 13, MUTED, 400, "middle")

@@ -7,7 +7,7 @@ permalink: /privacy/
 # Privacy policy
 {: .no_toc }
 
-**mobiCut** (Android app, package `app.mobicut`) · Last updated: 5 November 2026
+**mobiCut** (Android app, package `app.mobicut`) · Last updated: 6 November 2026
 
 1. TOC
 {:toc}
@@ -26,8 +26,8 @@ mobiCut is a video editor that works entirely on your phone. In short:
 
 ## Who we are
 
-mobiCut is developed by Ondřej Spilka (bmesoft), Czech Republic, who is responsible for the app
-and this policy. See [Contact](#contact) below.
+mobiCut is developed by bmesoft. bmesoft is the individual developer Ondřej Spilka, Czech
+Republic, who is responsible for the app and this policy. See [Contact](#contact) below.
 
 ## What the app accesses and why
 
