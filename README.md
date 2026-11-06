@@ -1,43 +1,17 @@
-# mobiCut — public documentation
+# mobiCut — public repository
 
-User documentation for **mobiCut**, a small video editor for Android, published with GitHub Pages.
+**The documentation moved to https://bmesoft.eu/mobicut/docs/** (Czech:
+https://bmesoft.eu/cs/mobicut/docs/). It is now part of the bmesoft.eu website, built in the
+mobiCut app repository.
 
-- Site: https://bme327.github.io/mobicut-public/
-- The app: planned for Google Play in mid-November 2026. There is no public APK download.
+This repository still holds:
 
-## Layout
+- **Release notes**: each app release gets a GitHub release here with a one-line note and no files
+  (the app's *What's new* opens https://github.com/bme327/mobicut-public/releases/latest).
+- **Issues**: bug reports and feature requests (see the docs' Feedback page).
+- **Redirects**: GitHub Pages still serves https://bme327.github.io/mobicut-public/, because
+  installed apps link to it. Every old page (`index.md`, `operations/*.md`, `cs/…`) is only front
+  matter with `redirect_to:` its new address (plugin `jekyll-redirect-from`). Keep them for good;
+  the PR check builds the site and checks that every page redirects to bmesoft.eu.
 
-| Path | What |
-|---|---|
-| `index.md` | Intro: what mobiCut is, editions (Free / Pro) |
-| `installation.md` | Availability (Google Play, planned), updating, uninstalling |
-| `operations/*.md` | One page per operation |
-| `assets/screens/*.png` | Drawn screen illustrations (generated) |
-| `assets/screens/real/*.png` | Real phone screenshots; a file here replaces the illustration with the same name |
-| `_tools/screens.py` | Draws the illustrations from the app's UI (colors and labels from its Compose code) |
-| `_config.yml` | Theme, `release_planned`, `app_version` |
-| `cs/` | Czech translation: the same paths under `cs/` (`cs/installation.md` ↔ `installation.md`) |
-
-Regenerate illustrations: `pip install cairosvg && python3 _tools/screens.py`
-
-## Real screenshots
-
-Take a screenshot on the phone, crop to the app (portrait; the `tablet-*` screens are a tablet in
-landscape), and save it as
-`assets/screens/real/<name>.png` using the same name as the illustration (e.g. `editor.png`).
-The page switches to it automatically.
-
-## Languages
-
-Every page exists twice: English at `x.md` (URL `/x/`) and Czech at `cs/x.md` (URL `/cs/x/`).
-**When a page is added or changed, change its twin too.**
-
-- `page.lang` comes from `_config.yml` defaults (`cs/` → `cs`, everything else → `en`). The
-  sidebar shows only the current language (`_includes/components/site_nav.html`, `sidebar.html`,
-  `breadcrumbs.html`, `children_nav.html` are theme copies that pass `lang`), and
-  `_includes/lang_switch.html` (in the sidebar, under the title) links each page to its twin.
-- Czech child pages use `parent: Funkce` (the Czech title of Operations).
-- Keep heading anchors the same in both languages: Czech headings carry the English id,
-  e.g. `## Odinstalace {#uninstalling}`, so `#…` links work in both.
-- The app's UI is English, so button and screen names stay in English (bold) on Czech pages.
-  Screens and illustrations are shared (English); only their alt text is translated.
+There is no public APK download. The app is planned for Google Play in mid-November 2026.

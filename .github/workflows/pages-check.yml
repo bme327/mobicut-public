@@ -31,24 +31,15 @@ jobs:
             tail -8 build.log | while IFS= read -r l; do echo "::error::$l"; done
           fi
           exit $st
-      - name: Every page has its Czech twin
+      - name: Every page redirects to bmesoft.eu
         run: |
           cd _site
-          missing=0
-          for f in $(find . -name index.html -not -path './cs/*' -not -path './assets/*'); do
-            grep -q 'http-equiv="refresh"' "$f" && continue   # redirect_from stubs
-            d=${f#./}; d=${d%index.html}
-            if [ ! -f "cs/${d}index.html" ]; then echo "::error::No Czech page for /$d"; missing=1; fi
-          done
-          exit $missing
-      - name: Sidebar shows one language
-        run: |
-          cd _site
-          nav() { sed -n '/id="site-nav"/,/<\/nav>/p' "$1"; }
           fail=0
-          nav cs/operations/split/index.html | grep -q 'Funkce' || { echo "::error::Czech sidebar lacks Funkce"; fail=1; }
-          nav cs/operations/split/index.html | grep -q '>Installation<\|>Operations<' && { echo "::error::English pages in the Czech sidebar"; fail=1; }
-          nav operations/split/index.html | grep -q 'Funkce\|Instalace' && { echo "::error::Czech pages in the English sidebar"; fail=1; }
-          grep -q 'href="/mobicut-public/cs/operations/split/"' operations/split/index.html || { echo "::error::No Česky link on an English page"; fail=1; }
-          grep -q '/mobicut-public/cs/closed-alpha/' closed-alpha/cs/index.html || { echo "::error::/closed-alpha/cs/ doesn't redirect"; fail=1; }
+          for f in $(find . -name index.html); do
+            grep -q 'http-equiv="refresh" content="0; url=https://bmesoft.eu/' "$f" && continue
+            [ "$f" = ./closed-alpha/cs/index.html ] && grep -q 'http-equiv="refresh"' "$f" && continue  # old link, via /cs/closed-alpha/
+            echo "::error::${f#./} doesn't redirect to bmesoft.eu"; fail=1
+          done
+          grep -q 'url=https://bmesoft.eu/mobicut/docs/"' index.html || { echo "::error::home doesn't redirect to the docs home"; fail=1; }
+          grep -q 'url=https://bmesoft.eu/cs/mobicut/docs/speed/"' cs/operations/speed/index.html || { echo "::error::Czech pages don't go to the Czech docs"; fail=1; }
           exit $fail
