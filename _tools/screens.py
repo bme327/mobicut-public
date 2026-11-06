@@ -23,7 +23,7 @@ SND = "#1E4034"; SND_TEXT = "#A8E6C8"; GRAPHIC = "#4A2F57"
 CALLOUT = "#3FA9F5"
 
 W, H = 360, 780
-VERSION = "2026-10-27.1"  # app release the screens show
+VERSION = "2026-11-05.1"  # app release the screens show
 SANS = "Inter, sans-serif"; MONO = "DejaVu Sans Mono, monospace"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "screens")
 
@@ -75,6 +75,13 @@ def icon(name, x, y, size=22, color=TEXT):
         "skip_next": '<path d="M18 5v14"/><path d="M6 5l9 7-9 7z"/>',
         "replay5": '<path d="M12 4a8 8 0 1 1-7.6 5.5"/><path d="M4 4v5.5h5.5"/><path d="M10.5 10h3M10.5 10v2.5h1.7a1.6 1.6 0 1 1 0 3.2h-1.7"/>',
         "forward5": '<path d="M12 4a8 8 0 1 0 7.6 5.5"/><path d="M20 4v5.5h-5.5"/><path d="M10.5 10h3M10.5 10v2.5h1.7a1.6 1.6 0 1 1 0 3.2h-1.7"/>',
+        "replay1": '<path d="M12 4a8 8 0 1 1-7.6 5.5"/><path d="M4 4v5.5h5.5"/><path d="M10.8 11l1.6-1.2v6"/>',
+        "forward1": '<path d="M12 4a8 8 0 1 0 7.6 5.5"/><path d="M20 4v5.5h-5.5"/><path d="M10.8 11l1.6-1.2v6"/>',
+        "fullscreen": '<path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/>',
+        "star": '<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>',
+        "share": '<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',
+        "gavel": '<path d="M13 4l7 7M10.5 6.5l7 7M12 5.5l-5 5 4 4 5-5M9 12.5 3.5 18a1.4 1.4 0 0 0 2 2L11 14.5M4 21h9"/>',
+        "bulb": '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/>',
         "title": '<path d="M5 5h14M12 5v14"/>',
         "category": '<path d="M12 3 7 11h10z"/><circle cx="17" cy="17" r="4"/><rect x="3" y="13" width="8" height="8" rx="1"/>',
         "gradient": '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18" stroke-opacity="0.5"/>',
@@ -212,6 +219,9 @@ def home(projects=True, sheet=False, menu=False):
 
 
 # ---------------------------------------------------------------- editor
+PV_H = 262                       # preview height (the player bar and transport sit under it)
+EYE_X = 268                      # show-deleted eye in the player bar
+ZOOM_Y = 80 + PV_H + 36 + 52 + 12 + 16 + 84 + 6 + 60 + 22 + 22   # zoom bar row
 DEFAULT_SEGS = [  # (fraction of width, label, speed!=1, deleted, selected)
     (0.36, "1×", False, False, False),
     (0.30, "4×", True, False, True),
@@ -221,7 +231,7 @@ DEFAULT_SEGS = [  # (fraction of width, label, speed!=1, deleted, selected)
 
 def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from Lysá hora"), (0.70, 0.93, "Landing")),
            selected_deleted=False, show_deleted=False, transitions=True, transition_set=(), playing=False,
-           subtitle_on_preview="", speed_badge="4×", title="Lysá hora flight", time="0:21.4", total="0:48.0",
+           subtitle_on_preview="", speed_badge="", title="Lysá hora flight", time="0:21.4", total="0:48.0",
            video=True, soundtracks=(), preview_shade=0, selected_muted=False, selected_picture=False,
            graphics=((0.40, 0.60, "Arrow"),)):
     """segs: (fraction, label, fast, deleted, selected[, kind[, join_before]]); kind "picture" draws
@@ -232,11 +242,10 @@ def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from L
     s += icon("back", 28, 52, 24, TEXT)
     s += t(56, 49, title, 16, TEXT, 600)
     s += icon("edit", 56 + len(title) * 9.2 + 10, 44, 14, MUTED)
-    s += t(56, 66, "1920×1080 · 50 fps · 2:31", 12, MUTED, 400, mono=True)
+    s += t(56, 66, "1920×1080 · 50 fps", 12, MUTED, 400, mono=True)
     s += button(264, 32, 84, 40, "Export")
     # preview
-    # The preview gives up room when the soundtrack lane is shown, like the app's weighted layout.
-    pv_top, pv_h = 80, 346 - (26 if soundtracks else 0)
+    pv_top, pv_h = 80, PV_H
     s += rect(0, pv_top, W, pv_h, "#000")
     if video:
         vh = W * 9 / 16
@@ -248,18 +257,23 @@ def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from L
             tw = len(subtitle_on_preview) * 7.6 + 20
             s += rect(W / 2 - tw / 2, vy + vh - 40, tw, 26, "#000", 4, op=0.72)
             s += t(W / 2, vy + vh - 22, subtitle_on_preview, 15, "#fff", 400, "middle")
-    # controls
+    # player bar under the preview: time / length, show deleted, preview speed, full screen
     cy = pv_top + pv_h
-    # Transport: to start, −5 s, play/pause, +5 s, to end; then the times, small, on two lines.
-    s += icon("skip_prev", 28, cy + 30, 22, TEXT) + icon("replay5", 68, cy + 30, 22, TEXT)
-    s += f'<circle cx="110" cy="{cy+30}" r="22" fill="{SURF_HI}"/>' + icon("pause" if playing else "play", 110, cy + 30, 24, TEXT)
-    s += icon("forward5", 152, cy + 30, 22, TEXT) + icon("skip_next", 192, cy + 30, 22, TEXT)
-    s += t(216, cy + 27, time, 11, TEXT, 400, mono=True) + t(216, cy + 41, total, 11, MUTED, 400, mono=True)
-    s += icon("undo", 334, cy + 30, 24, TEXT)
+    s += t(16, cy + 23, time, 12, TEXT, 400, mono=True) + t(16 + len(time) * 7.3, cy + 23, " / " + total, 12, MUTED, 400, mono=True)
+    s += icon("eye" if show_deleted else "eye_off", EYE_X, cy + 18, 20, DEL_TEXT if show_deleted else MUTED)
+    s += rect(286, cy + 6, 36, 24, SURF_HI, 6) + t(304, cy + 23, "1×", 12, TEXT, 600, "middle", True)
+    s += icon("fullscreen", 340, cy + 18, 20, TEXT)
+    # transport: to start, −1 s, −5 s, play/pause, +5 s, +1 s, to end
+    cy2 = cy + 36
+    my = cy2 + 26
+    for x, ic in ((60, "skip_prev"), (100, "replay1"), (140, "replay5"), (220, "forward5"), (260, "forward1"), (300, "skip_next")):
+        s += icon(ic, x, my, 22, TEXT)
+    s += f'<circle cx="180" cy="{my}" r="22" fill="{SURF_HI}"/>' + icon("pause" if playing else "play", 180, my, 24, TEXT)
+    cy = cy2 + 52 - 60  # the timeline block below starts where it did relative to this
     # timeline
     tl_x, tl_w = 16, 340
     ly = cy + 60 + 12
-    for i, lab in enumerate(["0:00", "0:37", "1:15", "1:53", "2:31"]):
+    for i, lab in enumerate(["0:00", "0:12", "0:24", "0:36", "0:48"]):
         anchor = "start" if i == 0 else ("end" if i == 4 else "middle")
         s += t(tl_x + tl_w * i / 4, ly, lab, 11, MUTED, 400, anchor, True)
     track_top = ly + 4 + 12
@@ -315,35 +329,35 @@ def editor(segs=DEFAULT_SEGS, playhead=0.47, subs=((0.08, 0.30, "Take-off from L
             s += icon("fade", cxp, track_top + track_h / 2, 16, ON_ACCENT if on else TEXT)
     px = tl_x + tl_w * playhead
     s += f'<line x1="{px}" y1="{track_top-4}" x2="{px}" y2="{track_top+track_h}" stroke="#fff" stroke-width="2"/><circle cx="{px}" cy="{track_top-4}" r="5" fill="#fff"/>'
-    # subtitles
+    # lanes: texts, graphics, soundtracks (each with a hint while empty)
     sy = track_top + track_h + 6
-    if not subs:
-        s += t(tl_x, sy + 18, "Texts and graphics appear here", 11, MUTED, extra='fill-opacity="0.6"')
-    for a, b, txt in subs:
-        s += f'<clipPath id="st{a}"><rect x="{tl_x+tl_w*a}" y="{sy}" width="{tl_w*(b-a)}" height="28" rx="5"/></clipPath>'
-        s += rect(tl_x + tl_w * a, sy, tl_w * (b - a), 28, SUB, 5)
-        s += f'<g clip-path="url(#st{a})">' + icon("title", tl_x + tl_w * a + 9, sy + 14, 12, SUB_TEXT + "BF")
-        s += t(tl_x + tl_w * a + 18, sy + 18, txt, 11, SUB_TEXT) + "</g>"
-    for a, b, txt in (graphics if subs else ()):
-        s += f'<clipPath id="gr{a}"><rect x="{tl_x+tl_w*a}" y="{sy}" width="{tl_w*(b-a)}" height="28" rx="5"/></clipPath>'
-        s += rect(tl_x + tl_w * a, sy, tl_w * (b - a), 28, GRAPHIC, 5)
-        s += f'<g clip-path="url(#gr{a})">' + icon("category", tl_x + tl_w * a + 10, sy + 14, 12, SUB_TEXT + "BF")
-        s += t(tl_x + tl_w * a + 20, sy + 18, txt, 11, SUB_TEXT) + "</g>"
-    # soundtrack lane
-    if soundtracks:
-        ly2 = sy + 32
-        for a, b, name, replace in soundtracks:
-            x0, x1 = tl_x + tl_w * a, tl_x + tl_w * b
-            s += f'<clipPath id="snd{a}"><rect x="{x0}" y="{ly2}" width="{x1-x0}" height="22" rx="4"/></clipPath>'
-            s += rect(x0, ly2, x1 - x0, 22, SND, 4)
-            s += f'<g clip-path="url(#snd{a})">' + t(x0 + 6, ly2 + 15, ("♪ only · " if replace else "♪ ") + name, 10, SND_TEXT).replace(SANS, "DejaVu Sans, sans-serif") + "</g>"
-        sy += 26
-    # zoom row
-    zy = sy + 28 + 26
-    s += icon("eye" if show_deleted else "eye_off", 40, zy, 22, DEL_TEXT if show_deleted else MUTED)
-    s += icon("zoom_out", 86, zy, 22, MUTED + "66")
-    s += rect(112, zy - 2, 196, 4, SURF, 2) + f'<circle cx="120" cy="{zy}" r="8" fill="{MUTED}" fill-opacity="0.4"/>'
-    s += icon("zoom_in", 332, zy, 22, TEXT)
+    def lane(y, items, fill, ic, empty):
+        out = ""
+        if not items:
+            return t(tl_x, y + 17, empty, 11, MUTED, extra='fill-opacity="0.6"')
+        for a, b, txt in items:
+            out += f'<clipPath id="ln{y}{a}"><rect x="{tl_x+tl_w*a}" y="{y}" width="{tl_w*(b-a)}" height="26" rx="5"/></clipPath>'
+            out += rect(tl_x + tl_w * a, y, tl_w * (b - a), 26, fill, 5)
+            out += f'<g clip-path="url(#ln{y}{a})">' + icon(ic, tl_x + tl_w * a + 10, y + 13, 12, SUB_TEXT + "BF")
+            out += t(tl_x + tl_w * a + 20, y + 17, txt, 11, SUB_TEXT) + "</g>"
+        return out
+    s += lane(sy, subs, SUB, "title", "Texts appear here")
+    s += lane(sy + 30, graphics if subs else (), GRAPHIC, "category", "Graphics appear here")
+    ly2 = sy + 60
+    if not soundtracks:
+        s += t(tl_x, ly2 + 15, "Soundtracks appear here", 11, MUTED, extra='fill-opacity="0.6"')
+    for a, b, name, replace in soundtracks:
+        x0, x1 = tl_x + tl_w * a, tl_x + tl_w * b
+        s += f'<clipPath id="snd{a}"><rect x="{x0}" y="{ly2}" width="{x1-x0}" height="22" rx="4"/></clipPath>'
+        s += rect(x0, ly2, x1 - x0, 22, SND, 4)
+        s += f'<g clip-path="url(#snd{a})">' + t(x0 + 6, ly2 + 15, ("♪ only · " if replace else "♪ ") + name, 10, SND_TEXT).replace(SANS, "DejaVu Sans, sans-serif") + "</g>"
+    # zoom row: zoom out, the whole video (visible part + playhead), zoom in, undo
+    zy = ZOOM_Y
+    s += icon("zoom_out", 30, zy, 22, MUTED + "66")
+    s += rect(52, zy - 3, 228, 6, SURF, 3) + rect(52, zy - 3, 228, 6, MUTED, 3, op=0.35)
+    s += rect(52 + 228 * playhead - 1, zy - 7, 2, 14, "#fff")
+    s += icon("zoom_in", 304, zy, 22, TEXT)
+    s += icon("undo", 340, zy, 22, TEXT)
     # toolbar
     ty = H - 24 - 76
     dim = MUTED + "66"
@@ -508,7 +522,8 @@ def delete_project_dialog():
 
 
 def settings_sheet():
-    """ui/Pro.kt SettingsSheet in Pro: Edition, Pro logo switch, test-build switch, Privacy, version."""
+    """ui/Pro.kt SettingsSheet in Pro: Edition, Pro logo switch, test-build switch, Rate / Share /
+    Privacy policy / Show tips again, version."""
     def c(top):
         s = t(20, top + 52, "Settings", 18, TEXT, 600)
         s += t(20, top + 90, "Edition", 15) + rect(W - 66, top + 76, 46, 18, ACCENT, 9) + t(W - 43, top + 89, "PRO", 10, ON_ACCENT, 900, "middle")
@@ -525,10 +540,16 @@ def settings_sheet():
         s += rect(104, y + 40, 58, 32, ACCENT, 8) + t(133, y + 61, "Pro", 14, ON_ACCENT, 600, "middle")
         s += t(34, y + 92, "Only in test builds. The Play Store version takes", 12, MUTED)
         s += t(34, y + 108, "the edition from your Google Play purchase.", 12, MUTED)
-        s += t(20, y + 156, "Privacy policy", 15, ACCENT)
-        s += t(20, y + 184, f"mobiCut {VERSION}", 12, MUTED)
+        for k, (ic, label) in enumerate((("star", "Rate mobiCut"), ("share", "Share mobiCut"),
+                                         ("gavel", "Privacy policy"), ("bulb", "Show tips again"))):
+            ry = y + 152 + k * 32
+            s += icon(ic, 30, ry - 5, 20, ACCENT) + t(48, ry, label, 15, ACCENT)
+        s += t(20, y + 152 + 4 * 32 + 6, f"mobiCut {VERSION}", 12, MUTED)
         return s
-    return home() + sheet(442, c)
+    return home() + sheet(442 + SETTINGS_EXTRA, c)
+
+
+SETTINGS_EXTRA = 100  # Rate / Share / Privacy / Show tips again rows: the sheet grows upwards by this
 
 
 def add_sheet():
@@ -628,7 +649,7 @@ def segment_info_picture():
 # ---------------------------------------------------------------- screens with callouts
 SPLIT_SEGS = [(0.47, "1×", False, False, False), (0.53, "1×", False, False, True)]
 DEL_SEGS = [(0.36, "1×", False, False, False), (0.30, "4×", True, True, True), (0.34, "1×", False, False, False)]
-TL_TRACK_TOP = 80 + 346 + 60 + 12 + 16
+TL_TRACK_TOP = 80 + PV_H + 36 + 52 + 12 + 16
 
 # ---------------------------------------------------------------- subtitle editor (ui/OverlayEditor.kt)
 PANEL_TOP = H - 24 - 404   # the panel replaces controls, timeline and toolbar; the preview shrinks
@@ -684,7 +705,7 @@ def path_curve(vy, vh, ex, ey):
 def subtitle_editor(tab="Text", text="Take-off from Lysá hora", look="classic"):
     s = status_bar()
     s += icon("back", 28, 52, 24, TEXT) + t(56, 49, "Lysá hora flight", 16, TEXT, 600)
-    s += t(56, 66, "1920×1080 · 50 fps · 2:31", 12, MUTED, 400, mono=True) + button(264, 32, 84, 40, "Export")
+    s += t(56, 66, "1920×1080 · 50 fps", 12, MUTED, 400, mono=True) + button(264, 32, 84, 40, "Export")
     # preview with the subtitle drawn on the video, box and corner handles
     vh = W * 9 / 16
     s += rect(0, 80, W, PANEL_TOP - 80, "#000") + landscape(0, SUB_VY, W, vh, 0, "se")
@@ -803,7 +824,7 @@ def subtitle_editor(tab="Text", text="Take-off from Lysá hora", look="classic")
 
 SUB_BOX_PX = (SUB_BOX[0] * W, SUB_VY + SUB_BOX[1] * W * 9 / 16, SUB_BOX[2] * W, SUB_BOX[3] * W * 9 / 16)
 
-MEDIA_TOP = TL_TRACK_TOP - 26  # timeline moves up when the soundtrack lane is shown
+MEDIA_TOP = TL_TRACK_TOP  # the soundtrack lane is always there now
 
 # ---------------------------------------------------------------- welcome (ui/StartupScreen.kt)
 def logo_mark(cx, cy, d):
@@ -929,7 +950,7 @@ def graphic_picker():
 def graphic_editor():
     s = status_bar()
     s += icon("back", 28, 52, 24, TEXT) + t(56, 49, "Lysá hora flight", 16, TEXT, 600)
-    s += t(56, 66, "1920×1080 · 50 fps · 2:31", 12, MUTED, 400, mono=True) + button(264, 32, 84, 40, "Export")
+    s += t(56, 66, "1920×1080 · 50 fps", 12, MUTED, 400, mono=True) + button(264, 32, 84, 40, "Export")
     vh = W * 9 / 16
     s += rect(0, 80, W, PANEL_TOP - 80, "#000") + landscape(0, SUB_VY, W, vh, 0, "ge")
     # a curved arrow pointing at the glider (top right of the frame)
@@ -1071,17 +1092,19 @@ def switch(x, y, on):
 def every_join_dialog():
     def body(x, y, w):
         s = t(x, y + 6, "Type", 13, MUTED)
-        s += radio(x + 10, y + 32, True) + t(x + 30, y + 30, "Fade out-in", 15) + t(x + 30, y + 46, "Dips to black and back", 12, MUTED)
-        s += radio(x + 10, y + 80, False) + t(x + 30, y + 78, "Interleave", 15) + rect(x + 112, y + 66, 34, 15, ACCENT, 7) + t(x + 129, y + 77, "PRO", 9, ON_ACCENT, 900, "middle") + t(x + 30, y + 94, "Crossfade. The video gets shorter", 12, MUTED)
+        s += radio(x + 10, y + 32, False) + t(x + 30, y + 30, "Fade out-in", 15) + t(x + 30, y + 46, "Dips to black and back", 12, MUTED)
+        s += radio(x + 10, y + 80, True) + t(x + 30, y + 78, "Interleave", 15) + rect(x + 112, y + 66, 34, 15, ACCENT, 7) + t(x + 129, y + 77, "PRO", 9, ON_ACCENT, 900, "middle") + t(x + 30, y + 94, "Crossfade. The video gets shorter", 12, MUTED)
         s += t(x, y + 136, "Duration", 14) + t(x, y + 153, "Each, in the", 12, MUTED) + t(x, y + 168, "export", 12, MUTED)
-        s += stepper(x + w - 136, y + 122, "2.0 s")
-        s += t(x, y + 208, "Fade in & out", 15) + t(x, y + 225, "At the start and the end", 12, MUTED) + t(x, y + 240, "of the video", 12, MUTED)
-        s += switch(x + w - 52, y + 200, True)
-        s += t(x, y + 280, "Replace existing", 15) + t(x, y + 297, "Otherwise only joins without", 12, MUTED) + t(x, y + 312, "one get it", 12, MUTED)
-        s += switch(x + w - 52, y + 272, False)
-        s += t(x, y + 346, "Adds 3 transitions.", 12, ACCENT)
+        s += stepper(x + w - 136, y + 122, "1.0 s")
+        s += t(x, y + 208, "Fade in at the start", 15) + t(x, y + 225, "Off: the video starts on its first", 12, MUTED) + t(x, y + 240, "picture, so its thumbnail isn't black", 12, MUTED)
+        s += switch(x + w - 52, y + 200, False)
+        s += t(x, y + 280, "Fade out at the end", 15) + t(x, y + 297, "Picture and sound fade away", 12, MUTED)
+        s += switch(x + w - 52, y + 272, True)
+        s += t(x, y + 340, "Replace existing", 15) + t(x, y + 357, "Otherwise only joins without", 12, MUTED) + t(x, y + 372, "one get it", 12, MUTED)
+        s += switch(x + w - 52, y + 332, False)
+        s += t(x, y + 406, "Adds 3 transitions.", 12, ACCENT)
         return s
-    return editor(transition_set=(1,)) + dialog(500, "Transitions at every join", body, [("Cancel", ACCENT), ("Apply", ACCENT)], width=330)
+    return editor(transition_set=(1,)) + dialog(560, "Transitions at every join", body, [("Cancel", ACCENT), ("Apply", ACCENT)], width=330)
 
 
 # ---------------------------------------------------------------- tablet, landscape (EditorScreen wide layout)
@@ -1103,7 +1126,7 @@ def t_header():
     title = "Lysá hora flight"
     return (icon("back", 28, 52, 24, TEXT) + t(56, 49, title, 16, TEXT, 600)
             + icon("edit", 56 + len(title) * 9.2 + 10, 44, 14, MUTED)
-            + t(56, 66, "1920×1080 · 50 fps · 2:31", 12, MUTED, 400, mono=True)
+            + t(56, 66, "1920×1080 · 50 fps", 12, MUTED, 400, mono=True)
             + button(TW - 96, 32, 84, 40, "Export"))
 
 
@@ -1242,10 +1265,11 @@ SCREENS = {
     "delete-project": delete_project_dialog,
     "editor": lambda: editor()
               + callout(1, 150, 92, ring=(48, 32, 200, 40)) + callout(2, 306, 92, ring=(262, 30, 88, 44))
-              + callout(3, 300, 136) + callout(4, 12, 434, ring=(8, 432, 266, 52)) + callout(5, 312, 434, ring=(310, 432, 48, 48))
+              + callout(3, 300, 136) + callout(4, 200, 80 + PV_H + 18, ring=(8, 80 + PV_H + 2, 348, 32))
+              + callout(5, 24, 80 + PV_H + 62, ring=(34, 80 + PV_H + 38, 292, 48))
               + callout(6, 14, TL_TRACK_TOP + 40, ring=(12, TL_TRACK_TOP - 16, 348, 102))
-              + callout(7, 14, TL_TRACK_TOP + 104, ring=(12, TL_TRACK_TOP + 89, 348, 30))
-              + callout(8, 14, TL_TRACK_TOP + 144, ring=(12, TL_TRACK_TOP + 125, 348, 38))
+              + callout(7, 14, TL_TRACK_TOP + 132, ring=(12, TL_TRACK_TOP + 88, 348, 88))
+              + callout(8, 14, ZOOM_Y, ring=(10, ZOOM_Y - 18, 348, 36))
               + callout(9, 14, TOOL_Y + 37, ring=(10, TOOL_Y + 6, 344, 62)),
     "split": lambda: editor(segs=SPLIT_SEGS, playhead=0.47, subs=(), speed_badge="", time="1:11.0", total="2:31.0", transitions=False)
              + callout(1, 16 + 340 * 0.47 + 18, TL_TRACK_TOP - 14, ring=(16 + 340 * 0.47 - 12, TL_TRACK_TOP - 14, 24, 100))
@@ -1253,7 +1277,7 @@ SCREENS = {
     "delete": lambda: editor(segs=DEL_SEGS, selected_deleted=True, show_deleted=True, speed_badge="", total="0:38.7", transitions=False)
               + callout(1, 16 + 340 * 0.51, TL_TRACK_TOP - 16, ring=(16 + 340 * 0.36, TL_TRACK_TOP, 340 * 0.30, 84))
               + callout(2, TOOL_X[1] + 26, TOOL_Y + 4, ring=tool_ring(1))
-              + callout(3, 60, TL_TRACK_TOP + 150, ring=(20, TL_TRACK_TOP + 128, 40, 40)),
+              + callout(3, EYE_X - 30, 80 + PV_H + 18, ring=(EYE_X - 16, 80 + PV_H + 2, 32, 32)),
     "speed": speed_sheet,
     "subtitle-editor": lambda: subtitle_editor("Text")
                        + callout(1, SUB_BOX_PX[0] + 60, SUB_BOX_PX[1] - 16)
@@ -1268,7 +1292,7 @@ SCREENS = {
     "subtitle-lines": lambda: subtitle_editor("LookLines", look="lines"),
     "subtitle-typing": lambda: subtitle_editor("Typing", look="lines"),
     "subtitles-timeline": lambda: editor(subtitle_on_preview="Take-off from Lysá hora", speed_badge="", playhead=0.2)
-                          + callout(1, 16 + 340 * 0.19, TL_TRACK_TOP + 106, ring=(16 + 340 * 0.08 - 4, TL_TRACK_TOP + 86, 340 * 0.22 + 8, 36))
+                          + callout(1, 16 + 340 * 0.30 + 16, TL_TRACK_TOP + 103, ring=(16 + 340 * 0.08 - 4, TL_TRACK_TOP + 88, 340 * 0.22 + 8, 30))
                           + callout(2, TOOL_X[4] + 26, TOOL_Y + 4, ring=tool_ring(4)),
     "transition-buttons": lambda: editor(transition_set=(1,))
                           + callout(1, 16 + 340 * 0.36, TL_TRACK_TOP + 14, ring=(16 + 340 * 0.36 - 18, TL_TRACK_TOP + 24, 36, 36))
@@ -1286,7 +1310,7 @@ SCREENS = {
                       + callout(1, 16 + 340 * 0.40, MEDIA_TOP - 14, ring=(16 + 340 * 0.26, MEDIA_TOP, 340 * 0.18, 84))
                       + callout(2, 16 + 340 * 0.72, MEDIA_TOP - 14, ring=(16 + 340 * 0.72 - 8, MEDIA_TOP, 16, 84))
                       + callout(3, 16 + 340 * 0.44 + 92, MEDIA_TOP + 69, ring=(16 + 340 * 0.44 + 2, MEDIA_TOP + 58, 82, 22))
-                      + callout(4, 30, MEDIA_TOP + 132, ring=(18, MEDIA_TOP + 120, 344, 26))
+                      + callout(4, 26, MEDIA_TOP + 161, ring=(14, MEDIA_TOP + 148, 346, 26))
                       + callout(5, TOOL_X[6] - 22, TOOL_Y + 4, ring=tool_ring(6)),
     "mute": lambda: editor(segs=[(0.36, "1×", False, False, False), (0.30, "1× · muted", False, False, True), (0.34, "1×", False, False, False)],
                            speed_badge="", selected_muted=True, transitions=False)
@@ -1298,8 +1322,8 @@ SCREENS = {
     "segment-info-picture": segment_info_picture,
     "welcome": lambda: welcome() + callout(1, W / 2 - 134, 438, ring=(W / 2 - 122, 424, 244, 28)) + callout(2, W / 2 + 72, 520, ring=(W / 2 - 60, 496, 120, 48))
                + callout(3, 30, 676, ring=(16, 686, 106, 56)) + callout(4, W - 30, 676, ring=(124, 686, W - 140, 56)),
-    "settings-edition": lambda: settings_sheet() + callout(1, 182, 575, ring=(26, 572, 144, 48)),
-    "settings-pro-logo": lambda: settings_sheet() + callout(1, 314, 524, ring=(282, 464, 64, 42)),
+    "settings-edition": lambda: settings_sheet() + callout(1, 182, 575 - SETTINGS_EXTRA, ring=(26, 572 - SETTINGS_EXTRA, 144, 48)),
+    "settings-pro-logo": lambda: settings_sheet() + callout(1, 314, 524 - SETTINGS_EXTRA, ring=(282, 464 - SETTINGS_EXTRA, 64, 42)),
     "graphic-picker": graphic_picker,
     "graphic-editor": graphic_editor,
     "path-capture": path_capture,

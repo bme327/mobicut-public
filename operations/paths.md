@@ -42,6 +42,9 @@ Open a [text]({{ "/operations/subtitles/" | relative_url }}) or a
   lost it; **Accept** keeps the path up to there.
 - The AI path follows things in a **video**; it isn't offered when the overlay starts on a picture
   or a text slide.
+- It follows the object up to the first **cut** in the finished video: where another video starts,
+  or where you deleted more than 2 seconds. After the cut the overlay stays where the path ended
+  (shorten or move it there if the new scene needs it). Shorter deleted bits are followed through.
 - It runs on the phone. Nothing is uploaded.
 
 ## Draw a path by hand {#capture-a-path}

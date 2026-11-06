@@ -18,7 +18,8 @@ Projekt je jedno video a všechno, co jsi s ním udělal. mobiCut projekty uklá
 
 {% include screen.html name="home" alt="Úvodní obrazovka se třemi nedávnými projekty, tlačítky Settings a New project a tlačítkem nabídky ⋮ u projektu." %}
 
-1. **Settings**: edice, zásady ochrany soukromí a verze aplikace.
+1. **Settings**: edice, **Rate mobiCut**, **Share mobiCut**, **Privacy policy**,
+   **Show tips again** ([tipy]({{ "/cs/operations/tips/" | relative_url }})) a verze aplikace.
 2. **New project**: nový projekt.
 3. **Projekt**: miniatura, délka hotového videa, počet úseků a textů a kdy byl naposledy
    upravený. Klepnutím ho otevřeš.

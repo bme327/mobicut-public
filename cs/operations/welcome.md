@@ -12,8 +12,9 @@ edicí. Po 5 sekundách sám přejde na tvoje projekty.
 
 {% include screen.html name="welcome" alt="Uvítací obrazovka: logo mobiCutu, jednořádkový popis, autor a verze, odkazy Docs, What's new a Privacy, edice Free s tlačítkem Upgrade a dole tlačítka Hold… a Straight to app." %}
 
-1. **Docs** otevře tento web; **What's new** otevře poznámky k poslednímu vydání;
-   **Privacy** otevře [zásady ochrany soukromí]({{ "/cs/privacy/" | relative_url }}).
+1. **Docs** otevře tento web a **What's new** poznámky k poslednímu vydání, v okně prohlížeče
+   nad aplikací (Zpět tě vrátí do mobiCutu). **Privacy** ukáže
+   [zásady ochrany soukromí]({{ "/cs/privacy/" | relative_url }}) přímo v aplikaci, i bez internetu.
 2. **Upgrade** ukáže, co přidává [Pro]({{ "/cs/editions/" | relative_url }}). Ve verzi
    z Google Play, dokud má tvůj účet nárok na týden Pro zdarma, ukazuje tlačítko **Try Pro free**. V Pro je na
    obrazovce místo toho štítek **PRO** a *All features unlocked*.

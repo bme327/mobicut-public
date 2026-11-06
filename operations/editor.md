@@ -20,9 +20,17 @@ Tap **▶** under the preview. Playback already follows your edits: deleted segm
 sped-up segments play fast, texts and graphics appear on the video with their animation, fades dim the
 picture and interleaves crossfade.
 
-The two small times next to the buttons are the position in the **finished video** (top) and
-its total length (bottom), for example `0:21.4` over `0:48.0`. They change as you delete and speed
-up segments.
+The **player bar** right under the preview shows the position in the **finished video** and its
+total length, for example `0:21.4 / 0:48.0`. They change as you delete and speed up segments. On
+its right are the **eye** that [shows deleted segments]({{ "/operations/delete/" | relative_url }}),
+the **preview speed** and **full screen**.
+
+## Preview speed {#preview-speed}
+
+The button with `1×` in the player bar plays the preview faster or slower: **0.5×**, **1×**, **2×**,
+**4×** or **8×**, handy for running through a long flight. Soundtracks follow along. It only
+changes how you watch, not the exported video, and it's back to `1×` the next time you open the
+app. The button is orange while it isn't `1×`.
 
 ## Jump
 
@@ -31,11 +39,13 @@ The buttons around **▶** jump the playhead, also while playing:
 | Button | Jumps |
 |---|---|
 | **⏮** | To the beginning of the finished video (its first kept frame) |
+| **↺ 1** | 1 second back |
 | **↺ 5** | 5 seconds back |
 | **↻ 5** | 5 seconds forward |
+| **↻ 1** | 1 second forward |
 | **⏭** | To the end (playback stops there) |
 
-The 5 seconds are 5 seconds of the **finished** video: deleted parts are skipped, and over a
+The seconds are seconds of the **finished** video: deleted parts are skipped, and over a
 4× segment a jump moves 20 seconds through the original.
 
 ## Move around the video
@@ -60,17 +70,21 @@ The white line with a dot is the **playhead**: the current position. The segment
 | Short red line | Deleted footage is hidden here |
 | Round button on a split | Transition (see [Transitions]({{ "/operations/transitions/" | relative_url }})) |
 | ⓘ on the selected segment | [Segment details]({{ "/operations/segment-info/" | relative_url }}) |
-| Times above the strip | Times in the *original* video (videos and pictures laid end to end) |
-| Blue and purple chips under the strip | [Texts]({{ "/operations/subtitles/" | relative_url }}) (blue, with a **T**) and [graphics]({{ "/operations/graphics/" | relative_url }}) (purple, with the shape's name) |
-| Green chips under the texts | [Soundtracks]({{ "/operations/soundtracks/" | relative_url }}); the lane only shows once you add one |
+| Times above the strip | Times in the *finished* video, the same as in the player bar |
+| Blue chips under the strip | [Texts]({{ "/operations/subtitles/" | relative_url }}), with a **T** (*Texts appear here* while there are none) |
+| Purple chips under the texts | [Graphics]({{ "/operations/graphics/" | relative_url }}), with the shape's name |
+| Green chips at the bottom | [Soundtracks]({{ "/operations/soundtracks/" | relative_url }}) |
 
 ## Zoom in
 
 On a long video a split needs precision. Use any of:
 
 - **🔍+ / 🔍−** under the timeline (each tap doubles or halves the zoom),
-- **pinch** the timeline with two fingers,
-- the **slider** between them to move along the zoomed timeline.
+- **pinch** the timeline with two fingers.
+
+The bar between 🔍− and 🔍+ is the **whole video**: the lighter part is what the timeline shows now,
+the white line is the playhead. **Tap or drag** on the bar to move the playhead there; the
+timeline follows. Handy on a long video zoomed in.
 
 ## Zoom the preview {#zoom-the-preview}
 
@@ -82,12 +96,13 @@ whole frame again. Zooming only changes your view, not the exported video.
 ## Full screen {#full-screen}
 
 Tap the **full-screen** button in the corner of the preview to watch the edit big. A landscape
-video turns the screen sideways. The controls at the bottom (play/pause, time, seek bar) hide
+video turns the screen sideways. The controls at the bottom (play/pause, time, seek bar and
+preview speed) hide
 while it plays; touch the screen to bring them back. The large button at the top takes you back.
 
 ## Undo
 
-**↶** (top right of the controls) takes back the last change: a split, a delete, a speed change,
+**↶** (right of the zoom bar, under the timeline) takes back the last change: a split, a delete, a speed change,
 a text, a graphic, a transition, a mute, a picture, a soundtrack or an added video. Tap it repeatedly to go further back.
 
 ## Turn the screen

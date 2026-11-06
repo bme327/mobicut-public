@@ -20,8 +20,17 @@ Klepni na **▶** pod náhledem. Přehrávání už odpovídá tvým úpravám: 
 zrychlené úseky hrají rychle, texty a grafika se ve videu objevují i s animací, prolínačky ztmavují obraz
 a Interleave se prolínají.
 
-Dva malé časy vedle tlačítek jsou pozice v **hotovém videu** (nahoře) a jeho celková délka
-(dole), například `0:21.4` nad `0:48.0`. Mění se, jak mažeš a zrychluješ úseky.
+**Lišta přehrávače** hned pod náhledem ukazuje pozici v **hotovém videu** a jeho celkovou délku,
+například `0:21.4 / 0:48.0`. Mění se, jak mažeš a zrychluješ úseky. Vpravo na ní je **oko**, které
+[ukáže smazané úseky]({{ "/cs/operations/delete/" | relative_url }}), **rychlost náhledu** a
+**celá obrazovka**.
+
+## Rychlost náhledu {#preview-speed}
+
+Tlačítko s `1×` v liště přehrávače přehrává náhled rychleji nebo pomaleji: **0.5×**, **1×**, **2×**,
+**4×** nebo **8×**, šikovné pro proletění dlouhým letem. Hudba zrychlí nebo zpomalí s ním. Mění jen to, jak se díváš,
+ne exportované video, a při dalším otevření aplikace je zase `1×`. Dokud není `1×`, je tlačítko
+oranžové.
 
 ## Skoky {#jump}
 
@@ -30,11 +39,13 @@ Tlačítka kolem **▶** posouvají přehrávací hlavu, i během přehrávání
 | Tlačítko | Skočí |
 |---|---|
 | **⏮** | Na začátek hotového videa (jeho první ponechaný snímek) |
+| **↺ 1** | O 1 sekundu zpět |
 | **↺ 5** | O 5 sekund zpět |
 | **↻ 5** | O 5 sekund vpřed |
+| **↻ 1** | O 1 sekundu vpřed |
 | **⏭** | Na konec (přehrávání se tam zastaví) |
 
-Těch 5 sekund je 5 sekund **hotového** videa: smazané části se přeskočí a přes úsek zrychlený
+Sekundy jsou sekundy **hotového** videa: smazané části se přeskočí a přes úsek zrychlený
 na 4× posune skok originálem o 20 sekund.
 
 ## Pohyb po videu {#move-around-the-video}
@@ -58,16 +69,21 @@ obrys); nástroje pracují s vybraným úsekem.
 | Krátká červená čára | Tady jsou skryté smazané záběry |
 | Kulaté tlačítko na střihu | Přechod (viz [Přechody]({{ "/cs/operations/transitions/" | relative_url }})) |
 | ⓘ na vybraném úseku | [Podrobnosti úseku]({{ "/cs/operations/segment-info/" | relative_url }}) |
-| Časy nad pásem | Časy v *původním* videu (videa a obrázky za sebou) |
-| Zelené štítky pod texty | [Hudba]({{ "/cs/operations/soundtracks/" | relative_url }}); stopa se ukáže, až nějakou přidáš |
+| Časy nad pásem | Časy v *hotovém* videu, stejné jako v liště přehrávače |
+| Modré štítky pod pásem | [Texty]({{ "/cs/operations/subtitles/" | relative_url }}) s **T** (dokud žádné nejsou, stojí tam *Texts appear here*) |
+| Fialové štítky pod texty | [Grafika]({{ "/cs/operations/graphics/" | relative_url }}) s názvem tvaru |
+| Zelené štítky úplně dole | [Hudba]({{ "/cs/operations/soundtracks/" | relative_url }}) |
 
 ## Přiblížení {#zoom-in}
 
 U dlouhého videa potřebuje střih přesnost. Použij cokoli z toho:
 
 - **🔍+ / 🔍−** pod časovou osou (každé klepnutí přiblížení zdvojnásobí nebo zmenší na polovinu),
-- **roztažení dvěma prsty** na časové ose,
-- **posuvník** mezi nimi pro pohyb po přiblížené ose.
+- **roztažení dvěma prsty** na časové ose.
+
+Pruh mezi 🔍− a 🔍+ je **celé video**: světlejší část je to, co teď ukazuje časová osa, bílá
+čárka je přehrávací hlava. **Klepnutím nebo tažením** po pruhu tam přehrávací hlavu přesuneš;
+časová osa jde za ní. Hodí se u dlouhého přiblíženého videa.
 
 ## Přiblížení náhledu {#zoom-the-preview}
 
@@ -79,12 +95,13 @@ celý snímek. Přiblížení mění jen tvůj pohled, ne exportované video.
 ## Celá obrazovka {#full-screen}
 
 Klepni na tlačítko **celé obrazovky** v rohu náhledu a uvidíš střih ve velkém. Video na šířku
-otočí obrazovku. Ovládání dole (přehrát/pozastavit, čas, posuvník) se při přehrávání schová;
+otočí obrazovku. Ovládání dole (přehrát/pozastavit, čas, posuvník a rychlost náhledu) se při
+přehrávání schová;
 dotkni se obrazovky a vrátí se. Velké tlačítko nahoře tě vrátí zpět.
 
 ## Zpět {#undo}
 
-**↶** (vpravo nahoře u ovládání) vrátí poslední změnu: střih, smazání, změnu rychlosti, text, grafiku,
+**↶** (vpravo od pruhu přiblížení, pod časovou osou) vrátí poslední změnu: střih, smazání, změnu rychlosti, text, grafiku,
 přechod, ztlumení, obrázek, hudbu nebo přidané video. Opakovaným klepnutím jdeš dál do historie.
 
 ## Otočení obrazovky {#turn-the-screen}
