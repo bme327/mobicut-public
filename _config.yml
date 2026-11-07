@@ -1,34 +1,14 @@
 title: mobiCut
+description: The mobiCut docs moved to https://bmesoft.eu/mobicut/docs/
 permalink: pretty
-description: A small video editor for Android. Split, delete, speed up, subtitle and export clips on your phone.
-remote_theme: just-the-docs/just-the-docs@v0.10.1
+# Every page only redirects to its new address on bmesoft.eu (redirect_to in its front matter).
+# Installed apps open https://bme327.github.io/mobicut-public/, so the redirects stay for good.
 plugins:
-  - jekyll-remote-theme
-  - jekyll-seo-tag
   - jekyll-redirect-from
-color_scheme: dark
-search_enabled: true
-heading_anchors: true
-footer_content: "mobiCut documentation. Screens are illustrations of the app; real screenshots replace them as they are added."
-
-# Planned public release on Google Play. There is no public download until then.
-release_planned: "mid-November 2026"
-release_planned_cs: "v polovině listopadu 2026"
-# Release the pages describe (release/<date>.<n> of the app repo).
-app_version: "2026-11-05.1"
 
 exclude:
-  - _tools
   - README.md
   - Gemfile
   - Gemfile.lock
   - vendor   # gems installed by the PR build check
   - build.log
-
-# Languages: English pages at /x/, Czech twins at /cs/x/ (same path under cs/).
-# page.lang picks the sidebar (_includes/components/site_nav.html) and the language switch.
-defaults:
-  - scope: { path: "" }
-    values: { lang: "en" }
-  - scope: { path: "cs" }
-    values: { lang: "cs" }
